@@ -12,6 +12,24 @@
  *
  */
 
-@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "homepage";
+
+body {
+  font-family: 'Lato', sans-serif;
+  padding: 10px;
+}
+
+a {
+  color: inherit;
+}
+
+.navbar{
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  background-color: #F07100;
+  .navbar-btn{
+    background-color: #FF7D0A;
+  }
+}
+
