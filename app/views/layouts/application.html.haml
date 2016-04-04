@@ -2,10 +2,15 @@
 %html
   %head
     %title Mks
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     = csrf_meta_tags
     = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag 'application'
   %body
-    = render 'navbar'
-    = yield
+    .container-fluid
+      = render 'navbar'
+      .col-md-10.col-md-offset-1.content
+        = render 'flash'
+        = yield
+      = render 'footer'
     

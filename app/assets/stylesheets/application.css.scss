@@ -15,21 +15,49 @@
 @import "bootstrap";
 @import "homepage";
 
-body {
-  font-family: 'Lato', sans-serif;
-  padding: 10px;
-}
-
-a {
-  color: inherit;
-}
-
-.navbar{
-  font-family: 'Ubuntu', sans-serif;
-  color: white;
-  background-color: #F07100;
-  .navbar-btn{
-    background-color: #FF7D0A;
+html{
+  height: 100%;
+  width: 100%;
+  body {
+    font-family: 'Lato', sans-serif;
+    padding: 10px;
+    height: 100%;
+    .container-fluid {
+      height: 100%;
+      .content{
+        padding-top: 70px;
+        height: 100%;
+      }
+    }
   }
 }
 
+a {
+  color: white;
+  &:hover{
+    color: #DDD;
+  }
+}
+
+.navbar{
+  font-family: 'Ubuntu';
+  color: white;
+  font-weight: bold;
+  background-color: #F07100;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  .navbar-btn{
+    margin-left: 16px;
+    background-color: #FF7D0A;
+    font-weight: bold;
+    &:hover{
+      color: #F07100;
+      background-color: #EEE;
+    }
+  }
+}
+
+footer {
+  color: #000;
+  padding: 10px;
+}
