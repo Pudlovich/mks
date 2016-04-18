@@ -1,0 +1,29 @@
+pl:
+  activerecord:
+    models:
+      user:
+        zero: "0 użytkowników"
+        one: "Użytkownik"
+        few: "%{count} użytkownicy"
+        many: "%{count} użytkowników"
+    attributes:
+      user:
+        email: 'Adres email'
+        password: 'Hasło'
+        password_confirmation: 'Potwierdź hasło'
+        current_password: 'Obecne hasło'
+        unhappy_question: 'Chcesz usunąć konto?'
+        cancel_account: 'Usuń konto'
+        are_you_sure: 'Jesteś pewien?'
+        leave_blank: 'Zostaw puste jezeli nie chcesz zmienić swojego hasła'
+        confirm_changes: 'Wprowadzone zmiany musisz potwierdzić hasłem'
+        password_validation: 'Minimum %{number} znaków'
+        remember_me: 'Zapamiętaj'
+        back: 'Powrót'
+        terms_of_service: Regulamin
+        privacy_policy: Polityka prywatności
+  user:
+    account_settings: 'Ustawienia'
+    i_accept_the: 'Akceptuję'
+    welcome: '<b>Witaj</b>, %{nick}'
+    settings:
