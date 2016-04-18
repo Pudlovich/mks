@@ -32,33 +32,34 @@ html{
   }
 }
 
-a {
-  color: white;
-  &:hover{
-    color: #DDD;
-  }
-}
-
-.btn {
-  border:0px solid transparent;
-}
-
 .navbar{
   font-family: 'Ubuntu';
-  color: white;
-  font-weight: bold;
   background-color: #F07100;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  .navbar-btn{
-    margin-left: 16px;
+  
+  a{
+    color:white;
+    &:hover{
+      color: #F07100;
+    }
+  }
+  
+  li{
     color: white;
-    background-color: #FF7D0A;
-    font-weight: bold;
     &:hover{
       color: #F07100;
       background-color: #EEE;
     }
+  }
+
+  .navbar-brand{
+    font-weight: bold;
+    &:hover{
+      color: #EEE;
+    }
+  }
+
+  .icon-bar{
+    background-color: white;
   }
 }
 
