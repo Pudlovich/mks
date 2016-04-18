@@ -1,0 +1,10 @@
+-if flash[:notice]
+  .alert.alert-info{:role => "alert"}
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times; 
+    .text-center
+      =flash[:notice]
+-if flash[:alert]
+  .alert.alert-warning{:role => "warning"}
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times; 
+    .text-center
+      = flash[:alert]
