@@ -9,7 +9,7 @@
   %body
     .container-fluid
       = render 'navbar'
-      .col-md-10.col-md-offset-1.content
+      .container.content.max-width
         = render 'flash'
         = yield
       = render 'footer'
