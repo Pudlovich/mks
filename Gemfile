@@ -14,9 +14,8 @@ gem 'devise'
 gem 'haml'
 gem 'haml-rails'
 
-gem 'bootstrap'
 source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0'
+  gem 'rails-assets-bootstrap-sass'
 end
 
 group :development, :test do
