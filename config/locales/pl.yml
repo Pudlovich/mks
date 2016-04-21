@@ -22,8 +22,3 @@ pl:
         back: 'Powrót'
         terms_of_service: Regulamin
         privacy_policy: Polityka prywatności
-  user:
-    account_settings: 'Ustawienia'
-    i_accept_the: 'Akceptuję'
-    welcome: '<b>Witaj</b>, %{nick}'
-    settings:
