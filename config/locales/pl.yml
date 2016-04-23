@@ -25,7 +25,7 @@ pl:
       senders: Nadawcy
       recipients: Odbiorcy
       info: Informacje
-      sign_in: Zaloguj
+      sign_in: Zaloguj się
       sign_out: Wyloguj
       sign_up: Zarejestruj się
   homepage:
