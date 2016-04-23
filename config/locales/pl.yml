@@ -18,6 +18,9 @@ pl:
         remember_me: 'Zapamiętaj mnie'
   application:
     footer:
+      contact_us: Kontakt
+      senders: Nadawcy
+      recipients: Odbiorcy
     navbar:
       senders: Nadawcy
       recipients: Odbiorcy
