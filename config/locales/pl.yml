@@ -19,5 +19,11 @@ pl:
   application:
     footer:
     navbar:
+      senders: Nadawcy
+      recipients: Odbiorcy
+      info: Informacje
+      sign_in: Zaloguj
+      sign_out: Wyloguj
+      sign_up: Zarejestruj się
   homepage:
     index:
