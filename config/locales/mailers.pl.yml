@@ -1,0 +1,24 @@
+pl:
+  mailers:
+    confirmation_instructions:
+      welcome: Witamy w MKS Express!
+      body: 'Możesz potwierdzić swój adres email klikając w poniższy link:'
+      link_text: Potwierdź moje konto
+      greetings: 'Pozdrawiamy, MKS Express'
+    password_change:
+      welcome: 'Witaj, %{email}!'
+      body: "Kontaktujemy się z Tobą, żeby poinformować"
+      greetings: 'Pozdrawiamy, MKS Express'
+    reset_password_instructions:
+      welcome: 'Witaj, %{email}!'
+      body: 'Ktoś poprosił o odzyskanie hasła do Twojego konta. Możesz to zrobić klikając w poniższy link:'
+      link_text: 'Odzyskaj hasło'
+      ignore_this_message: 'Jeśli nie prosiłeś o odzyskanie hasła, zignoruj tę wiadomość. Twoje hasło nie zmieni się do momentu kliknięcia w link i zatwierdzenia nowego hasła.'
+      greetings: 'Pozdrawiamy, MKS Express'
+    unlock_instructions:
+      welcome: 'Witaj, %{email}!'
+      body: |
+        Twoje konto zostało zablokowane w związku ze zbyt dużą ilością nieudanych prób logowania.
+        'Kliknij w poniższy link, aby je odblokować:'
+      link_text: Odblokuj moje konto
+      greetings: 'Pozdrawiamy, MKS Express'
