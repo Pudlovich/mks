@@ -14,11 +14,11 @@
     %tbody
       - @parcels.each do |parcel|
         %tr
-          %td= parcel.width
-          %td= parcel.height
-          %td= parcel.depth
-          %td= parcel.weight
-          %td= parcel.price
+          %td= number_to_cm(parcel.width)
+          %td= number_to_cm(parcel.height)
+          %td= number_to_cm(parcel.depth)
+          %td= number_to_kg(parcel.weight)
+          %td= number_to_currency(parcel.price)
           %td= l parcel.created_at
           %td= parcel.name
 -else
