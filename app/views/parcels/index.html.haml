@@ -1,0 +1,25 @@
+%h1
+  =t('.your_parcels')
+-if @parcels
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= Parcel.human_attribute_name('width')
+        %th= Parcel.human_attribute_name('height')
+        %th= Parcel.human_attribute_name('depth')
+        %th= Parcel.human_attribute_name('weight')
+        %th= Parcel.human_attribute_name('price')
+        %th= Parcel.human_attribute_name('created_at')
+        %th= Parcel.human_attribute_name('name')
+    %tbody
+      - @parcels.each do |parcel|
+        %tr
+          %td= parcel.width
+          %td= parcel.height
+          %td= parcel.depth
+          %td= parcel.weight
+          %td= parcel.price
+          %td= l parcel.created_at
+          %td= parcel.name
+-else
+  =t('.not_logged_in.text_html', log_in: link_to(t('.not_logged_in.log_in'), new_user_session_path))

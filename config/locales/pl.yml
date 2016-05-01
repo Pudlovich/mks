@@ -6,10 +6,23 @@ pl:
         one: "Użytkownik"
         few: "%{count} użytkownicy"
         many: "%{count} użytkowników"
+      parcel:
+        zero: "0 przesyłek"
+        one: "1 przesyłka"
+        few: "%{count} przesyłki"
+        many: "%{count} przesyłek"
     attributes:
       user:
         email: 'Adres email'
         password: 'Hasło'
+      parcel:
+        name: 'Nazwa'
+        width: 'Szerokość'
+        height: 'Wysokość'
+        depth: 'Głębokość'
+        weight: 'Waga'
+        price: 'Cena'
+        created_at: 'Data utworzenia'
   helpers:
     label:
       user:
@@ -30,3 +43,11 @@ pl:
       sign_up: Zarejestruj się
   homepage:
     index:
+  parcels:
+    index:
+      your_parcels: Twoje przesyłki
+      not_logged_in:
+        text_html: '%{log_in}, żeby zobaczyć swoje przesyłki'
+        log_in: "Zaloguj się"
+    new:
+    show:
