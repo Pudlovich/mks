@@ -1,3 +1,8 @@
+- if @parcel.errors.present?
+  .bg-danger
+    - @parcel.errors.full_messages.each do |message|
+      %p= message
+
 %h2
   = t('.title')
 = form_for @parcel, url: parcels_path, method: :post do |f|
