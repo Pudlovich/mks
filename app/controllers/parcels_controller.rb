@@ -2,7 +2,7 @@ class ParcelsController < ApplicationController
 
   def index
     if current_user
-      @parcels = current_user.parcels
+      @parcels = current_user.parcels.order(created_at: :desc)
     end
   end
 
