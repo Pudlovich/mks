@@ -50,4 +50,5 @@ pl:
         text_html: '%{log_in}, żeby zobaczyć swoje przesyłki'
         log_in: "Zaloguj się"
     new:
+      title: Utwórz przesyłkę
     show:
