@@ -51,4 +51,7 @@ pl:
         log_in: "Zaloguj się"
     new:
       title: Utwórz przesyłkę
+      button: Utwórz przesyłkę
     show:
+    create:
+      parcel_created_succesfully: Pomyślnie utworzono przesyłkę
