@@ -40,6 +40,7 @@ pl:
         one: ma nieprawidłową długość (powinna wynosić jeden znak)
         other: ma nieprawidłową długość (powinna wynosić %{count} znaków)
       other_than: musi być inna niż %{count}
+      record_not_found: Nie znaleziono danego elementu
     template:
       body: 'Błędy dotyczą następujących pól:'
       header:
