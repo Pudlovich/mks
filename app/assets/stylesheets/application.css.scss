@@ -61,6 +61,10 @@ html{
     }
   }
 
+  .dropdown.open > a{
+    background-color: #FF7D0A;
+  }
+
   .icon-bar{
     background-color: white;
   }

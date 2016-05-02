@@ -41,6 +41,8 @@ pl:
       sign_in: Zaloguj się
       sign_out: Wyloguj
       sign_up: Zarejestruj się
+      edit_account: Edytuj konto
+      my_parcels: Moje przesyłki
   homepage:
     index:
   parcels:
