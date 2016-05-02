@@ -12,11 +12,10 @@ class ParcelsController < ApplicationController
 
   def create
     @parcel = Parcel.new(parcel_params)
-    if @parcel.valid?
-      if current_user
-        @parcel.sender = current_user
-      end
-      @parcel.save
+    if current_user
+      @parcel.sender = current_user
+    end
+    if @parcel.save
       redirect_to parcels_path, notice: t('.parcel_created_succesfully')
     else
       render 'new'
@@ -29,6 +28,6 @@ class ParcelsController < ApplicationController
   private
 
   def parcel_params
-    params.require(:parcel).permit(:weight, :width, :depth, :height, :price, :name)
+    params.require(:parcel).permit(:weight, :width, :depth, :height, :name)
   end
 end
