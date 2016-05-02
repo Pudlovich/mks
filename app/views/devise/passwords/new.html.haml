@@ -1,11 +1,11 @@
-%h2
-  = t('.title')
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit t('.button')
-= render "devise/shared/links"
+.col-md-4.col-md-offset-4
+  %h2.form-title
+    = t('.title')
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    = devise_error_messages!
+    .form-group
+      = f.label :email
+      = f.email_field :email, autofocus: true, class: 'form-control'
+    .form-group
+      = f.submit t('.button'), class: 'btn btn-primary'
+  = render "devise/shared/links"
