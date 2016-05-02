@@ -55,5 +55,6 @@ pl:
       title: Utwórz przesyłkę
       button: Utwórz przesyłkę
     show:
+      parcel_no: 'Przesyłka nr %{id}'
     create:
       parcel_created_succesfully: Pomyślnie utworzono przesyłkę

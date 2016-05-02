@@ -1,0 +1,21 @@
+%h1
+  =t('.parcel_no', id: @parcel.id)
+%table.table.table-striped.parcels-table
+  %thead
+    %tr
+      %th= Parcel.human_attribute_name('width')
+      %th= Parcel.human_attribute_name('height')
+      %th= Parcel.human_attribute_name('depth')
+      %th= Parcel.human_attribute_name('weight')
+      %th= Parcel.human_attribute_name('price')
+      %th= Parcel.human_attribute_name('created_at')
+      %th= Parcel.human_attribute_name('name')
+  %tbody
+    %tr
+      %td= number_to_cm(@parcel.width)
+      %td= number_to_cm(@parcel.height)
+      %td= number_to_cm(@parcel.depth)
+      %td= number_to_kg(@parcel.weight)
+      %td= number_to_currency(@parcel.price)
+      %td= l @parcel.created_at
+      %td= @parcel.name

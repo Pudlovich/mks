@@ -23,6 +23,7 @@ class ParcelsController < ApplicationController
   end
 
   def show
+    @parcel = Parcel.find(params[:id])
   end
 
   private
