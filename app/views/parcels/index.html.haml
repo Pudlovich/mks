@@ -4,6 +4,7 @@
   %table.table.table-striped.parcels-table
     %thead
       %tr
+        %th= Parcel.human_attribute_name('parcel_number')
         %th= Parcel.human_attribute_name('width')
         %th= Parcel.human_attribute_name('height')
         %th= Parcel.human_attribute_name('depth')
@@ -14,6 +15,8 @@
     %tbody
       - @parcels.each do |parcel|
         %tr
+          %td
+            = link_to parcel.parcel_number, parcel_path(parcel_number: parcel.parcel_number)
           %td= number_to_cm(parcel.width)
           %td= number_to_cm(parcel.height)
           %td= number_to_cm(parcel.depth)

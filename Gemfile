@@ -15,6 +15,9 @@ gem 'haml'
 gem 'haml-rails'
 gem 'rails-i18n'
 
+# calculating parcel numbers
+gem 'luhn'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'
 end

@@ -23,7 +23,7 @@ class ParcelsController < ApplicationController
   end
 
   def show
-    @parcel = Parcel.find(params[:id])
+    @parcel = Parcel.where(parcel_number: params[:parcel_number]).first!
   end
 
   private

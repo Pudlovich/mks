@@ -23,6 +23,7 @@ pl:
         weight: 'Waga'
         price: 'Cena'
         created_at: 'Data utworzenia'
+        parcel_number: 'Numer przesyłki'
   helpers:
     label:
       user:
@@ -55,6 +56,6 @@ pl:
       title: Utwórz przesyłkę
       button: Utwórz przesyłkę
     show:
-      parcel_no: 'Przesyłka nr %{id}'
+      parcel_no: 'Przesyłka nr %{parcel_number}'
     create:
       parcel_created_succesfully: Pomyślnie utworzono przesyłkę
