@@ -1,8 +1,0 @@
-%p
-  = t('mailers.unlock_instructions.welcome', email: @resource.email)
-%p
-  = simple_format t('mailers.unlock_instructions.body')
-%p
-  = link_to t('mailers.unlock_instructions.link_text'), unlock_url(@resource, unlock_token: @token)
-%p
-  = t('mailers.unlock_instructions.greetings')
