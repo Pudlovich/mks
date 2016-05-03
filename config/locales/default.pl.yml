@@ -2,6 +2,8 @@ pl:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      record_not_found: Nie znaleziono danego elementu
+      parcel_not_found: Nie znaleziono takiej przesyłki
       accepted: musi zostać zaakceptowane
       blank: nie może być puste
       confirmation: nie zgadza się z polem %{attribute}
@@ -40,7 +42,6 @@ pl:
         one: ma nieprawidłową długość (powinna wynosić jeden znak)
         other: ma nieprawidłową długość (powinna wynosić %{count} znaków)
       other_than: musi być inna niż %{count}
-      record_not_found: Nie znaleziono danego elementu
     template:
       body: 'Błędy dotyczą następujących pól:'
       header:
