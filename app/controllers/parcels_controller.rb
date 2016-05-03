@@ -17,7 +17,7 @@ class ParcelsController < ApplicationController
       @parcel.sender = current_user
     end
     if @parcel.save
-      redirect_to parcels_path, notice: t('.parcel_created_succesfully')
+      redirect_to parcel_path(parcel_number: @parcel.parcel_number), notice: t('.parcel_created_succesfully')
     else
       render 'new'
     end
