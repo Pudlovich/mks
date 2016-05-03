@@ -18,7 +18,7 @@ class Parcel < ActiveRecord::Base
   end
 
   def generate_parcel_number
-    # returns a ten-digit parcel number - nine random digits and check digit generated using Luhn algorithm
+    # returns a nine-digit parcel number - eight random digits and check digit generated using Luhn algorithm
     self.parcel_number = loop do
       number = SecureRandom.random_number(90000000)+10000000
       parcel_number = 10 * number + Luhn.control_digit(number)
