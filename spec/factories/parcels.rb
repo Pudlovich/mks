@@ -12,5 +12,9 @@ FactoryGirl.define do
     trait :with_sender do
       sender { FactoryGirl.create(:user) }
     end
+
+    trait :invalid do
+      width nil
+    end
   end
 end
