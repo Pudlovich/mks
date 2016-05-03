@@ -13,6 +13,7 @@ gem 'devise'
 
 gem 'haml'
 gem 'haml-rails'
+gem 'rails-i18n'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'

@@ -1,0 +1,32 @@
+pl:
+  activerecord:
+    models:
+      user:
+        zero: "0 użytkowników"
+        one: "Użytkownik"
+        few: "%{count} użytkownicy"
+        many: "%{count} użytkowników"
+    attributes:
+      user:
+        email: 'Adres email'
+        password: 'Hasło'
+  helpers:
+    label:
+      user:
+        password_confirmation: 'Potwierdź hasło'
+        current_password: 'Obecne hasło'
+        remember_me: 'Zapamiętaj mnie'
+  application:
+    footer:
+      contact_us: Kontakt
+      senders: Nadawcy
+      recipients: Odbiorcy
+    navbar:
+      senders: Nadawcy
+      recipients: Odbiorcy
+      info: Informacje
+      sign_in: Zaloguj się
+      sign_out: Wyloguj
+      sign_up: Zarejestruj się
+  homepage:
+    index:

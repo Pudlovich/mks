@@ -1,0 +1,7 @@
+%p
+  Witaj, #{@resource.email}!
+%p Twoje konto zostało zablokowane w związku ze zbyt dużą ilością nieudanych prób logowania.
+%p Kliknij w poniższy link, aby je odblokować:
+%p
+  = link_to 'Odblokuj moje konto', unlock_url(@resource, unlock_token: @token)
+%p Pozdrawiamy, MKS Express

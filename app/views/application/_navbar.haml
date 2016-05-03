@@ -10,20 +10,20 @@
       .navbar-left
         %ul.nav.navbar-nav
           %li
-            = link_to 'Nadawcy', root_path
+            = link_to t('.senders'), root_path
           %li
-            = link_to 'Odbiorcy', root_path
+            = link_to t('.recipients'), root_path
           %li
-            = link_to 'Informacje', root_path
+            = link_to t('.info'), root_path
       .navbar-right
         %ul.nav.navbar-nav
           - if current_user
             %li
-              = link_to current_user.email, root_path
+              = link_to current_user.email, edit_user_registration_path
             %li
-              = link_to t('user.sign_out'), destroy_user_session_path, method: 'delete'
+              = link_to t('.sign_out'), destroy_user_session_path, method: 'delete'
           - else
             %li
-              = link_to t('user.sign_in'), new_user_session_path
+              = link_to t('.sign_in'), new_user_session_path
             %li
-              = link_to t('user.sign_up'), new_user_registration_path
+              = link_to t('.sign_up'), new_user_registration_path
