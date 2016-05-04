@@ -1,5 +1,7 @@
 class Parcel < ActiveRecord::Base
   belongs_to :sender, class_name: 'User'
+  belongs_to :sender_info
+  belongs_to :recipient_info
 
   attr_localized :price, :weight
 

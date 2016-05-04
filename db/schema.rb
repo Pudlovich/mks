@@ -11,48 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504130435) do
+ActiveRecord::Schema.define(version: 20160504151339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "parcels", force: :cascade do |t|
     t.string   "name"
-    t.integer  "width",                                 null: false
-    t.integer  "height",                                null: false
-    t.integer  "depth",                                 null: false
-    t.decimal  "weight",        precision: 6, scale: 2, null: false
-    t.decimal  "price",         precision: 6, scale: 2, null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.integer  "width",                                     null: false
+    t.integer  "height",                                    null: false
+    t.integer  "depth",                                     null: false
+    t.decimal  "weight",            precision: 6, scale: 2, null: false
+    t.decimal  "price",             precision: 6, scale: 2, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.integer  "sender_id"
-    t.integer  "parcel_number",                         null: false
+    t.integer  "parcel_number",                             null: false
+    t.integer  "sender_info_id",                            null: false
+    t.integer  "recipient_info_id",                         null: false
   end
 
   add_index "parcels", ["parcel_number"], name: "index_parcels_on_parcel_number", unique: true, using: :btree
 
   create_table "recipient_infos", force: :cascade do |t|
-    t.string  "email",        null: false
-    t.string  "contact_name", null: false
-    t.string  "company_name"
-    t.string  "zip_code",     null: false
-    t.string  "address",      null: false
-    t.string  "city",         null: false
-    t.string  "phone_number", null: false
-    t.boolean "residential",  null: false
-    t.string  "other_info"
+    t.string   "email",        null: false
+    t.string   "contact_name", null: false
+    t.string   "company_name"
+    t.string   "zip_code",     null: false
+    t.string   "address",      null: false
+    t.string   "city",         null: false
+    t.string   "phone_number", null: false
+    t.boolean  "residential",  null: false
+    t.string   "other_info"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "sender_infos", force: :cascade do |t|
-    t.string  "email",        null: false
-    t.string  "contact_name", null: false
-    t.string  "company_name"
-    t.string  "zip_code",     null: false
-    t.string  "address",      null: false
-    t.string  "city",         null: false
-    t.string  "phone_number", null: false
-    t.boolean "residential",  null: false
-    t.string  "other_info"
+    t.string   "email",        null: false
+    t.string   "contact_name", null: false
+    t.string   "company_name"
+    t.string   "zip_code",     null: false
+    t.string   "address",      null: false
+    t.string   "city",         null: false
+    t.string   "phone_number", null: false
+    t.boolean  "residential",  null: false
+    t.string   "other_info"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,5 +83,7 @@ ActiveRecord::Schema.define(version: 20160504130435) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "parcels", "recipient_infos"
+  add_foreign_key "parcels", "sender_infos"
   add_foreign_key "parcels", "users", column: "sender_id"
 end

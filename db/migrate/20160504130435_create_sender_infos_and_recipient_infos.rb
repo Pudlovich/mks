@@ -10,6 +10,7 @@ class CreateSenderInfosAndRecipientInfos < ActiveRecord::Migration
       t.string :phone_number, null: false
       t.boolean :residential, null: false
       t.string :other_info
+      t.timestamps null: false
     end
 
     create_table :recipient_infos do |t|
@@ -22,6 +23,7 @@ class CreateSenderInfosAndRecipientInfos < ActiveRecord::Migration
       t.string :phone_number, null: false
       t.boolean :residential, null: false
       t.string :other_info
+      t.timestamps null: false
     end
   end
 end
