@@ -24,8 +24,9 @@ html{
     .container-fluid {
       height: 100%;
       .content{
+        min-height: 100%;
+        position: relative;
         padding-top: 70px;
-        height: 100%;
       }
     }
   }
@@ -71,8 +72,9 @@ html{
 }
 
 footer {
+  position: relative;
+  height: 60px;
   color: #000;
-  padding: 10px;
 }
 
 .parcels-table {
