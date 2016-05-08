@@ -5,7 +5,7 @@ class Parcel < ActiveRecord::Base
 
   attr_localized :price, :weight
 
-  validates :width, :height, :depth, :weight, :price, :parcel_number, presence: true
+  validates :width, :height, :depth, :weight, :price, :parcel_number, :sender_info, :recipient_info, presence: true
   validates :weight, :price, numericality: { greater_than: 0 }
   validates :height, :depth, :width, :parcel_number, numericality: { only_integer: true, greater_than: 0 }
   validates :parcel_number, uniqueness: true
