@@ -71,6 +71,12 @@ RSpec.describe ParcelsController do
       expect(assigns(:parcel)).to be_a_new(Parcel)
     end
 
+    it "assigns blank SenderInfo and RecipientInfo to @parcel" do
+      get :new
+      expect(assigns(:parcel).sender_info).to be_a_new(SenderInfo)
+      expect(assigns(:parcel).recipient_info).to be_a_new(RecipientInfo)
+    end
+
     it "renders the :new view" do
       get :new
       expect(response).to render_template :new
