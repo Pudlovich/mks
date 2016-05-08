@@ -85,14 +85,20 @@ RSpec.describe ParcelsController do
 
   describe "POST #create" do
     context "with valid attributes" do
+      def valid_attributes
+        sender_info_attributes = FactoryGirl.attributes_for(:sender_info)
+        recipient_info_attributes = FactoryGirl.attributes_for(:recipient_info)
+        FactoryGirl.attributes_for(:parcel).merge({sender_info_attributes: sender_info_attributes, recipient_info_attributes: recipient_info_attributes})
+      end
+
       it "saves the new parcel in the database" do
         expect{
-          post :create, parcel: FactoryGirl.attributes_for(:parcel)
+          post :create, parcel: valid_attributes
         }.to change(Parcel,:count).by(1)
       end
 
       it "redirects to the :show view" do
-        post :create, parcel: FactoryGirl.attributes_for(:parcel)
+        post :create, parcel: valid_attributes
         expect(response).to redirect_to parcel_path(parcel_number: Parcel.last.parcel_number)
       end
     end
