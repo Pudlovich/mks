@@ -11,6 +11,8 @@ pl:
         one: "1 przesyłka"
         few: "%{count} przesyłki"
         many: "%{count} przesyłek"
+      sender_info: "Dane nadawcy"
+      recipient_info: "Dane odbiorcy"
     attributes:
       user:
         email: 'Adres email'
@@ -24,6 +26,26 @@ pl:
         price: 'Cena'
         created_at: 'Data utworzenia'
         parcel_number: 'Numer przesyłki'
+      sender_info:
+        email: Adres email
+        contact_name: Nazwisko osoby kontaktowej
+        zip_code: Kod pocztowy
+        address: Adres zamieszkania
+        city: Miasto
+        phone_number: Nr telefonu
+        company_name: Nazwa firmy
+        other_info: Inne informacje
+        residential: Adres osoby prywatnej
+      recipient_info:
+        email: Adres email
+        contact_name: Nazwisko osoby kontaktowej
+        zip_code: Kod pocztowy
+        address: Adres zamieszkania
+        city: Miasto
+        phone_number: Nr telefonu
+        company_name: Nazwa firmy
+        other_info: Inne informacje
+        residential: Adres osoby prywatnej
   helpers:
     label:
       user:
