@@ -7,8 +7,10 @@ class Parcel < ActiveRecord::Base
 
   validates :width, :height, :depth, :weight, :price, :parcel_number, :sender_info, :recipient_info, presence: true
   validates :weight, :price, numericality: { greater_than: 0 }
-  validates :height, :depth, :width, :parcel_number, numericality: { only_integer: true, greater_than: 0 }
+  validates :height, :depth, :width, numericality: { only_integer: true, greater_than: 0 }
+  validates :parcel_number, numericality: { only_integer: true, greater_than: 100000000, less_than: 1000000000 }
   validates :parcel_number, uniqueness: true
+
 
   before_validation :set_price, :generate_parcel_number, on: :create
 
