@@ -13,8 +13,8 @@ class ParcelsController < ApplicationController
 
   def create
     @parcel = Parcel.new(parcel_params)
+    @parcel.sender = current_user if user_signed_in?
     if @parcel.save
-      @parcel.sender = current_user if current_user
       redirect_to parcel_path(@parcel.parcel_number), notice: t('.parcel_created_succesfully')
     else
       render 'new'
