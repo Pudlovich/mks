@@ -5,7 +5,7 @@ class Parcel < ActiveRecord::Base
 
   validates :width, :height, :depth, :weight, :price, :parcel_number, presence: true
   validates :weight, :price, numericality: { greater_than: 0 }
-  validates :height, :depth, :width, :parcel_number, numericality: { only_integer: true, greater_than: 0 }
+  validates :height, :depth, :width, numericality: { only_integer: true, greater_than: 0 }
   validates :parcel_number, uniqueness: true
 
   before_validation :set_price, :generate_parcel_number, on: :create
@@ -21,7 +21,7 @@ class Parcel < ActiveRecord::Base
     # returns a nine-digit parcel number - eight random digits and check digit generated using Luhn algorithm
     self.parcel_number = loop do
       number = SecureRandom.random_number(90000000)+10000000
-      parcel_number = 10 * number + Luhn.control_digit(number)
+      parcel_number = number.to_s + Luhn.control_digit(number).to_s
       break parcel_number unless Parcel.exists?(parcel_number: parcel_number)
     end
   end
