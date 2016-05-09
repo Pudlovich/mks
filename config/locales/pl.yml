@@ -8,7 +8,7 @@ pl:
         many: "%{count} użytkowników"
       parcel:
         zero: "0 przesyłek"
-        one: "1 przesyłka"
+        one: "Przesyłka"
         few: "%{count} przesyłki"
         many: "%{count} przesyłek"
       sender_info: "Dane nadawcy"
