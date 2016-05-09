@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'homepage#index'
 
-  resources :parcels, only: [:index, :create, :new]
-  get '/parcels/:parcel_number', to: 'parcels#show', as: 'parcel'
+  resources :parcels, only: [:index, :create, :new, :show], param: :parcel_number
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
