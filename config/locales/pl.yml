@@ -6,10 +6,24 @@ pl:
         one: "Użytkownik"
         few: "%{count} użytkownicy"
         many: "%{count} użytkowników"
+      parcel:
+        zero: "0 przesyłek"
+        one: "1 przesyłka"
+        few: "%{count} przesyłki"
+        many: "%{count} przesyłek"
     attributes:
       user:
         email: 'Adres email'
         password: 'Hasło'
+      parcel:
+        name: 'Nazwa'
+        width: 'Szerokość'
+        height: 'Wysokość'
+        depth: 'Głębokość'
+        weight: 'Waga'
+        price: 'Cena'
+        created_at: 'Data utworzenia'
+        parcel_number: 'Numer przesyłki'
   helpers:
     label:
       user:
@@ -28,5 +42,20 @@ pl:
       sign_in: Zaloguj się
       sign_out: Wyloguj
       sign_up: Zarejestruj się
+      edit_account: Edytuj konto
+      my_parcels: Moje przesyłki
   homepage:
     index:
+  parcels:
+    index:
+      your_parcels: Twoje przesyłki
+      not_logged_in:
+        text_html: '%{log_in}, żeby zobaczyć swoje przesyłki'
+        log_in: "Zaloguj się"
+    new:
+      title: Utwórz przesyłkę
+      button: Utwórz przesyłkę
+    show:
+      parcel_no: 'Przesyłka nr %{parcel_number}'
+    create:
+      parcel_created_succesfully: Pomyślnie utworzono przesyłkę

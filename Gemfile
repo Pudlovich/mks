@@ -15,6 +15,9 @@ gem 'haml'
 gem 'haml-rails'
 gem 'rails-i18n'
 
+# calculating parcel numbers
+gem 'luhn'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'
 end
@@ -23,7 +26,15 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
+  gem 'factory_girl_rails'
+  gem 'faker'
   gem 'foreman'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development do

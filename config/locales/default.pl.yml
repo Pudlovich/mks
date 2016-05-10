@@ -2,6 +2,8 @@ pl:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      record_not_found: Nie znaleziono danego elementu
+      parcel_not_found: Nie znaleziono takiej przesyłki
       accepted: musi zostać zaakceptowane
       blank: nie może być puste
       confirmation: nie zgadza się z polem %{attribute}
@@ -180,7 +182,7 @@ pl:
         precision: 2
         separator: ","
         significant: false
-        strip_insignificant_zeros: true
+        strip_insignificant_zeros: false
         unit: zł
     format:
       delimiter: " "
@@ -230,7 +232,7 @@ pl:
   time:
     am: przed południem
     formats:
-      default: "%a, %d %b %Y %H:%M:%S %z"
+      default: "%a, %d.%m.%Y, %H:%M"
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: po południu

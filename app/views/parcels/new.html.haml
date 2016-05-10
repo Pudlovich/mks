@@ -1,0 +1,30 @@
+.col-md-4.col-md-offset-4
+  - if @parcel.errors.present?
+    .bg-danger
+      - @parcel.errors.full_messages.each do |message|
+        %p= message
+
+  %h2.form-title
+    = t('.title')
+  = form_for @parcel, url: parcels_path, method: :post do |f|
+    .form-group
+      = f.label :weight
+      = f.text_field :weight, class: 'form-control'
+    .form-group
+      .col-md-4.no-padding
+        = f.label :width
+      .col-md-4
+        = f.label :height
+      .col-md-4.no-padding.text-right
+        = f.label :depth
+      .input-group
+        = f.text_field :width, class: 'form-control'
+        .input-group-addon x
+        = f.text_field :height, class: 'form-control'
+        .input-group-addon x
+        = f.text_field :depth, class: 'form-control'
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.submit t('.button'), class: 'btn btn-primary'

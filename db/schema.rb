@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417141138) do
+ActiveRecord::Schema.define(version: 20160503085438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "parcels", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "width",                                            null: false
+    t.integer  "height",                                           null: false
+    t.integer  "depth",                                            null: false
+    t.decimal  "weight",                   precision: 6, scale: 2, null: false
+    t.decimal  "price",                    precision: 6, scale: 2, null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.integer  "sender_id"
+    t.string   "parcel_number", limit: 20,                         null: false
+  end
+
+  add_index "parcels", ["parcel_number"], name: "index_parcels_on_parcel_number", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -38,4 +53,5 @@ ActiveRecord::Schema.define(version: 20160417141138) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "parcels", "users", column: "sender_id"
 end
