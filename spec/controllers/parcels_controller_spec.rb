@@ -3,14 +3,19 @@ require 'spec_helper'
 RSpec.describe ParcelsController do
   describe "GET #index" do
     context "when user with parcels is logged in" do
-      let(:user) { FactoryGirl.create(:user, :with_parcel) }
+      let(:user) { FactoryGirl.create(:user, :with_parcels) }
       before(:each) do
         sign_in user
       end
 
       it "populates @parcels array with parcels belonging to the user" do
         get :index
-        expect(assigns(:parcels)).to eq(User.last.parcels)
+        expect(assigns(:parcels)).to match_array(user.parcels)
+      end
+
+      it "assigns the newest parcel first" do
+        get :index
+        expect(assigns(:parcels)[0]).to eq(user.parcels.last)
       end
 
       it "renders the :index view" do
@@ -51,7 +56,7 @@ RSpec.describe ParcelsController do
 
   describe "GET #show" do
     context "when a parcel exists" do
-      parcel = FactoryGirl.create(:parcel)
+      let(:parcel) { FactoryGirl.create(:parcel) }
       it "assigns a parcel with the given parcel_number to @parcel" do
         get :show, parcel_number: parcel.parcel_number
         expect(assigns(:parcel)).to eq(parcel)
