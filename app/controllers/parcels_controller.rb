@@ -2,7 +2,7 @@ class ParcelsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
 
   def index
-    if current_user
+    if user_signed_in?
       @parcels = current_user.parcels.order(created_at: :desc)
     end
   end
