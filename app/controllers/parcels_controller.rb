@@ -3,7 +3,7 @@ class ParcelsController < ApplicationController
 
   def index
     if user_signed_in?
-      @parcels = current_user.parcels.order(created_at: :desc)
+      @parcels = current_user.parcels.newest_first
     end
   end
 

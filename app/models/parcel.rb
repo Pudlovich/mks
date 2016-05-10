@@ -10,6 +10,8 @@ class Parcel < ActiveRecord::Base
 
   before_validation :set_price, :generate_parcel_number, on: :create
 
+  scope :newest_first, -> { order(created_at: :desc) }
+
   private
 
   def set_price
