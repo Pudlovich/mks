@@ -4,9 +4,12 @@ FactoryGirl.define do
     password { Faker::Internet.password }
     confirmed_at Time.now
 
-    trait :with_parcel do
-      after(:create) do |user|
-        create(:parcel, sender: user)
+    trait :with_parcels do
+      transient do
+        parcels_count 3
+      end
+      after(:create) do |user, evaluator|
+        create_list(:parcel, evaluator.parcels_count, sender: user)
       end
     end
   end
