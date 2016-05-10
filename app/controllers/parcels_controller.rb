@@ -15,18 +15,16 @@ class ParcelsController < ApplicationController
 
   def create
     @parcel = Parcel.new(parcel_params)
-    if current_user
-      @parcel.sender = current_user
-    end
+    @parcel.sender = current_user if user_signed_in?
     if @parcel.save
-      redirect_to parcel_path(parcel_number: @parcel.parcel_number), notice: t('.parcel_created_succesfully')
+      redirect_to parcel_path(@parcel.parcel_number), notice: t('.parcel_created_succesfully')
     else
       render 'new'
     end
   end
 
   def show
-    @parcel = Parcel.where(parcel_number: params[:parcel_number]).first!
+    @parcel = Parcel.find_by!(parcel_number: params[:parcel_number])
   end
 
   private

@@ -1,10 +1,12 @@
 require 'spec_helper'
-require 'support/controller_macros'
 
 RSpec.describe ParcelsController do
   describe "GET #index" do
-    context "user with parcels logged in" do
-      login_user_with_parcel
+    context "when user with parcels is logged in" do
+      let(:user) { FactoryGirl.create(:user, :with_parcel) }
+      before(:each) do
+        sign_in user
+      end
 
       it "populates @parcels array with parcels belonging to the user" do
         get :index
@@ -17,8 +19,11 @@ RSpec.describe ParcelsController do
       end
     end
 
-    context "user without parcels logged in" do
-      login_user
+    context "when a user without parcels is logged in" do
+      let(:user) { FactoryGirl.create(:user) }
+      before(:each) do
+        sign_in user
+      end
 
       it "leaves @parcels array empty" do
         get :index
@@ -31,7 +36,7 @@ RSpec.describe ParcelsController do
       end
     end
 
-    context "user not logged in" do
+    context "when a user is not logged in" do
       it "doesn't create the parcels array" do
         get :index
         expect(assigns(:parcels)).to eq(nil)
@@ -45,7 +50,7 @@ RSpec.describe ParcelsController do
   end
 
   describe "GET #show" do
-    context "existing parcel" do
+    context "when a parcel exists" do
       parcel = FactoryGirl.create(:parcel)
       it "assigns a parcel with the given parcel_number to @parcel" do
         get :show, parcel_number: parcel.parcel_number
@@ -62,7 +67,6 @@ RSpec.describe ParcelsController do
       get :show, parcel_number: 2
       expect(response).to redirect_to :action => :index
     end
-
   end
 
   describe "GET #new" do
@@ -100,6 +104,24 @@ RSpec.describe ParcelsController do
       it "redirects to the :show view" do
         post :create, parcel: valid_attributes
         expect(response).to redirect_to parcel_path(parcel_number: Parcel.last.parcel_number)
+      end
+
+      context "when a user is logged in" do
+        let(:user) { FactoryGirl.create(:user) }
+        before(:each) do
+          sign_in user
+        end
+
+        it "redirects to the :show view" do
+          post :create, parcel: valid_attributes
+          expect(response).to redirect_to parcel_path(parcel_number: Parcel.last.parcel_number)
+        end
+
+        it "assigns the parcel to user" do
+          expect{
+            post :create, parcel: valid_attributes
+          }.to change(user.parcels,:count).by(1)
+        end
       end
     end
 

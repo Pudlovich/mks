@@ -16,7 +16,7 @@
       - @parcels.each do |parcel|
         %tr
           %td
-            = link_to parcel.parcel_number, parcel_path(parcel_number: parcel.parcel_number)
+            = link_to parcel.parcel_number, parcel_path(parcel.parcel_number)
           %td= number_to_cm(parcel.width)
           %td= number_to_cm(parcel.height)
           %td= number_to_cm(parcel.depth)

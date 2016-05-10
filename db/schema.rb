@@ -18,17 +18,17 @@ ActiveRecord::Schema.define(version: 20160504151339) do
 
   create_table "parcels", force: :cascade do |t|
     t.string   "name"
-    t.integer  "width",                                     null: false
-    t.integer  "height",                                    null: false
-    t.integer  "depth",                                     null: false
-    t.decimal  "weight",            precision: 6, scale: 2, null: false
-    t.decimal  "price",             precision: 6, scale: 2, null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.integer  "width",                                                null: false
+    t.integer  "height",                                               null: false
+    t.integer  "depth",                                                null: false
+    t.decimal  "weight",                       precision: 6, scale: 2, null: false
+    t.decimal  "price",                        precision: 6, scale: 2, null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.integer  "sender_id"
-    t.integer  "parcel_number",                             null: false
-    t.integer  "sender_info_id",                            null: false
-    t.integer  "recipient_info_id",                         null: false
+    t.string   "parcel_number",     limit: 20,                         null: false
+    t.integer  "sender_info_id",                                       null: false
+    t.integer  "recipient_info_id",                                    null: false
   end
 
   add_index "parcels", ["parcel_number"], name: "index_parcels_on_parcel_number", unique: true, using: :btree
