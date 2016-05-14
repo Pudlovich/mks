@@ -70,8 +70,8 @@ pl:
     index:
   parcels:
     new:
-      title: Utwórz przesyłkę
-      button: Utwórz przesyłkę
+      title: Nadaj przesyłkę
+      button: Nadaj przesyłkę
     index:
       your_parcels: Twoje przesyłki
       not_logged_in:
