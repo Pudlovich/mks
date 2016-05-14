@@ -10,7 +10,7 @@
       %th= Parcel.human_attribute_name('name')
   %tbody
     %tr
-      %td= @parcel.recipient_info.city
+      %td= @parcel.recipient_city
       %td= number_to_kg(@parcel.weight)
       %td= number_to_currency(@parcel.price)
       %td= l @parcel.created_at

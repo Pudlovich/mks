@@ -3,6 +3,8 @@ class Parcel < ActiveRecord::Base
   belongs_to :sender_info
   belongs_to :recipient_info
 
+  delegate :city, to: :recipient_info, prefix: :recipient
+
   accepts_nested_attributes_for :sender_info
   accepts_nested_attributes_for :recipient_info
 
