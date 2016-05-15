@@ -30,7 +30,12 @@ class ParcelsController < ApplicationController
   private
 
   def parcel_params
-    params.require(:parcel).permit(:weight, :width, :depth, :height, :name, sender_info_attributes: [:email, :contact_name, :zip_code, :address, :city, :phone_number, :company_name, :other_info, :residential], recipient_info_attributes: [:email, :contact_name, :zip_code, :address, :city, :phone_number, :company_name, :other_info, :residential])
+    params.require(:parcel).permit(
+      :weight, :width, :depth, :height, :name,
+      sender_info_attributes: [:email, :contact_name, :zip_code, :address,
+        :city, :phone_number, :company_name, :other_info, :residential],
+      recipient_info_attributes: [:email, :contact_name, :zip_code, :address,
+        :city, :phone_number, :company_name, :other_info, :residential])
   end
 
   def rescue_not_found
