@@ -1,5 +1,6 @@
+= render 'tracking'
 %h1
-  =t('.your_parcels')
+  = t('.your_parcels')
 -if @parcels
   %table.table.table-striped.parcels-table
     %thead
@@ -21,4 +22,4 @@
           %td= l parcel.created_at
           %td= parcel.name
 -else
-  =t('.not_logged_in.text_html', log_in: link_to(t('.not_logged_in.log_in'), new_user_session_path))
+  = t('.not_logged_in.text_html', log_in: link_to(t('.not_logged_in.log_in'), new_user_session_path))
