@@ -8,9 +8,11 @@ pl:
         many: "%{count} użytkowników"
       parcel:
         zero: "0 przesyłek"
-        one: "1 przesyłka"
+        one: "Przesyłka"
         few: "%{count} przesyłki"
         many: "%{count} przesyłek"
+      sender_info: "Dane nadawcy"
+      recipient_info: "Dane odbiorcy"
     attributes:
       user:
         email: 'Adres email'
@@ -24,6 +26,26 @@ pl:
         price: 'Cena'
         created_at: 'Data utworzenia'
         parcel_number: 'Numer przesyłki'
+      sender_info:
+        email: Adres email
+        contact_name: Nazwisko osoby kontaktowej
+        zip_code: Kod pocztowy
+        address: Adres zamieszkania
+        city: Miasto
+        phone_number: Nr telefonu
+        company_name: Nazwa firmy
+        other_info: Inne informacje
+        residential: Adres osoby prywatnej
+      recipient_info:
+        email: Adres email
+        contact_name: Nazwisko osoby kontaktowej
+        zip_code: Kod pocztowy
+        address: Adres zamieszkania
+        city: Miasto
+        phone_number: Nr telefonu
+        company_name: Nazwa firmy
+        other_info: Inne informacje
+        residential: Adres osoby prywatnej
   helpers:
     label:
       user:
@@ -47,15 +69,17 @@ pl:
   homepage:
     index:
   parcels:
+    new:
+      title: Nadaj przesyłkę
+      button: Nadaj przesyłkę
     index:
       your_parcels: Twoje przesyłki
       not_logged_in:
         text_html: '%{log_in}, żeby zobaczyć swoje przesyłki'
         log_in: "Zaloguj się"
-    new:
-      title: Utwórz przesyłkę
-      button: Utwórz przesyłkę
+      recipient_city: Miasto odbiorcy
     show:
       parcel_no: 'Przesyłka nr %{parcel_number}'
+      recipient_city: Miasto odbiorcy
     create:
       parcel_created_succesfully: Pomyślnie utworzono przesyłkę

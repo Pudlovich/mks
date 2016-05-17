@@ -6,7 +6,9 @@ RSpec.describe Parcel, type: :model do
   it { is_expected.to validate_presence_of(:depth) }
   it { is_expected.to validate_presence_of(:weight) }
   it { is_expected.not_to validate_presence_of(:name) }
-  it { is_expected.not_to validate_presence_of(:sender_id) }
+  it { is_expected.not_to validate_presence_of(:sender) }
+  it { is_expected.to validate_presence_of(:sender_info) }
+  it { is_expected.to validate_presence_of(:recipient_info) }
 
   it { is_expected.to validate_numericality_of(:width) }
   it { is_expected.to validate_numericality_of(:height) }
@@ -19,6 +21,10 @@ RSpec.describe Parcel, type: :model do
   it { is_expected.not_to allow_value(0).for(:weight)}
 
   it { is_expected.to belong_to(:sender) }
+  it { is_expected.to belong_to(:sender_info) }
+  it { is_expected.to belong_to(:recipient_info) }
+  it { is_expected.to accept_nested_attributes_for(:recipient_info) }
+  it { is_expected.to accept_nested_attributes_for(:sender_info) }
 
   describe 'object creation' do
     let (:parcel)  { FactoryGirl.create(:parcel) }

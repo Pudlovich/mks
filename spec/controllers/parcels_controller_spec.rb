@@ -72,13 +72,18 @@ RSpec.describe ParcelsController do
       get :show, parcel_number: 2
       expect(response).to redirect_to :action => :index
     end
-
   end
 
   describe "GET #new" do
     it "assigns a new Parcel to @parcel" do
       get :new
       expect(assigns(:parcel)).to be_a_new(Parcel)
+    end
+
+    it "assigns blank SenderInfo and RecipientInfo to @parcel" do
+      get :new
+      expect(assigns(:parcel).sender_info).to be_a_new(SenderInfo)
+      expect(assigns(:parcel).recipient_info).to be_a_new(RecipientInfo)
     end
 
     it "renders the :new view" do
@@ -89,14 +94,20 @@ RSpec.describe ParcelsController do
 
   describe "POST #create" do
     context "with valid attributes" do
+      let(:valid_attributes) do
+        sender_info_attributes = FactoryGirl.attributes_for(:sender_info)
+        recipient_info_attributes = FactoryGirl.attributes_for(:recipient_info)
+        FactoryGirl.attributes_for(:parcel).merge({sender_info_attributes: sender_info_attributes, recipient_info_attributes: recipient_info_attributes})
+      end
+
       it "saves the new parcel in the database" do
         expect{
-          post :create, parcel: FactoryGirl.attributes_for(:parcel)
+          post :create, parcel: valid_attributes
         }.to change(Parcel,:count).by(1)
       end
 
       it "redirects to the :show view" do
-        post :create, parcel: FactoryGirl.attributes_for(:parcel)
+        post :create, parcel: valid_attributes
         expect(response).to redirect_to parcel_path(parcel_number: Parcel.last.parcel_number)
       end
 
@@ -107,13 +118,13 @@ RSpec.describe ParcelsController do
         end
 
         it "redirects to the :show view" do
-          post :create, parcel: FactoryGirl.attributes_for(:parcel)
+          post :create, parcel: valid_attributes
           expect(response).to redirect_to parcel_path(parcel_number: Parcel.last.parcel_number)
         end
 
         it "assigns the parcel to user" do
           expect{
-            post :create, parcel: FactoryGirl.attributes_for(:parcel)
+            post :create, parcel: valid_attributes
           }.to change(user.parcels,:count).by(1)
         end
       end

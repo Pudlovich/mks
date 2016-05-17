@@ -5,6 +5,9 @@ FactoryGirl.define do
     depth { Faker::Number.between(1, 100) }
     weight { Faker::Number.decimal(1,2) }
 
+    recipient_info { FactoryGirl.create(:recipient_info) }
+    sender_info { FactoryGirl.create(:sender_info) }
+
     trait :with_name do
       name { Faker::Commerce.product_name }
     end

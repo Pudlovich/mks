@@ -1,12 +1,14 @@
-.col-md-4.col-md-offset-4
-  - if @parcel.errors.present?
-    .bg-danger
-      - @parcel.errors.full_messages.each do |message|
-        %p= message
+- if @parcel.errors.present?
+  .bg-danger
+    - @parcel.errors.full_messages.each do |message|
+      %p= message
 
-  %h2.form-title
-    = t('.title')
-  = form_for @parcel, url: parcels_path, method: :post do |f|
+%h2.form-title
+  = t('.title')
+= form_for @parcel, url: parcels_path, method: :post do |f|
+  .col-md-4
+    .h3.text-center
+      = Parcel.model_name.human
     .form-group
       = f.label :weight
       = f.text_field :weight, class: 'form-control'
@@ -26,5 +28,68 @@
     .form-group
       = f.label :name
       = f.text_field :name, class: 'form-control'
+  .col-md-4
+    .h3.text-center
+      = RecipientInfo.model_name.human
+    = f.fields_for :recipient_info do |s|
+      .form-group
+        = s.label :email
+        = s.email_field :email, class: 'form-control'
+      .form-group
+        = s.label :contact_name
+        = s.text_field :contact_name, class: 'form-control'
+      .form-group
+        = s.label :zip_code
+        = s.text_field :zip_code, class: 'form-control'
+      .form-group
+        = s.label :address
+        = s.text_field :address, class: 'form-control'
+      .form-group
+        = s.label :city
+        = s.text_field :city, class: 'form-control'
+      .form-group
+        = s.label :phone_number
+        = s.text_field :phone_number, class: 'form-control'
+      .form-group
+        = s.label :company_name
+        = s.text_field :company_name, class: 'form-control'
+      .form-group
+        = s.label :other_info
+        = s.text_field :other_info, class: 'form-control'
+      .form-group
+        = s.check_box :residential
+        = s.label :residential
+  .col-md-4
+    .h3.text-center
+      = SenderInfo.model_name.human
+    = f.fields_for :sender_info do |s|
+      .form-group
+        = s.label :email
+        = s.email_field :email, class: 'form-control'
+      .form-group
+        = s.label :contact_name
+        = s.text_field :contact_name, class: 'form-control'
+      .form-group
+        = s.label :zip_code
+        = s.text_field :zip_code, class: 'form-control'
+      .form-group
+        = s.label :address
+        = s.text_field :address, class: 'form-control'
+      .form-group
+        = s.label :city
+        = s.text_field :city, class: 'form-control'
+      .form-group
+        = s.label :phone_number
+        = s.text_field :phone_number, class: 'form-control'
+      .form-group
+        = s.label :company_name
+        = s.text_field :company_name, class: 'form-control'
+      .form-group
+        = s.label :other_info
+        = s.text_field :other_info, class: 'form-control'
+      .form-group
+        = s.check_box :residential
+        = s.label :residential
+  .text-center
     .form-group
       = f.submit t('.button'), class: 'btn btn-primary'
