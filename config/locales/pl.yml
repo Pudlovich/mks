@@ -66,6 +66,10 @@ pl:
       sign_up: Zarejestruj się
       edit_account: Edytuj konto
       my_parcels: Moje przesyłki
+    tracking:
+      heading: 'Śledzenie przesyłki'
+      parcel_number: 'Nr przesyłki'
+      button: 'Śledź!'
   homepage:
     index:
   parcels:
