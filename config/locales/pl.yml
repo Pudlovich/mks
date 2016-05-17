@@ -75,6 +75,7 @@ pl:
   parcels:
     new:
       title: Nadaj przesyłkę
+      parcel_name_tooltip: 'Informacja dla użytkowników śledzących przesyłkę'
       button: Nadaj przesyłkę
     index:
       your_parcels: Twoje przesyłki

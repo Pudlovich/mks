@@ -11,22 +11,28 @@
       = Parcel.model_name.human
     .form-group
       = f.label :weight
+      %span.unit (kg)
       = f.text_field :weight, class: 'form-control'
     .form-group
-      .col-md-4.no-padding
+      .col-xs-4.no-padding
         = f.label :width
-      .col-md-4
+      .col-xs-4.text-center
         = f.label :height
-      .col-md-4.no-padding.text-right
+      .col-xs-4.no-padding.text-right
         = f.label :depth
       .input-group
         = f.text_field :width, class: 'form-control'
+        =#TODO REFACTOR CSS SO CLAS CHAINING ISN'T NEEDED
+        .unit.form-unit.width-unit cm
         .input-group-addon x
         = f.text_field :height, class: 'form-control'
+        .unit.form-unit.height-unit cm
         .input-group-addon x
         = f.text_field :depth, class: 'form-control'
+        .unit.form-unit.depth-unit cm
     .form-group
       = f.label :name
+      %i.fa.fa-info-circle.has-tooltip{ 'data-toggle' => 'tooltip', 'data-placement' => 'right', title: t('.parcel_name_tooltip') }
       = f.text_field :name, class: 'form-control'
   .col-md-4
     .h3.text-center

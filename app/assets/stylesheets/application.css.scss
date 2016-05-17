@@ -13,6 +13,7 @@
  */
 
 @import 'bootstrap-sass';
+@import 'font-awesome';
 
 html{
   height: 100%;
@@ -77,12 +78,16 @@ footer {
   color: #000;
 }
 
+
+
 .parcels-table {
   th{
     text-align: center;
   }
   text-align: center;
 }
+
+
 
 .form-title{
   text-align: center;
@@ -91,3 +96,37 @@ footer {
 .no-padding{
   padding: 0px;
 }
+
+.has-tooltip{
+  cursor: pointer;
+}
+
+.unit{
+  color: #555;
+}
+
+span.unit{
+  padding-left: 6px;
+  color: #888;
+}
+
+.form-unit{
+  position: absolute;
+  top: 8px;
+  z-index: 5;
+}
+
+.width-unit{
+  right: 80%;
+  right: calc(66% + 35px);
+}
+
+.height-unit{
+  right: 40%;
+  right: calc(33% + 24px);
+}
+
+.depth-unit{
+  right: 13px;
+}
+
