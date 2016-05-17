@@ -2,7 +2,6 @@ class ParcelsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
 
   def index
-    #TODO extract to a function recieving the param and returning nil or parcel object or (in the future) array of parcels
     if params[:parcel_number]
       redirect_to parcel_path(params[:parcel_number])
     end
