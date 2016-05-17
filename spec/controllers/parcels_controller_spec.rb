@@ -52,6 +52,21 @@ RSpec.describe ParcelsController do
         expect(response).to render_template :index
       end
     end
+
+    context "when a correct parcel number is provided in the params" do
+      let(:parcel) { FactoryGirl.create(:parcel) }
+      it "redirects to :show action of that parcel" do
+        get :index, parcel_number: parcel.parcel_number
+        expect(response).to redirect_to parcel_path(parcel_number: parcel.parcel_number)
+      end
+    end
+
+    context "when an incorrect parcel number is provided in the params" do
+      it "redirects to :show action with the number in the params" do
+        get :index, parcel_number: '0000000000'
+        expect(response).to redirect_to parcel_path(parcel_number: '0000000000')
+      end
+    end
   end
 
   describe "GET #show" do
