@@ -21,15 +21,14 @@
       .col-xs-4.no-padding.text-right
         = f.label :depth
       .input-group
-        = f.text_field :width, class: 'form-control'
-        =#TODO REFACTOR CSS SO CLAS CHAINING ISN'T NEEDED
-        .unit.form-unit.width-unit cm
+        = f.text_field :width, class: 'form-control no-bg'
+        .form-unit.width-unit cm
         .input-group-addon x
-        = f.text_field :height, class: 'form-control'
-        .unit.form-unit.height-unit cm
+        = f.text_field :height, class: 'form-control no-bg'
+        .form-unit.height-unit cm
         .input-group-addon x
-        = f.text_field :depth, class: 'form-control'
-        .unit.form-unit.depth-unit cm
+        = f.text_field :depth, class: 'form-control no-bg'
+        .form-unit.depth-unit cm
     .form-group
       = f.label :name
       %i.fa.fa-info-circle.has-tooltip{ 'data-toggle' => 'tooltip', 'data-placement' => 'right', title: t('.parcel_name_tooltip') }

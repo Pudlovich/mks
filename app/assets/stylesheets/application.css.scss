@@ -101,10 +101,6 @@ footer {
   cursor: pointer;
 }
 
-.unit{
-  color: #555;
-}
-
 span.unit{
   padding-left: 6px;
   color: #777;
@@ -113,20 +109,24 @@ span.unit{
 .form-unit{
   position: absolute;
   top: 8px;
-  z-index: 5;
+  color: #555;
 }
 
 .width-unit{
   right: 80%;
-  right: calc(66% + 35px);
+  right: calc(66% + 30px);
 }
 
 .height-unit{
   right: 40%;
-  right: calc(33% + 24px);
+  right: calc(33% + 19px);
 }
 
 .depth-unit{
-  right: 13px;
+  right: 8px;
+}
+
+.form-control.no-bg{
+  background: rgba(0, 0, 0, 0);
 }
 
