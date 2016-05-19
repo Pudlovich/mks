@@ -21,6 +21,7 @@ gem 'luhn'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'
 end
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'

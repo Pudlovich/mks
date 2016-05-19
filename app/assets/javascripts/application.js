@@ -15,3 +15,6 @@
 //= require bootstrap-sass
 //= require_tree .
 
+$(document).ready(function() {
+  $('.has-tooltip').tooltip();
+});
