@@ -18,6 +18,7 @@ pl:
         email: 'Adres email'
         password: 'Hasło'
         role: 'Rola'
+        created_at: 'Data utworzenia'
       parcel:
         name: 'Nazwa'
         width: 'Szerokość'
@@ -97,3 +98,8 @@ pl:
       recipient_city: Miasto odbiorcy
     create:
       parcel_created_succesfully: Pomyślnie utworzono przesyłkę
+  admin:
+    users:
+      index:
+        users: 'Użytkownicy'
+        parcels_number: 'Liczba przesyłek'
