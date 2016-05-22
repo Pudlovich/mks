@@ -33,7 +33,6 @@ RSpec.describe Admin::UsersController do
       end
 
       it "populates @users array with all users in the DB" do
-        binding.pry
         expect(assigns(:users)).to match_array(User.all)
       end
 
