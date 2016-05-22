@@ -17,6 +17,7 @@ pl:
       user:
         email: 'Adres email'
         password: 'Hasło'
+        role: 'Rola'
       parcel:
         name: 'Nazwa'
         width: 'Szerokość'
@@ -46,6 +47,12 @@ pl:
         company_name: Nazwa firmy
         other_info: Inne informacje
         residential: Adres osoby prywatnej
+    enums:
+      user:
+        role:
+          admin: 'Administrator'
+          employee: 'Pracownik'
+          client: 'Klient'
   helpers:
     label:
       user:
@@ -66,6 +73,8 @@ pl:
       sign_up: Zarejestruj się
       edit_account: Edytuj konto
       my_parcels: Moje przesyłki
+      admin: Administracja
+      users: Użytkownicy
     tracking:
       heading: 'Śledzenie przesyłki'
       parcel_number: 'Nr przesyłki'
