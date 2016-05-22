@@ -12,4 +12,6 @@ class User < ActiveRecord::Base
   }
 
   validates :role, presence: true
+
+  scope :newest_first, -> { order(created_at: :desc) }
 end

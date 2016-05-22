@@ -4,6 +4,7 @@ pl:
     messages:
       record_not_found: Nie znaleziono danego elementu
       parcel_not_found: Nie znaleziono takiej przesyłki
+      not_authorized: Nie masz wystarczających uprawnień
       accepted: musi zostać zaakceptowane
       blank: nie może być puste
       confirmation: nie zgadza się z polem %{attribute}

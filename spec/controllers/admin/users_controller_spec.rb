@@ -2,6 +2,10 @@ require 'spec_helper'
 
 RSpec.describe Admin::UsersController do
   describe "GET #index" do
+    before(:each) do
+      FactoryGirl.create_list(:user, 3)
+    end
+
     context "when user is a client" do
       let(:user) { FactoryGirl.create(:user) }
       it "redirects to applicatioon root" do
@@ -29,11 +33,12 @@ RSpec.describe Admin::UsersController do
       end
 
       it "populates @users array with all users in the DB" do
+        binding.pry
         expect(assigns(:users)).to match_array(User.all)
       end
 
       it "assigns the newest user first" do
-        expect(assigns(:user)[0]).to eq(User.last)
+        expect(assigns(:users)[0]).to eq(User.last)
       end
 
       it "renders the :index view" do
