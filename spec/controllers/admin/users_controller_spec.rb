@@ -139,7 +139,7 @@ RSpec.describe Admin::UsersController do
           end
 
           it "redirects to index" do
-            expect(response).to redirect_to admin_users_path
+            expect(response).to redirect_to action: "index"
           end
 
           it "updates the user" do
@@ -154,7 +154,7 @@ RSpec.describe Admin::UsersController do
           end
 
           it "redirects to index" do
-            expect(response).to redirect_to admin_users_path
+            expect(response).to redirect_to action: "index"
           end
 
           it "updates the user" do
@@ -173,7 +173,7 @@ RSpec.describe Admin::UsersController do
           end
 
           it "redirects to index" do
-            expect(response).to redirect_to admin_users_path
+            expect(response).to redirect_to action: "index"
           end
 
           it "updates the user" do
@@ -188,7 +188,7 @@ RSpec.describe Admin::UsersController do
           end
 
           it "redirects to index" do
-            expect(response).to redirect_to admin_users_path
+            expect(response).to redirect_to action: "index"
           end
 
           it "updates the user" do
@@ -207,7 +207,7 @@ RSpec.describe Admin::UsersController do
           end
 
           it "redirects to index" do
-            expect(response).to redirect_to admin_users_path
+            expect(response).to redirect_to action: "index"
           end
 
           it "doesn't update the user" do
@@ -222,7 +222,7 @@ RSpec.describe Admin::UsersController do
           end
 
           it "redirects to index" do
-            expect(response).to redirect_to admin_users_path
+            expect(response).to redirect_to action: "index"
           end
 
           it "doesn't update the user" do
