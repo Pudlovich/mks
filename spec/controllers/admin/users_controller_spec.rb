@@ -85,7 +85,151 @@ RSpec.describe Admin::UsersController do
     end
   end
 
-  describe "PUT #update" do
-    
+  describe "PUT #update/:id" do
+    context "when user is a client" do
+      let(:user) { FactoryGirl.create(:user, :employee) }
+      let(:edited_user) { FactoryGirl.create(:user) }
+
+      before(:each) do
+        sign_in user
+        put :update, id: edited_user.id, user: {role: 'employee'}
+      end
+
+      it "redirects to applicatioon root" do
+        expect(response).to redirect_to root_path
+      end
+
+      it "doesn't change the user" do
+        expect(edited_user.role).to eq('client')
+      end
+    end
+
+    context "when user is an employee" do
+      let(:user) { FactoryGirl.create(:user, :employee) }
+      let(:edited_user) { FactoryGirl.create(:user) }
+
+      before(:each) do
+        sign_in user
+        put :update, id: edited_user.id, user: {role: 'employee'}
+      end
+
+      it "redirects to applicatioon root" do
+        expect(response).to redirect_to root_path
+      end
+
+      it "doesn't change the user" do
+        expect(edited_user.role).to eq('client')
+      end
+    end
+
+    context "when user is admin" do
+      let(:user) { FactoryGirl.create(:user, :admin) }
+
+      before(:each) do
+        sign_in user
+      end
+
+      context "when role is changed from client" do
+        let(:edited_user) { FactoryGirl.create(:user) }
+
+        context "when role is changed to employee" do
+          before(:each) do
+            put :update, id: edited_user.id, user: {role: 'employee'}
+            edited_user.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to admin_users_path
+          end
+
+          it "updates the user" do
+            expect(edited_user.role).to eq('employee')
+          end
+        end
+
+        context "when role is changed to admin" do
+          before(:each) do
+            put :update, id: edited_user.id, user: {role: 'admin'}
+            edited_user.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to admin_users_path
+          end
+
+          it "updates the user" do
+            expect(edited_user.role).to eq('admin')
+          end
+        end
+      end
+
+      context "when role is changed from employee" do
+        let(:edited_user) { FactoryGirl.create(:user, :employee) }
+
+        context "when role is changed to client" do
+          before(:each) do
+            put :update, id: edited_user.id, user: {role: 'client'}
+            edited_user.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to admin_users_path
+          end
+
+          it "updates the user" do
+            expect(edited_user.role).to eq('client')
+          end
+        end
+
+        context "when role is changed to admin" do
+          before(:each) do
+            put :update, id: edited_user.id, user: {role: 'admin'}
+            edited_user.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to admin_users_path
+          end
+
+          it "updates the user" do
+            expect(edited_user.role).to eq('admin')
+          end
+        end
+      end
+
+      context "when role is changed from admin" do
+        let(:edited_user) { FactoryGirl.create(:user, :admin) }
+
+        context "when role is changed to client" do
+          before(:each) do
+            put :update, id: edited_user.id, user: {role: 'client'}
+            edited_user.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to admin_users_path
+          end
+
+          it "doesn't update the user" do
+            expect(edited_user.role).to eq('admin')
+          end
+        end
+
+        context "when role is changed to employee" do
+          before(:each) do
+            put :update, id: edited_user.id, user: {role: 'employee'}
+            edited_user.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to admin_users_path
+          end
+
+          it "doesn't update the user" do
+            expect(edited_user.role).to eq('admin')
+          end
+        end
+      end
+    end
   end
 end
