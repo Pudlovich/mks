@@ -1,0 +1,18 @@
+%h1
+  = @user.email
+%table.table.table-striped.parcels-table
+  %thead
+    %tr
+      %th= User.human_attribute_name('email')
+      %th= User.human_attribute_name('created_at')
+      %th= t('.parcels_number')
+      %th= User.human_attribute_name('role')
+      %th
+  %tbody
+    %tr
+      %td= @user.email
+      %td= l @user.created_at
+      %td= @user.parcels.count
+      = form_for [:admin, @user] do |f|
+        %td= f.select(:role, User.roles.keys.map {|role| [t_enum_class(User,'role',role), role]}, {selected: @user.role}, {class: "form-control"})
+        %td= f.submit t('.button'), class: 'btn btn-primary'
