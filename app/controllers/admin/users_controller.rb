@@ -10,8 +10,8 @@ class Admin::UsersController < AdminController
 
   def update
     user = User.find(params[:id])
-    if user.role == 'admin'
-      flash[:alert] == t('errors.messages.not_authorized')
+    if user.admin?
+      flash[:alert] = t('errors.messages.not_authorized')
     else
       user.update!(user_params) 
     end
