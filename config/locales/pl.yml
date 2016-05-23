@@ -103,3 +103,7 @@ pl:
       index:
         users: 'Użytkownicy'
         parcels_number: 'Liczba przesyłek'
+        edit: 'Edytuj'
+      edit:
+        parcels_number: 'Liczba przesyłek'
+        button: 'Zapisz'
