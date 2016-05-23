@@ -12,5 +12,13 @@ FactoryGirl.define do
         create_list(:parcel, evaluator.parcels_count, sender: user)
       end
     end
+
+    trait :admin do
+      role 'admin'
+    end
+
+    trait :employee do
+      role 'employee'
+    end
   end
 end
