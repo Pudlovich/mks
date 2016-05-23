@@ -9,6 +9,6 @@ class Admin::UsersController < AdminController
   end
 
   def update
-
+    redirect_to action: "index"
   end
 end
