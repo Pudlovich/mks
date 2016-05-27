@@ -13,6 +13,6 @@
       %tr
         %td= user.email
         %td= l user.created_at
-        %td= t_enum(user, 'role')
+        %td= translate_role(user.role)
         %td= user.parcels.count
         %td= link_to t('.edit'), edit_admin_user_path(user), class: 'btn btn-primary'

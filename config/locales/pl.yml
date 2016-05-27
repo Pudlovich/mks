@@ -19,6 +19,10 @@ pl:
         password: 'Hasło'
         role: 'Rola'
         created_at: 'Data utworzenia'
+        roles:
+          admin: 'Administrator'
+          employee: 'Pracownik'
+          client: 'Klient'
       parcel:
         name: 'Nazwa'
         width: 'Szerokość'
@@ -48,12 +52,6 @@ pl:
         company_name: Nazwa firmy
         other_info: Inne informacje
         residential: Adres osoby prywatnej
-    enums:
-      user:
-        role:
-          admin: 'Administrator'
-          employee: 'Pracownik'
-          client: 'Klient'
   helpers:
     label:
       user:
