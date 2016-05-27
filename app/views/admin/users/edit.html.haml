@@ -14,5 +14,5 @@
       %td= l @user.created_at
       %td= @user.parcels.count
       = form_for [:admin, @user] do |f|
-        %td= f.select(:role, User.roles.keys.map {|role| [translate_enum_class(User,'role',role), role]}, {selected: @user.role}, {class: "form-control"})
+        %td= f.select(:role, roles_for_select, {selected: @user.role}, {class: "form-control"})
         %td= f.submit t('.button'), class: 'btn btn-primary'

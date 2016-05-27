@@ -1,13 +1,12 @@
 module EnumHelper
 
-  def translate_enum(instance, enum)
-    value = instance.send(enum);
-    translate_enum_class(instance.class, enum, value)
+  def translate_role(role)
+    I18n.t("activerecord.attributes.user.roles.#{role}")
   end
 
-  def translate_enum_class(class_name, enum, value)
-    unless value.blank?
-      I18n.t("activerecord.enums.#{class_name.to_s.demodulize.underscore}.#{enum}.#{value}")
+  def roles_for_select
+    User.roles.keys.map do |role|
+      [translate_role(role), role]
     end
   end
 end
