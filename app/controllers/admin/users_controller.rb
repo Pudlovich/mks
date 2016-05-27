@@ -1,11 +1,11 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users=User.newest_first
+    @users = User.newest_first
   end
 
   def edit
-    @user=User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
