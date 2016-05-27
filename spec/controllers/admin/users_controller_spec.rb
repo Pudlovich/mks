@@ -210,8 +210,8 @@ RSpec.describe Admin::UsersController do
             expect(response).to redirect_to action: "index"
           end
 
-          it "doesn't update the user" do
-            expect(edited_user.role).to eq('admin')
+          it "updates the user" do
+            expect(edited_user.role).to eq('client')
           end
         end
 
@@ -225,9 +225,24 @@ RSpec.describe Admin::UsersController do
             expect(response).to redirect_to action: "index"
           end
 
-          it "doesn't update the user" do
-            expect(edited_user.role).to eq('admin')
+          it "updates the user" do
+            expect(edited_user.role).to eq('employee')
           end
+        end
+      end
+
+      context "when admin tries to change his own role" do
+        before(:each) do
+          put :update, id: user.id, user: {role: 'employee'}
+          user.reload
+        end
+
+        it "redirects to index" do
+          expect(response).to redirect_to action: "index"
+        end
+
+        it "doesn't update the user" do
+          expect(user.role).to eq('admin')
         end
       end
     end
