@@ -1,7 +1,7 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users=User.all.newest_first
+    @users=User.newest_first
   end
 
   def edit
