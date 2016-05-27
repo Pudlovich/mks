@@ -17,6 +17,12 @@ pl:
       user:
         email: 'Adres email'
         password: 'Hasło'
+        role: 'Rola'
+        created_at: 'Data utworzenia'
+        roles:
+          admin: 'Administrator'
+          employee: 'Pracownik'
+          client: 'Klient'
       parcel:
         name: 'Nazwa'
         width: 'Szerokość'
@@ -66,6 +72,8 @@ pl:
       sign_up: Zarejestruj się
       edit_account: Edytuj konto
       my_parcels: Moje przesyłki
+      admin: Administracja
+      users: Użytkownicy
     tracking:
       heading: 'Śledzenie przesyłki'
       parcel_number: 'Nr przesyłki'
@@ -88,3 +96,12 @@ pl:
       recipient_city: Miasto odbiorcy
     create:
       parcel_created_succesfully: Pomyślnie utworzono przesyłkę
+  admin:
+    users:
+      index:
+        users: 'Użytkownicy'
+        parcels_number: 'Liczba przesyłek'
+        edit: 'Edytuj'
+      edit:
+        parcels_number: 'Liczba przesyłek'
+        button: 'Zapisz'

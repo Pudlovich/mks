@@ -6,20 +6,18 @@ RSpec.describe ParcelsController do
       let(:user) { FactoryGirl.create(:user, :with_parcels) }
       before(:each) do
         sign_in user
+        get :index
       end
 
       it "populates @parcels array with parcels belonging to the user" do
-        get :index
         expect(assigns(:parcels)).to match_array(user.parcels)
       end
 
       it "assigns the newest parcel first" do
-        get :index
         expect(assigns(:parcels)[0]).to eq(user.parcels.last)
       end
 
       it "renders the :index view" do
-        get :index
         expect(response).to render_template :index
       end
     end

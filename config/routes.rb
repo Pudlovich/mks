@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   end
 
   resources :parcels, only: [:index, :create, :new, :show], param: :parcel_number
+  
+  namespace :admin do
+    get '/', to: 'users#index', as: :root
+    resources :users, only: [:index, :edit, :update]
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

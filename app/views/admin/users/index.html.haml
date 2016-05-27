@@ -1,0 +1,18 @@
+%h1
+  = t('.users')
+%table.table.table-striped.parcels-table
+  %thead
+    %tr
+      %th= User.human_attribute_name('email')
+      %th= User.human_attribute_name('created_at')
+      %th= User.human_attribute_name('role')
+      %th= t('.parcels_number')
+      %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= l user.created_at
+        %td= translate_role(user.role)
+        %td= user.parcels.count
+        %td= link_to t('.edit'), edit_admin_user_path(user), class: 'btn btn-primary'
