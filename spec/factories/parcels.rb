@@ -19,13 +19,5 @@ FactoryGirl.define do
     trait :invalid do
       width nil
     end
-
-    trait :accepted do
-      acceptance_status 'accepted'
-    end
-
-    trait :rejected do
-      acceptance_status 'rejected'
-    end
   end
 end
