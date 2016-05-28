@@ -21,11 +21,11 @@ FactoryGirl.define do
     end
 
     trait :accepted do
-      acceptance 'accepted'
+      acceptance_status 'accepted'
     end
 
     trait :rejected do
-      acceptance 'rejected'
+      acceptance_status 'rejected'
     end
   end
 end

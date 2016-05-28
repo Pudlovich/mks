@@ -40,9 +40,9 @@ RSpec.describe Parcel, type: :model do
     end
   end
 
-  it { should define_enum_for(:acceptance) }
+  it { should define_enum_for(:acceptance_status) }
 
-  describe 'acceptance' do
+  describe 'acceptance status -' do
     let(:parcel)  { FactoryGirl.create(:parcel) }
 
     it 'awaiting status is assigned by default' do
@@ -52,14 +52,14 @@ RSpec.describe Parcel, type: :model do
     end
 
     it 'accepted status is assigned through value 1' do
-      parcel.update(acceptance: 1)
+      parcel.update(acceptance_status: 1)
       expect(parcel.awaiting?).to be false
       expect(parcel.accepted?).to be true
       expect(parcel.rejected?).to be false
     end
 
     it 'rejected status is assigned through value 2' do
-      parcel.update(acceptance: 2)
+      parcel.update(acceptance_status: 2)
       expect(parcel.awaiting?).to be false
       expect(parcel.accepted?).to be false
       expect(parcel.rejected?).to be true

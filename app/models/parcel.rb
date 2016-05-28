@@ -3,7 +3,7 @@ class Parcel < ActiveRecord::Base
   belongs_to :sender_info
   belongs_to :recipient_info
 
-  enum acceptance: {
+  enum acceptance_status: {
     awaiting: 0,
     accepted: 1,
     rejected: 2
@@ -16,7 +16,7 @@ class Parcel < ActiveRecord::Base
 
   attr_localized :price, :weight
 
-  validates :width, :height, :depth, :weight, :price, :parcel_number, :sender_info, :recipient_info, :acceptance, presence: true
+  validates :width, :height, :depth, :weight, :price, :parcel_number, :sender_info, :recipient_info, :acceptance_status, presence: true
   validates :weight, :price, numericality: { greater_than: 0 }
   validates :height, :depth, :width, numericality: { only_integer: true, greater_than: 0 }
   validates :parcel_number, uniqueness: true

@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20160523212454) do
     t.string   "parcel_number",     limit: 20,                                     null: false
     t.integer  "sender_info_id",                                                   null: false
     t.integer  "recipient_info_id",                                                null: false
-    t.integer  "acceptance",                                           default: 0, null: false
+    t.integer  "acceptance_status",                                    default: 0, null: false
   end
 
   add_index "parcels", ["parcel_number"], name: "index_parcels_on_parcel_number", unique: true, using: :btree
