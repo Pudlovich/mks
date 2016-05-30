@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160530202136) do
     t.integer  "kind",            null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "user_id",         null: false
+    t.integer  "user_id"
     t.integer  "parcel_id",       null: false
   end
 

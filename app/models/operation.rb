@@ -2,7 +2,7 @@ class Operation < ActiveRecord::Base
   belongs_to :user
   belongs_to :parcel
 
-  validates :kind, :user, :parcel, presence: true
+  validates :kind, :parcel, presence: true
 
   enum kind: {
     order_created: 0,
