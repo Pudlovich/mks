@@ -38,5 +38,10 @@ RSpec.describe Parcel, type: :model do
       expect(parcel.parcel_number).not_to be nil
       expect(Luhn.valid?(parcel.parcel_number)).to be true
     end
+
+    it 'creates a operation with kind order_created' do
+      expect(parcel.operations.size).to eq(1)
+      expect(parcel.operations[0].order_created?).to be true
+    end
   end
 end
