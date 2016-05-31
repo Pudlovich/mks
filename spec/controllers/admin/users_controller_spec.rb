@@ -4,13 +4,13 @@ RSpec.describe Admin::UsersController do
   describe "GET #index" do
     before(:each) do
       FactoryGirl.create_list(:user, 3)
+      sign_in user
+      get :index
     end
 
     context "when user is a client" do
       let(:user) { FactoryGirl.create(:user) }
       it "redirects to applicatioon root" do
-        sign_in user
-        get :index
         expect(response).to redirect_to root_path
       end
     end
@@ -18,19 +18,12 @@ RSpec.describe Admin::UsersController do
     context "when user is an employee" do
       let(:user) { FactoryGirl.create(:user, :employee) }
       it "redirects to applicatioon root" do
-        sign_in user
-        get :index
         expect(response).to redirect_to root_path
       end
     end
 
     context "when user is admin" do
       let(:user) { FactoryGirl.create(:user, :admin) }
-
-      before(:each) do
-        sign_in user
-        get :index
-      end
 
       it "populates @users array with all users in the DB" do
         expect(assigns(:users)).to match_array(User.all)
@@ -49,11 +42,14 @@ RSpec.describe Admin::UsersController do
   describe "GET #edit" do
     let(:edited_user) { FactoryGirl.create(:user) }
 
+    before(:each) do
+      sign_in user
+      get :edit, id: edited_user
+    end
+
     context "when user is a client" do
       let(:user) { FactoryGirl.create(:user) }
       it "redirects to applicatioon root" do
-        sign_in user
-        get :edit, id: edited_user
         expect(response).to redirect_to root_path
       end
     end
@@ -61,19 +57,12 @@ RSpec.describe Admin::UsersController do
     context "when user is an employee" do
       let(:user) { FactoryGirl.create(:user, :employee) }
       it "redirects to applicatioon root" do
-        sign_in user
-        get :edit, id: edited_user
         expect(response).to redirect_to root_path
       end
     end
 
     context "when user is admin" do
       let(:user) { FactoryGirl.create(:user, :admin) }
-
-      before(:each) do
-        sign_in user
-        get :edit, id: edited_user
-      end
 
       it "assigns the requested user to @user" do
         expect(assigns(:user)).to eq(edited_user)
@@ -86,12 +75,15 @@ RSpec.describe Admin::UsersController do
   end
 
   describe "PUT #update/:id" do
+    before(:each) do
+      sign_in user
+    end
+
     context "when user is a client" do
-      let(:user) { FactoryGirl.create(:user, :employee) }
+      let(:user) { FactoryGirl.create(:user) }
       let(:edited_user) { FactoryGirl.create(:user) }
 
       before(:each) do
-        sign_in user
         put :update, id: edited_user.id, user: {role: 'employee'}
       end
 
@@ -109,7 +101,6 @@ RSpec.describe Admin::UsersController do
       let(:edited_user) { FactoryGirl.create(:user) }
 
       before(:each) do
-        sign_in user
         put :update, id: edited_user.id, user: {role: 'employee'}
       end
 
@@ -124,10 +115,6 @@ RSpec.describe Admin::UsersController do
 
     context "when user is admin" do
       let(:user) { FactoryGirl.create(:user, :admin) }
-
-      before(:each) do
-        sign_in user
-      end
 
       context "when role is changed from client" do
         let(:edited_user) { FactoryGirl.create(:user) }
@@ -210,8 +197,8 @@ RSpec.describe Admin::UsersController do
             expect(response).to redirect_to action: "index"
           end
 
-          it "doesn't update the user" do
-            expect(edited_user.role).to eq('admin')
+          it "updates the user" do
+            expect(edited_user.role).to eq('client')
           end
         end
 
@@ -225,9 +212,24 @@ RSpec.describe Admin::UsersController do
             expect(response).to redirect_to action: "index"
           end
 
-          it "doesn't update the user" do
-            expect(edited_user.role).to eq('admin')
+          it "updates the user" do
+            expect(edited_user.role).to eq('employee')
           end
+        end
+      end
+
+      context "when admin tries to change his own role" do
+        before(:each) do
+          put :update, id: user.id, user: {role: 'employee'}
+          user.reload
+        end
+
+        it "redirects to index" do
+          expect(response).to redirect_to action: "index"
+        end
+
+        it "doesn't update the user" do
+          expect(user.role).to eq('admin')
         end
       end
     end

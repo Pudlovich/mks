@@ -1,19 +1,19 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users=User.all.newest_first
+    @users = User.newest_first
   end
 
   def edit
-    @user=User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
-    user = User.find(params[:id])
-    if user.admin?
+    edited_user = User.find(params[:id])
+    if edited_user == current_user
       flash[:alert] = t('errors.messages.not_authorized')
     else
-      user.update!(user_params) 
+      edited_user.update!(user_params) 
     end
     redirect_to action: "index"
   end
