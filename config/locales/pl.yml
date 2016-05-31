@@ -107,3 +107,7 @@ pl:
       edit:
         parcels_number: 'Liczba przesyłek'
         button: 'Zapisz'
+  employee:
+    parcels:
+      index:
+        parcels: 'Przesyłki'
