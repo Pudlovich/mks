@@ -44,5 +44,14 @@ RSpec.describe Parcel, type: :model do
       expect(parcel.operations.size).to eq(1)
       expect(parcel.operations[0].order_created?).to be true
     end
+
+    context 'when parcel has a sender' do
+      let (:parcel_with_send)  { FactoryGirl.create(:parcel, :with_sender) }
+
+      it 'assigns a user to order_created operation' do
+        expect(parcel.operations[0].order_created?).to be true
+        expect(parcel.operations[0].user).to eq(parcel.sender)
+      end
+    end
   end
 end
