@@ -3,6 +3,8 @@ class Parcel < ActiveRecord::Base
   belongs_to :sender_info
   belongs_to :recipient_info
 
+  has_many :operations
+
   delegate :city, to: :recipient_info, prefix: :recipient
 
   accepts_nested_attributes_for :sender_info
@@ -16,6 +18,7 @@ class Parcel < ActiveRecord::Base
   validates :parcel_number, uniqueness: true
 
   before_validation :set_price, :generate_parcel_number, on: :create
+  after_create :create_order_created_operation
 
   scope :newest_first, -> { order(created_at: :desc) }
 
@@ -33,5 +36,9 @@ class Parcel < ActiveRecord::Base
       parcel_number = number.to_s + Luhn.control_digit(number).to_s
       break parcel_number unless Parcel.exists?(parcel_number: parcel_number)
     end
+  end
+
+  def create_order_created_operation
+    # after creating a parcel order_created operation should be created
   end
 end

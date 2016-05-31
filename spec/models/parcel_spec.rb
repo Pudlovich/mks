@@ -23,6 +23,7 @@ RSpec.describe Parcel, type: :model do
   it { is_expected.to belong_to(:sender) }
   it { is_expected.to belong_to(:sender_info) }
   it { is_expected.to belong_to(:recipient_info) }
+  it { is_expected.to have_many(:operations) }
   it { is_expected.to accept_nested_attributes_for(:recipient_info) }
   it { is_expected.to accept_nested_attributes_for(:sender_info) }
 

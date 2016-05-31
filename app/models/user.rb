@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :parcels, foreign_key: 'sender_id'
+  has_many :operations
 
   enum role: {
     client: 0,
