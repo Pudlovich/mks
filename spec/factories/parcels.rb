@@ -19,5 +19,17 @@ FactoryGirl.define do
     trait :invalid do
       width nil
     end
+
+    trait :accepted do
+      after(:create) do |parcel|
+        FactoryGirl.create(:operation, :order_accepted, parcel: parcel)
+      end
+    end
+
+    trait :rejected do
+      after(:create) do |parcel|
+        FactoryGirl.create(:operation, :order_rejected, parcel: parcel)
+      end
+    end
   end
 end
