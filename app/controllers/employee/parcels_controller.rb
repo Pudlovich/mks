@@ -1,7 +1,7 @@
 class Employee::ParcelsController < EmployeeController
 
   def index
-    @parcels = Parcel.all
+    @parcels = Parcel.newest_first
   end
 
   # def edit
