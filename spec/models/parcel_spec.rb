@@ -75,24 +75,24 @@ RSpec.describe Parcel, type: :model do
 
       it 'parcel can be accepted' do
         parcel.accept!
-        expect(parcel.accepted?).to be true
+        expect(Parcel.find(parcel.id).accepted?).to be true
       end
 
       it 'parcel can be accepted by user' do
         parcel.accept!(user)
-        expect(parcel.accepted?).to be true
-        expect(parcel.operations.last.user).to eq(user)
+        expect(Parcel.find(parcel.id).accepted?).to be true
+        expect(Parcel.find(parcel.id).operations.last.user).to eq(user)
       end
 
       it 'parcel can be rejected' do
         parcel.reject!
-        expect(parcel.rejected?).to be true
+        expect(Parcel.find(parcel.id).rejected?).to be true
       end
 
       it 'parcel can be rejected by user' do
         parcel.reject!(user)
-        expect(parcel.rejected?).to be true
-        expect(parcel.operations.last.user).to eq(user)
+        expect(Parcel.find(parcel.id).rejected?).to be true
+        expect(Parcel.find(parcel.id).operations.last.user).to eq(user)
       end
     end
 
@@ -101,13 +101,13 @@ RSpec.describe Parcel, type: :model do
 
       it 'parcel can be accepted' do
         parcel.accept!
-        expect(parcel.accepted?).to be true
+        expect(Parcel.find(parcel.id).accepted?).to be true
       end
 
       it 'parcel can be accepted by user' do
         parcel.accept!(user)
-        expect(parcel.accepted?).to be true
-        expect(parcel.operations.last.user).to eq(user)
+        expect(Parcel.find(parcel.id).accepted?).to be true
+        expect(Parcel.find(parcel.id).operations.last.user).to eq(user)
       end
     end
 
@@ -116,13 +116,13 @@ RSpec.describe Parcel, type: :model do
 
       it 'parcel can be rejected' do
         parcel.reject!
-        expect(parcel.rejected?).to be true
+        expect(Parcel.find(parcel.id).rejected?).to be true
       end
 
       it 'parcel can be rejected by user' do
         parcel.reject!(user)
-        expect(parcel.rejected?).to be true
-        expect(parcel.operations.last.user).to eq(user)
+        expect(Parcel.find(parcel.id).rejected?).to be true
+        expect(Parcel.find(parcel.id).operations.last.user).to eq(user)
       end
     end
   end
