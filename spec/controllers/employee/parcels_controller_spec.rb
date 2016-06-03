@@ -2,6 +2,10 @@ require 'spec_helper'
 
 RSpec.describe Employee::ParcelsController do
   describe "GET #index" do
+    before(:each) do
+      FactoryGirl.create_list(:parcel, 5)
+    end
+
     context "when user is a client" do
       let(:user) { FactoryGirl.create(:user) }
       it "redirects to applicatioon root" do
