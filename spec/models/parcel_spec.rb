@@ -96,12 +96,12 @@ RSpec.describe Parcel, type: :model do
       end
 
       it 'parcel can be accepted' do
-        parcel.accept
+        parcel.accept!
         expect(parcel.accepted?).to be true
       end
 
       it 'parcel can be rejected' do
-        parcel.reject
+        parcel.reject!
         expect(parcel.rejected?).to be true
       end
     end
@@ -134,7 +134,7 @@ RSpec.describe Parcel, type: :model do
       end
 
       it 'parcel can be accepted' do
-        parcel.accept
+        parcel.accept!
         expect(parcel.accepted?).to be true
       end
     end
@@ -147,7 +147,7 @@ RSpec.describe Parcel, type: :model do
       end
 
       it 'parcel is included in accepted scope' do
-        expect(Parcel.accepted)._to include(parcel)
+        expect(Parcel.accepted).to include(parcel)
       end
 
       it 'parcel is not included in rejected scope' do
@@ -167,7 +167,7 @@ RSpec.describe Parcel, type: :model do
       end
 
       it 'parcel can be rejected' do
-        parcel.reject
+        parcel.reject!
         expect(parcel.rejected?).to be true
       end
     end
