@@ -1,13 +1,9 @@
 class Employee::ParcelsController < EmployeeController
 
   def index
-<<<<<<< HEAD
     @pending_parcels = Parcel.pending.newest_first
     @accepted_parcels = Parcel.accepted.newest_first
     @rejected_parcels = Parcel.rejected.newest_first
-=======
-    @parcels = Parcel.newest_first
->>>>>>> employee_parcels_controller
   end
 
   def edit
