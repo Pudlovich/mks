@@ -3,7 +3,9 @@ require 'spec_helper'
 RSpec.describe Employee::ParcelsController do
   describe "GET #index" do
     before(:each) do
-      FactoryGirl.create_list(:parcel, 5)
+      FactoryGirl.create_list(:parcel, 3)
+      FactoryGirl.create_list(:parcel, 3, :accepted)
+      FactoryGirl.create_list(:parcel, 3, :rejected)
     end
 
     context "when user is a client" do
@@ -23,12 +25,28 @@ RSpec.describe Employee::ParcelsController do
         get :index
       end
 
-      it "populates @parcels array with all parcels in the DB" do
-        expect(assigns(:parcels)).to match_array(Parcel.all)
+      it "populates @pending_parcels array with all pending parcels in the DB" do
+        expect(assigns(:pending_parcels)).to match_array(Parcel.pending)
       end
 
-      it "assigns the newest parcel first" do
-        expect(assigns(:parcels)[0]).to eq(Parcel.last)
+      it "assigns the newest pending parcel first" do
+        expect(assigns(:pending_parcels)[0]).to eq(Parcel.pending.last)
+      end
+
+      it "populates @accepted_parcels array with all accepted parcels in the DB" do
+        expect(assigns(:accepted_parcels)).to match_array(Parcel.accepted)
+      end
+
+      it "assigns the newest accepted parcel first" do
+        expect(assigns(:accepted_parcels)[0]).to eq(Parcel.accepted.last)
+      end
+
+      it "populates @rejected_parcels array with all rejected parcels in the DB" do
+        expect(assigns(:rejected_parcels)).to match_array(Parcel.rejected)
+      end
+
+      it "assigns the newest rejected parcel first" do
+        expect(assigns(:rejected_parcels)[0]).to eq(Parcel.rejected.last)
       end
 
       it "renders the :index view" do
@@ -44,12 +62,28 @@ RSpec.describe Employee::ParcelsController do
         get :index
       end
 
-      it "populates @parcels array with all parcels in the DB" do
-        expect(assigns(:parcels)).to match_array(Parcel.all)
+      it "populates @pending_parcels array with all pending parcels in the DB" do
+        expect(assigns(:pending_parcels)).to match_array(Parcel.pending)
       end
 
-      it "assigns the newest parcel first" do
-        expect(assigns(:parcels)[0]).to eq(Parcel.last)
+      it "assigns the newest pending parcel first" do
+        expect(assigns(:pending_parcels)[0]).to eq(Parcel.pending.last)
+      end
+
+      it "populates @accepted_parcels array with all accepted parcels in the DB" do
+        expect(assigns(:accepted_parcels)).to match_array(Parcel.accepted)
+      end
+
+      it "assigns the newest accepted parcel first" do
+        expect(assigns(:accepted_parcels)[0]).to eq(Parcel.accepted.last)
+      end
+
+      it "populates @rejected_parcels array with all rejected parcels in the DB" do
+        expect(assigns(:rejected_parcels)).to match_array(Parcel.rejected)
+      end
+
+      it "assigns the newest rejected parcel first" do
+        expect(assigns(:rejected_parcels)[0]).to eq(Parcel.rejected.last)
       end
 
       it "renders the :index view" do
