@@ -74,6 +74,8 @@ pl:
       my_parcels: Moje przesyłki
       admin: Administracja
       users: Użytkownicy
+      employee: Pracownik
+      accepting_parcels: Przyjmowanie zleceń
     tracking:
       heading: 'Śledzenie przesyłki'
       parcel_number: 'Nr przesyłki'
@@ -105,3 +107,7 @@ pl:
       edit:
         parcels_number: 'Liczba przesyłek'
         button: 'Zapisz'
+  employee:
+    parcels:
+      index:
+        parcels: 'Przesyłki'
