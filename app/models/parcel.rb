@@ -24,6 +24,7 @@ class Parcel < ActiveRecord::Base
   validates :parcel_number, uniqueness: true
 
   before_validation :set_price, :generate_parcel_number, on: :create
+  after_create :create_order_created_operation
 
   scope :newest_first, -> { order(created_at: :desc) }
 
@@ -41,5 +42,11 @@ class Parcel < ActiveRecord::Base
       parcel_number = number.to_s + Luhn.control_digit(number).to_s
       break parcel_number unless Parcel.exists?(parcel_number: parcel_number)
     end
+  end
+
+  def create_order_created_operation
+    operation = Operation.new(parcel: self, kind: 'order_created')
+    operation.user = self.sender if self.sender
+    operation.save
   end
 end
