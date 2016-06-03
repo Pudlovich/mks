@@ -46,130 +46,130 @@ RSpec.describe Parcel, type: :model do
   describe 'acceptance status -' do
     let(:parcel)  { FactoryGirl.create(:parcel) }
 
-    it 'awaiting status is assigned by default' do
-      expect(parcel.awaiting?).to be true
+    it 'pending status is assigned by default' do
+      expect(parcel.pending?).to be true
       expect(parcel.accepted?).to be false
       expect(parcel.rejected?).to be false
     end
 
     it 'accepted status is assigned through value 1' do
       parcel.update(acceptance_status: 1)
-      expect(parcel.awaiting?).to be false
+      expect(parcel.pending?).to be false
       expect(parcel.accepted?).to be true
       expect(parcel.rejected?).to be false
     end
 
     it 'rejected status is assigned through value 2' do
       parcel.update(acceptance_status: 2)
-      expect(parcel.awaiting?).to be false
+      expect(parcel.pending?).to be false
       expect(parcel.accepted?).to be false
       expect(parcel.rejected?).to be true
     end
   end
 
-  # describe 'acceptance -' do
-  #   context 'when parcel wasnt accepted or rejected' do
-  #     let (:parcel)  { FactoryGirl.create(:parcel) }
+  describe 'acceptance -' do
+    context 'when parcel wasnt accepted or rejected' do
+      let (:parcel)  { FactoryGirl.create(:parcel) }
 
-  #     it 'parcel is included in pending scope' do
-  #       expect(Parcel.pending).to include(parcel)
-  #     end
+      it 'parcel is included in pending scope' do
+        expect(Parcel.pending).to include(parcel)
+      end
 
-  #     it 'parcel is not included in accepted scope' do
-  #       expect(Parcel.accepted).not_to include(parcel)
-  #     end
+      it 'parcel is not included in accepted scope' do
+        expect(Parcel.accepted).not_to include(parcel)
+      end
 
-  #     it 'parcel is not included in rejected scope' do
-  #       expect(Parcel.rejected).not_to include(parcel)
-  #     end
+      it 'parcel is not included in rejected scope' do
+        expect(Parcel.rejected).not_to include(parcel)
+      end
 
-  #     it 'pending? method returns true' do
-  #       expect(parcel.pending?).to be true
-  #     end
+      it 'pending? method returns true' do
+        expect(parcel.pending?).to be true
+      end
 
-  #     it 'rejected? method returns false' do
-  #       expect(parcel.rejected?).to be false
-  #     end
+      it 'rejected? method returns false' do
+        expect(parcel.rejected?).to be false
+      end
 
-  #     it 'accepted? method returns false' do
-  #       expect(parcel.accepted?).to be false
-  #     end
+      it 'accepted? method returns false' do
+        expect(parcel.accepted?).to be false
+      end
 
-  #     it 'parcel can be accepted' do
-  #       parcel.accept
-  #       expect(parcel.accepted?).to be true
-  #     end
+      it 'parcel can be accepted' do
+        parcel.accept
+        expect(parcel.accepted?).to be true
+      end
 
-  #     it 'parcel can be rejected' do
-  #       parcel.reject
-  #       expect(parcel.rejected?).to be true
-  #     end
-  #   end
+      it 'parcel can be rejected' do
+        parcel.reject
+        expect(parcel.rejected?).to be true
+      end
+    end
 
-  #   context 'when parcel was rejected' do
-  #     let (:parcel)  { FactoryGirl.create(:parcel, :rejected) }
+    context 'when parcel was rejected' do
+      let (:parcel)  { FactoryGirl.create(:parcel, :rejected) }
       
-  #     it 'parcel is not included in pending scope' do
-  #       expect(Parcel.pending).not_to include(parcel)
-  #     end
+      it 'parcel is not included in pending scope' do
+        expect(Parcel.pending).not_to include(parcel)
+      end
 
-  #     it 'parcel is not included in accepted scope' do
-  #       expect(Parcel.accepted).not_to include(parcel)
-  #     end
+      it 'parcel is not included in accepted scope' do
+        expect(Parcel.accepted).not_to include(parcel)
+      end
 
-  #     it 'parcel is included in rejected scope' do
-  #       expect(Parcel.rejected).to include(parcel)
-  #     end
+      it 'parcel is included in rejected scope' do
+        expect(Parcel.rejected).to include(parcel)
+      end
 
-  #     it 'pending? method returns false' do
-  #       expect(parcel.pending?).to be false
-  #     end
+      it 'pending? method returns false' do
+        expect(parcel.pending?).to be false
+      end
 
-  #     it 'rejected? method returns true' do
-  #       expect(parcel.rejected?).to be true
-  #     end
+      it 'rejected? method returns true' do
+        expect(parcel.rejected?).to be true
+      end
 
-  #     it 'accepted? method returns false' do
-  #       expect(parcel.accepted?).to be false
-  #     end
+      it 'accepted? method returns false' do
+        expect(parcel.accepted?).to be false
+      end
 
-  #     it 'parcel can be accepted' do
-  #       parcel.accept
-  #       expect(parcel.accepted?).to be true
-  #     end
-  #   end
+      it 'parcel can be accepted' do
+        parcel.accept
+        expect(parcel.accepted?).to be true
+      end
+    end
 
-  #   context 'when parcel was accepted' do
-  #     let (:parcel)  { FactoryGirl.create(:parcel, :accepted) }
+    context 'when parcel was accepted' do
+      let (:parcel)  { FactoryGirl.create(:parcel, :accepted) }
       
-  #     it 'parcel is not included in pending scope' do
-  #       expect(Parcel.pending).not_to include(parcel)
-  #     end
+      it 'parcel is not included in pending scope' do
+        expect(Parcel.pending).not_to include(parcel)
+      end
 
-  #     it 'parcel is included in accepted scope' do
-  #       expect(Parcel.accepted)._to include(parcel)
-  #     end
+      it 'parcel is included in accepted scope' do
+        expect(Parcel.accepted)._to include(parcel)
+      end
 
-  #     it 'parcel is not included in rejected scope' do
-  #       expect(Parcel.rejected).not_to include(parcel)
-  #     end
+      it 'parcel is not included in rejected scope' do
+        expect(Parcel.rejected).not_to include(parcel)
+      end
 
-  #     it 'pending? method returns false' do
-  #       expect(parcel.pending?).to be false
-  #     end
+      it 'pending? method returns false' do
+        expect(parcel.pending?).to be false
+      end
 
-  #     it 'rejected? method returns false' do
-  #       expect(parcel.rejected?).to be false
-  #     end
+      it 'rejected? method returns false' do
+        expect(parcel.rejected?).to be false
+      end
 
-  #     it 'accepted? method returns true' do
-  #       expect(parcel.accepted?).to be true
-  #     end
+      it 'accepted? method returns true' do
+        expect(parcel.accepted?).to be true
+      end
 
-  #     it 'parcel can be rejected' do
-  #       parcel.reject
-  #       expect(parcel.rejected?).to be true
-  #     end
-  #   end
-  # end
+      it 'parcel can be rejected' do
+        parcel.reject
+        expect(parcel.rejected?).to be true
+      end
+    end
+  end
 end
