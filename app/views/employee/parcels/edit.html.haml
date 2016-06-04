@@ -1,3 +1,4 @@
+=link_to t('navigation.back'), employee_parcels_path
 %h1
   =t('.parcel_no', parcel_number: @parcel.parcel_number)
 %table.table.table-striped.parcels-table
@@ -18,10 +19,16 @@
       %td= l @parcel.created_at
       %td= @parcel.name
 .col-xs-6
-  = form_for [:employee, @parcel] do |f|
-    = f.hidden_field :acceptance_status, value: 'accepted'
-    = f.submit t('.accept'), class: 'btn btn-success pull-right'
+  -unless @parcel.accepted?
+    = form_for [:employee, @parcel] do |f|
+      = f.hidden_field :acceptance_status, value: 'accepted'
+      = f.submit t('.accept'), class: 'btn btn-success pull-right'
+  -else
+    .btn.btn-success.pull-right.inactive= t('.accept')
 .col-xs-6
-  = form_for [:employee, @parcel] do |f|
-    = f.hidden_field :acceptance_status, value: 'rejected'
-    = f.submit t('.reject'), class: 'btn btn-danger'
+  -unless @parcel.rejected?
+    = form_for [:employee, @parcel] do |f|
+      = f.hidden_field :acceptance_status, value: 'rejected'
+      = f.submit t('.reject'), class: 'btn btn-danger'
+  -else
+    .btn.btn-danger.inactive= t('.reject')

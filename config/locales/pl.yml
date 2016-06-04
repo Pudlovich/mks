@@ -125,3 +125,5 @@ pl:
         reject: 'Odrzuć'
       update:
         acceptance_status_changed_succesfully: 'Zmieniono status przesyłki'
+  navigation:
+    back: 'Powrót'

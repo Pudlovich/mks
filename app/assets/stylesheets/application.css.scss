@@ -141,3 +141,9 @@ span.unit{
 .accepted-parcels > .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #e9ffe9;
 }
+
+.btn.inactive{
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+}
