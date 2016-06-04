@@ -39,6 +39,20 @@ RSpec.describe Parcel, type: :model do
       expect(parcel.parcel_number).not_to be nil
       expect(Luhn.valid?(parcel.parcel_number)).to be true
     end
+
+    it 'creates a operation with kind order_created' do
+      expect(parcel.operations.size).to eq(1)
+      expect(parcel.operations[0].order_created?).to be true
+    end
+
+    context 'when parcel has a sender' do
+      let (:parcel_with_send)  { FactoryGirl.create(:parcel, :with_sender) }
+
+      it 'assigns a user to order_created operation' do
+        expect(parcel.operations[0].order_created?).to be true
+        expect(parcel.operations[0].user).to eq(parcel.sender)
+      end
+    end
   end
 
   it { should define_enum_for(:acceptance_status) }
