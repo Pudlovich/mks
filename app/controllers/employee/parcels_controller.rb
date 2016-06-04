@@ -12,11 +12,8 @@ class Employee::ParcelsController < EmployeeController
 
   def update
     parcel = Parcel.find(params[:id])
-    unless parcel.acceptance_status == parcel_params[:acceptance_status]
-      parcel.accept!(current_user) if parcel_params[:acceptance_status] == 'accepted'
-      parcel.reject!(current_user) if parcel_params[:acceptance_status] == 'rejected'
-      flash[:notice] = t('.acceptance_status_changed_succesfully')
-    end
+    parcel.accept!(current_user) if parcel_params[:acceptance_status] == 'accepted'
+    parcel.reject!(current_user) if parcel_params[:acceptance_status] == 'rejected'
     redirect_to action: "index"
   end
 

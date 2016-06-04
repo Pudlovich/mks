@@ -31,17 +31,17 @@ class Parcel < ActiveRecord::Base
   scope :newest_first, -> { order(created_at: :desc) }
 
   def accept!(author=nil)
-    self.update(acceptance_status: 'accepted')
-    operation = Operation.new(parcel: self, kind: 'order_accepted')
-    operation.user = author if author
-    operation.save!
+    unless self.accepted?
+      self.update(acceptance_status: 'accepted')
+      Operation.create(parcel: self, kind: 'order_accepted', user: author)
+    end
   end
 
   def reject!(author=nil)
-    self.update(acceptance_status: 'rejected')
-    operation = Operation.new(parcel: self, kind: 'order_rejected')
-    operation.user = author if author
-    operation.save!
+    unless self.rejected?
+      self.update(acceptance_status: 'rejected')
+      Operation.create(parcel: self, kind: 'order_rejected', user: author)
+    end
   end
 
   private
