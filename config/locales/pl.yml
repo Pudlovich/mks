@@ -115,10 +115,13 @@ pl:
     parcels:
       index:
         parcels: 'Przesyłki'
+        pending: 'Oczekujące'
+        rejected: 'Odrzucone'
+        accepted: 'Zaakceptowane'
       edit:
         parcel_no: 'Przesyłka nr %{parcel_number}'
         recipient_city: Miasto odbiorcy
         accept: 'Akceptuj'
         reject: 'Odrzuć'
       update:
-        acceptance_status_changed_succesfully: 'Zapisano nowy status paczki'
+        acceptance_status_changed_succesfully: 'Zmieniono status przesyłki'
