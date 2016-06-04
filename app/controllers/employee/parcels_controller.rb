@@ -15,6 +15,7 @@ class Employee::ParcelsController < EmployeeController
     unless parcel.acceptance_status == parcel_params[:acceptance_status]
       parcel.accept!(current_user) if parcel_params[:acceptance_status] == 'accepted'
       parcel.reject!(current_user) if parcel_params[:acceptance_status] == 'rejected'
+      flash[:notice] = t('.acceptance_status_changed_succesfully')
     end
     redirect_to action: "index"
   end

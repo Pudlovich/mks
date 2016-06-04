@@ -109,6 +109,8 @@ pl:
       edit:
         parcels_number: 'Liczba przesyłek'
         button: 'Zapisz'
+      update:
+        role_changed_succesfully: 'Zmiana roli zakończyła się powodzeniem'
   employee:
     parcels:
       index:
@@ -118,3 +120,5 @@ pl:
         recipient_city: Miasto odbiorcy
         accept: 'Akceptuj'
         reject: 'Odrzuć'
+      update:
+        acceptance_status_changed_succesfully: 'Zapisano nowy status paczki'
