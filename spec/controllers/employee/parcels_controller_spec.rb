@@ -149,7 +149,7 @@ RSpec.describe Employee::ParcelsController do
       let(:edited_parcel) { FactoryGirl.create(:parcel) }
 
       before(:each) do
-        put :update, id: edited_parcel.id, user: {acceptance_status: 'accepted'}
+        put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
       end
 
       it "redirects to applicatioon root" do
@@ -163,10 +163,6 @@ RSpec.describe Employee::ParcelsController do
 
     context "when user is an employee" do
       let(:user) { FactoryGirl.create(:user, :employee) }
-    end
-
-    context "when user is admin" do
-      let(:user) { FactoryGirl.create(:user, :admin) }
 
       context "when parcel is pending" do
         let(:edited_parcel) { FactoryGirl.create(:parcel) }
@@ -193,7 +189,7 @@ RSpec.describe Employee::ParcelsController do
         context "rejecting the parcel" do
           before(:each) do
             put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
-            edited_user.reload
+            edited_parcel.reload
           end
 
           it "redirects to index" do
@@ -235,7 +231,7 @@ RSpec.describe Employee::ParcelsController do
         context "rejecting the parcel" do
           before(:each) do
             put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
-            edited_user.reload
+            edited_parcel.reload
           end
 
           it "redirects to index" do
@@ -258,7 +254,7 @@ RSpec.describe Employee::ParcelsController do
         context "accepting the parcel" do
           before(:each) do
             put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
-            edited_user.reload
+            edited_parcel.reload
           end
 
           it "redirects to index" do
@@ -273,7 +269,137 @@ RSpec.describe Employee::ParcelsController do
             expect(edited_parcel.operations.last.user).to eq(user)
           end
         end
-        
+
+        context "rejecting the parcel" do
+          before(:each) do
+            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
+            edited_parcel.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to action: "index"
+          end
+
+          it "doesn't change the parcel status" do
+            expect(edited_parcel.acceptance_status).to eq('rejected')
+          end
+
+          it "doesn't create an operation" do
+            expect(edited_parcel.operations.last.user).not_to eq(user)
+          end
+        end
+      end
+    end
+
+    context "when user is admin" do
+      let(:user) { FactoryGirl.create(:user, :admin) }
+
+      context "when parcel is pending" do
+        let(:edited_parcel) { FactoryGirl.create(:parcel) }
+
+        context "accepting the parcel" do
+          before(:each) do
+            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
+            edited_parcel.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to action: "index"
+          end
+
+          it "updates the parcel" do
+            expect(edited_parcel.acceptance_status).to eq('accepted')
+          end
+
+          it "creates an operation" do
+            expect(edited_parcel.operations.last.user).to eq(user)
+          end
+        end
+
+        context "rejecting the parcel" do
+          before(:each) do
+            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
+            edited_parcel.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to action: "index"
+          end
+
+          it "updates the parcel" do
+            expect(edited_parcel.acceptance_status).to eq('rejected')
+          end
+
+          it "creates an operation" do
+            expect(edited_parcel.operations.last.user).to eq(user)
+          end
+        end
+      end
+
+      context "when parcel is accepted" do
+        let(:edited_parcel) { FactoryGirl.create(:parcel, :accepted) }
+
+        context "accepting the parcel" do
+          before(:each) do
+            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
+            edited_parcel.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to action: "index"
+          end
+
+          it "doesn't change the parcel status" do
+            expect(edited_parcel.acceptance_status).to eq('accepted')
+          end
+
+          it "doesn't create an operation" do
+            expect(edited_parcel.operations.last.user).not_to eq(user)
+          end
+        end
+
+        context "rejecting the parcel" do
+          before(:each) do
+            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
+            edited_parcel.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to action: "index"
+          end
+
+          it "updates the parcel" do
+            expect(edited_parcel.acceptance_status).to eq('rejected')
+          end
+
+          it "creates an operation" do
+            expect(edited_parcel.operations.last.user).to eq(user)
+          end
+        end
+      end
+
+      context "when parcel is rejected" do
+        let(:edited_parcel) { FactoryGirl.create(:parcel, :rejected) }
+
+        context "accepting the parcel" do
+          before(:each) do
+            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
+            edited_parcel.reload
+          end
+
+          it "redirects to index" do
+            expect(response).to redirect_to action: "index"
+          end
+
+          it "updates the parcel" do
+            expect(edited_parcel.acceptance_status).to eq('accepted')
+          end
+
+          it "creates an operation" do
+            expect(edited_parcel.operations.last.user).to eq(user)
+          end
+        end
+
         context "rejecting the parcel" do
           before(:each) do
             put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
