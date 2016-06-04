@@ -27,16 +27,12 @@ class Parcel < ActiveRecord::Base
 
   def accept!(author=nil)
     self.update(acceptance_status: 'accepted')
-    operation = Operation.new(parcel: self, kind: 'order_accepted')
-    operation.user = author if author
-    operation.save!
+    Operation.create(parcel: self, kind: 'order_accepted', user: author)
   end
 
   def reject!(author=nil)
     self.update(acceptance_status: 'rejected')
-    operation = Operation.new(parcel: self, kind: 'order_rejected')
-    operation.user = author if author
-    operation.save!
+    Operation.create(parcel: self, kind: 'order_rejected', user: author)
   end
 
   before_validation :set_price, :generate_parcel_number, on: :create
