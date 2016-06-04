@@ -133,3 +133,11 @@ span.unit{
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td{
   vertical-align: middle;
 }
+
+.rejected-parcels > .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #ffe9e9;
+}
+
+.accepted-parcels > .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #e9ffe9;
+}

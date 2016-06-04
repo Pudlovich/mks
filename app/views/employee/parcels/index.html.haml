@@ -1,9 +1,9 @@
-%h1
-  Oczekujące przesyłki
+%h1 Przesyłki
+%h3 Oczekujące
 = render 'parcel_table', parcels: @pending_parcels
-%h1
-  Odrzucone przesyłki
-= render 'parcel_table', parcels: @rejected_parcels
-%h1
-  Zaakceptowane przesyłki
-= render 'parcel_table', parcels: @accepted_parcels
+%h3 Odrzucone
+.rejected-parcels
+  = render 'parcel_table', parcels: @rejected_parcels
+%h3 Zaakceptowane
+.accepted-parcels
+  = render 'parcel_table', parcels: @accepted_parcels
