@@ -109,5 +109,8 @@ pl:
         button: 'Zapisz'
   employee:
     parcels:
+      parcel_table:
+        from: Skąd
+        to: Dokąd
       index:
         parcels: 'Przesyłki'

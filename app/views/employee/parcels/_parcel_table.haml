@@ -4,6 +4,8 @@
       %th= Parcel.human_attribute_name('parcel_number')
       %th= Parcel.human_attribute_name('weight')
       %th= Parcel.human_attribute_name('price')
+      %th= t('.from')
+      %th= t('.to')
       %th= Parcel.human_attribute_name('created_at')
       %th= Parcel.human_attribute_name('name')
   %tbody
@@ -12,5 +14,7 @@
         %td= parcel.parcel_number
         %td= number_to_kg(parcel.weight)
         %td= number_to_currency(parcel.price)
+        %td= "#{parcel.sender_zip_code} #{parcel.sender_city}"
+        %td= "#{parcel.recipient_zip_code} #{parcel.recipient_city}"
         %td= l parcel.created_at
         %td= parcel.name
