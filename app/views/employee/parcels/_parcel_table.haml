@@ -11,7 +11,7 @@
   %tbody
     - parcels.each do |parcel|
       %tr
-        %td= parcel.parcel_number
+        %td= link_to parcel.parcel_number, edit_employee_parcel_path(parcel)
         %td= number_to_kg(parcel.weight)
         %td= number_to_currency(parcel.price)
         %td= "#{parcel.sender_zip_code} #{parcel.sender_city}"
