@@ -12,6 +12,9 @@ class Parcel < ActiveRecord::Base
   }
 
   delegate :city, to: :recipient_info, prefix: :recipient
+  delegate :zip_code, to: :recipient_info, prefix: :recipient
+  delegate :city, to: :sender_info, prefix: :sender
+  delegate :zip_code, to: :sender_info, prefix: :sender
 
   accepts_nested_attributes_for :sender_info
   accepts_nested_attributes_for :recipient_info
