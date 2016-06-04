@@ -17,3 +17,11 @@
       %td= "#{@parcel.recipient_zip_code} #{@parcel.recipient_city}"
       %td= l @parcel.created_at
       %td= @parcel.name
+.col-xs-6
+  = form_for [:employee, @parcel] do |f|
+    = f.hidden_field :acceptance_status, value: 'accepted'
+    = f.submit t('.accept'), class: 'btn btn-success pull-right'
+.col-xs-6
+  = form_for [:employee, @parcel] do |f|
+    = f.hidden_field :acceptance_status, value: 'rejected'
+    = f.submit t('.reject'), class: 'btn btn-danger'
