@@ -25,16 +25,6 @@ class Parcel < ActiveRecord::Base
 
   scope :newest_first, -> { order(created_at: :desc) }
 
-  def accept!(author=nil)
-    self.accepted!
-    Operation.create(parcel: self, kind: 'order_accepted', user: author)
-  end
-
-  def reject!(author=nil)
-    self.rejected!
-    Operation.create(parcel: self, kind: 'order_rejected', user: author)
-  end
-
   before_validation :set_price, :generate_parcel_number, on: :create
   after_create :create_order_created_operation
 
