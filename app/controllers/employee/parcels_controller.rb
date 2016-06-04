@@ -10,15 +10,18 @@ class Employee::ParcelsController < EmployeeController
     @parcel = Parcel.find(params[:id])
   end
 
-  # def update
-  #   parcel = Parcel.find(params[:id])
-  #   parcel.update!(parcel_params)
-  #   redirect_to action: "index"
-  # end
+  def update
+    parcel = Parcel.find(params[:id])
+    unless parcel.acceptance_status == parcel_params[:acceptance_status]
+      parcel.accept!(current_user) if parcel_params[:acceptance_status] == 'accepted'
+      parcel.reject!(current_user) if parcel_params[:acceptance_status] == 'rejected'
+    end
+    redirect_to action: "index"
+  end
 
-  # private
+  private
 
-  # def parcel_params
-  #   params.require(:parcel)
-  # end
+  def parcel_params
+    params.require(:parcel).permit(:acceptance_status)
+  end
 end
