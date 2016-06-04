@@ -39,6 +39,20 @@ RSpec.describe Parcel, type: :model do
       expect(parcel.parcel_number).not_to be nil
       expect(Luhn.valid?(parcel.parcel_number)).to be true
     end
+
+    it 'creates a operation with kind order_created' do
+      expect(parcel.operations.size).to eq(1)
+      expect(parcel.operations[0].order_created?).to be true
+    end
+
+    context 'when parcel has a sender' do
+      let (:parcel_with_send)  { FactoryGirl.create(:parcel, :with_sender) }
+
+      it 'assigns a user to order_created operation' do
+        expect(parcel.operations[0].order_created?).to be true
+        expect(parcel.operations[0].user).to eq(parcel.sender)
+      end
+    end
   end
 
   it { should define_enum_for(:acceptance_status) }
@@ -64,66 +78,6 @@ RSpec.describe Parcel, type: :model do
       expect(parcel.pending?).to be false
       expect(parcel.accepted?).to be false
       expect(parcel.rejected?).to be true
-    end
-  end
-
-  describe 'acceptance -' do
-    let (:user) { FactoryGirl.create(:user, :employee) }
-
-    context 'when parcel is pending' do
-      let (:parcel)  { FactoryGirl.create(:parcel) }
-
-      it 'parcel can be accepted' do
-        parcel.accept!
-        expect(Parcel.find(parcel.id).accepted?).to be true
-      end
-
-      it 'parcel can be accepted by user' do
-        parcel.accept!(user)
-        expect(Parcel.find(parcel.id).accepted?).to be true
-        expect(Parcel.find(parcel.id).operations.last.user).to eq(user)
-      end
-
-      it 'parcel can be rejected' do
-        parcel.reject!
-        expect(Parcel.find(parcel.id).rejected?).to be true
-      end
-
-      it 'parcel can be rejected by user' do
-        parcel.reject!(user)
-        expect(Parcel.find(parcel.id).rejected?).to be true
-        expect(Parcel.find(parcel.id).operations.last.user).to eq(user)
-      end
-    end
-
-    context 'when parcel was rejected' do
-      let (:parcel)  { FactoryGirl.create(:parcel, :rejected) }
-
-      it 'parcel can be accepted' do
-        parcel.accept!
-        expect(Parcel.find(parcel.id).accepted?).to be true
-      end
-
-      it 'parcel can be accepted by user' do
-        parcel.accept!(user)
-        expect(Parcel.find(parcel.id).accepted?).to be true
-        expect(Parcel.find(parcel.id).operations.last.user).to eq(user)
-      end
-    end
-
-    context 'when parcel was accepted' do
-      let (:parcel)  { FactoryGirl.create(:parcel, :accepted) }
-
-      it 'parcel can be rejected' do
-        parcel.reject!
-        expect(Parcel.find(parcel.id).rejected?).to be true
-      end
-
-      it 'parcel can be rejected by user' do
-        parcel.reject!(user)
-        expect(Parcel.find(parcel.id).rejected?).to be true
-        expect(Parcel.find(parcel.id).operations.last.user).to eq(user)
-      end
     end
   end
 end
