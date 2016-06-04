@@ -3,6 +3,8 @@ class Parcel < ActiveRecord::Base
   belongs_to :sender_info
   belongs_to :recipient_info
 
+  has_many :operations
+
   enum acceptance_status: {
     awaiting: 0,
     accepted: 1,

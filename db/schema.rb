@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523212454) do
+ActiveRecord::Schema.define(version: 20160530202136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "operations", force: :cascade do |t|
+    t.string   "place"
+    t.string   "additional_info"
+    t.integer  "kind",            null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.integer  "parcel_id",       null: false
+  end
+
+  add_index "operations", ["parcel_id"], name: "index_operations_on_parcel_id", using: :btree
+  add_index "operations", ["user_id"], name: "index_operations_on_user_id", using: :btree
 
   create_table "parcels", force: :cascade do |t|
     t.string   "name"
@@ -85,6 +98,8 @@ ActiveRecord::Schema.define(version: 20160523212454) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "operations", "parcels"
+  add_foreign_key "operations", "users"
   add_foreign_key "parcels", "recipient_infos"
   add_foreign_key "parcels", "sender_infos"
   add_foreign_key "parcels", "users", column: "sender_id"
