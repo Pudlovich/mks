@@ -45,8 +45,6 @@ class Parcel < ActiveRecord::Base
   end
 
   def create_order_created_operation
-    operation = Operation.new(parcel: self, kind: 'order_created')
-    operation.user = self.sender if self.sender
-    operation.save
+    operation = Operation.create(parcel: self, kind: 'order_created', user: self.sender)
   end
 end
