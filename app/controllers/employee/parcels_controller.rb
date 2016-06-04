@@ -12,8 +12,7 @@ class Employee::ParcelsController < EmployeeController
 
   def update
     parcel = Parcel.find(params[:id])
-    parcel.accept!(current_user) if parcel_params[:acceptance_status] == 'accepted'
-    parcel.reject!(current_user) if parcel_params[:acceptance_status] == 'rejected'
+    ParcelAcceptanceService.new(parcel, parcel_params[:acceptance_status], current_user).call
     redirect_to action: "index"
   end
 
