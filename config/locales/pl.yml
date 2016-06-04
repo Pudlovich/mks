@@ -32,6 +32,8 @@ pl:
         price: 'Cena'
         created_at: 'Data utworzenia'
         parcel_number: 'Numer przesyłki'
+        from: Skąd
+        to: Dokąd
       sender_info:
         email: Adres email
         contact_name: Nazwisko osoby kontaktowej
@@ -109,8 +111,8 @@ pl:
         button: 'Zapisz'
   employee:
     parcels:
-      parcel_table:
-        from: Skąd
-        to: Dokąd
       index:
         parcels: 'Przesyłki'
+      edit:
+        parcel_no: 'Przesyłka nr %{parcel_number}'
+        recipient_city: Miasto odbiorcy

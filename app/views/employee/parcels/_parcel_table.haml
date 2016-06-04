@@ -4,8 +4,8 @@
       %th= Parcel.human_attribute_name('parcel_number')
       %th= Parcel.human_attribute_name('weight')
       %th= Parcel.human_attribute_name('price')
-      %th= t('.from')
-      %th= t('.to')
+      %th= Parcel.human_attribute_name('from')
+      %th= Parcel.human_attribute_name('to')
       %th= Parcel.human_attribute_name('created_at')
       %th= Parcel.human_attribute_name('name')
   %tbody
