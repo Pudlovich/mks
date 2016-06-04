@@ -1,0 +1,19 @@
+%h1
+  =t('.parcel_no', parcel_number: @parcel.parcel_number)
+%table.table.table-striped.parcels-table
+  %thead
+    %tr
+      %th= Parcel.human_attribute_name('weight')
+      %th= Parcel.human_attribute_name('price')
+      %th= Parcel.human_attribute_name('from')
+      %th= Parcel.human_attribute_name('to')
+      %th= Parcel.human_attribute_name('created_at')
+      %th= Parcel.human_attribute_name('name')
+  %tbody
+    %tr
+      %td= number_to_kg(@parcel.weight)
+      %td= number_to_currency(@parcel.price)
+      %td= "#{@parcel.sender_zip_code} #{@parcel.sender_city}"
+      %td= "#{@parcel.recipient_zip_code} #{@parcel.recipient_city}"
+      %td= l @parcel.created_at
+      %td= @parcel.name
