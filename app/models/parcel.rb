@@ -23,9 +23,10 @@ class Parcel < ActiveRecord::Base
   validates :height, :depth, :width, numericality: { only_integer: true, greater_than: 0 }
   validates :parcel_number, uniqueness: true
 
-  before_validation :set_price, :generate_parcel_number, on: :create
-
   scope :newest_first, -> { order(created_at: :desc) }
+
+  before_validation :set_price, :generate_parcel_number, on: :create
+  after_create :create_order_created_operation
 
   private
 
@@ -41,5 +42,9 @@ class Parcel < ActiveRecord::Base
       parcel_number = number.to_s + Luhn.control_digit(number).to_s
       break parcel_number unless Parcel.exists?(parcel_number: parcel_number)
     end
+  end
+
+  def create_order_created_operation
+    operation = Operation.create(parcel: self, kind: 'order_created', user: self.sender)
   end
 end
