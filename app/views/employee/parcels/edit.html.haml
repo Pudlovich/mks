@@ -20,10 +20,10 @@
       %td= @parcel.name
 .row
   .col-md-6.text-center
-    %h3 Nadawca
+    %h3= t('.sender')
     = render 'delivery_info_table', info: @parcel.sender_info
   .col-md-6.text-center
-    %h3 Odbiorca
+    %h3= t('.recipient')
     = render 'delivery_info_table', info: @parcel.recipient_info
 .row
   = form_for [:employee, @parcel] do |f|
