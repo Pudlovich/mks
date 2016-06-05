@@ -139,10 +139,70 @@ RSpec.describe Employee::ParcelsController do
     end
   end
 
+  shared_examples 'valid update' do
+    before(:each) do
+      put :update, id: edited_parcel.id, parcel: { acceptance_status: acceptance_status, operations_attributes: { additional_info: additional_info } }
+      edited_parcel.reload
+    end
+
+    it "redirects to index" do
+      expect(response).to redirect_to action: "index"
+    end
+
+    it "updates the parcel" do
+      expect(edited_parcel.acceptance_status).to eq(acceptance_status)
+    end
+
+    it "creates an operation" do
+      expect(edited_parcel.operations.last.user).to eq(user)
+    end
+
+    context 'when additional_info is included' do
+      let(:additional_info) { 'additional info' }
+      it "redirects to index" do
+        expect(response).to redirect_to action: "index"
+      end
+
+      it "updates the parcel" do
+        expect(edited_parcel.acceptance_status).to eq(acceptance_status)
+      end
+
+      it "creates an operation" do
+        expect(edited_parcel.operations.last.user).to eq(user)
+      end
+
+      it "includes additional_info in the operation" do
+        expect(edited_parcel.operations.last.additional_info).to eq(additional_info)
+      end
+    end
+  end
+
+  shared_examples 'invalid update' do
+    before(:each) do
+      @old_acceptance = edited_parcel.acceptance_status
+      put :update, id: edited_parcel.id, parcel: { acceptance_status: acceptance_status, operations_attributes: { additional_info: additional_info } }
+      edited_parcel.reload
+    end
+
+    it "redirects to index" do
+      expect(response).to redirect_to action: "index"
+    end
+
+    it "doesn't change the parcel status" do
+      expect(edited_parcel.acceptance_status).to eq(@old_acceptance)
+    end
+
+    it "doesn't create an operation" do
+      expect(edited_parcel.operations.last.user).not_to eq(user)
+    end
+  end
+
   describe "PUT #update" do
     before(:each) do
       sign_in user
     end
+
+    let(:additional_info) { '' }
 
     context "when user is a client" do
       let(:user) { FactoryGirl.create(:user) }
@@ -168,41 +228,15 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel) }
 
         context "accepting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'accepted' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "updates the parcel" do
-            expect(edited_parcel.acceptance_status).to eq('accepted')
-          end
-
-          it "creates an operation" do
-            expect(edited_parcel.operations.last.user).to eq(user)
-          end
+          include_examples 'valid update'         
         end
 
         context "rejecting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'rejected' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "updates the parcel" do
-            expect(edited_parcel.acceptance_status).to eq('rejected')
-          end
-
-          it "creates an operation" do
-            expect(edited_parcel.operations.last.user).to eq(user)
-          end
+          include_examples 'valid update'
         end
       end
 
@@ -210,41 +244,15 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel, :accepted) }
 
         context "accepting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'accepted' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "doesn't change the parcel status" do
-            expect(edited_parcel.acceptance_status).to eq('accepted')
-          end
-
-          it "doesn't create an operation" do
-            expect(edited_parcel.operations.last.user).not_to eq(user)
-          end
+          include_examples 'invalid update'
         end
 
         context "rejecting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'rejected' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "updates the parcel" do
-            expect(edited_parcel.acceptance_status).to eq('rejected')
-          end
-
-          it "creates an operation" do
-            expect(edited_parcel.operations.last.user).to eq(user)
-          end
+          include_examples 'valid update'
         end
       end
 
@@ -252,41 +260,15 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel, :rejected) }
 
         context "accepting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'accepted' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "updates the parcel" do
-            expect(edited_parcel.acceptance_status).to eq('accepted')
-          end
-
-          it "creates an operation" do
-            expect(edited_parcel.operations.last.user).to eq(user)
-          end
+          include_examples 'valid update'
         end
 
         context "rejecting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'rejected' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "doesn't change the parcel status" do
-            expect(edited_parcel.acceptance_status).to eq('rejected')
-          end
-
-          it "doesn't create an operation" do
-            expect(edited_parcel.operations.last.user).not_to eq(user)
-          end
+          include_examples 'invalid update'
         end
       end
     end
@@ -298,41 +280,15 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel) }
 
         context "accepting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'accepted' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "updates the parcel" do
-            expect(edited_parcel.acceptance_status).to eq('accepted')
-          end
-
-          it "creates an operation" do
-            expect(edited_parcel.operations.last.user).to eq(user)
-          end
+          include_examples 'valid update'         
         end
 
         context "rejecting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'rejected' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "updates the parcel" do
-            expect(edited_parcel.acceptance_status).to eq('rejected')
-          end
-
-          it "creates an operation" do
-            expect(edited_parcel.operations.last.user).to eq(user)
-          end
+          include_examples 'valid update'
         end
       end
 
@@ -340,41 +296,15 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel, :accepted) }
 
         context "accepting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'accepted' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "doesn't change the parcel status" do
-            expect(edited_parcel.acceptance_status).to eq('accepted')
-          end
-
-          it "doesn't create an operation" do
-            expect(edited_parcel.operations.last.user).not_to eq(user)
-          end
+          include_examples 'invalid update'
         end
 
         context "rejecting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'rejected' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "updates the parcel" do
-            expect(edited_parcel.acceptance_status).to eq('rejected')
-          end
-
-          it "creates an operation" do
-            expect(edited_parcel.operations.last.user).to eq(user)
-          end
+          include_examples 'valid update'
         end
       end
 
@@ -382,41 +312,15 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel, :rejected) }
 
         context "accepting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'accepted' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "updates the parcel" do
-            expect(edited_parcel.acceptance_status).to eq('accepted')
-          end
-
-          it "creates an operation" do
-            expect(edited_parcel.operations.last.user).to eq(user)
-          end
+          include_examples 'valid update'
         end
 
         context "rejecting the parcel" do
-          before(:each) do
-            put :update, id: edited_parcel.id, parcel: {acceptance_status: 'rejected'}
-            edited_parcel.reload
-          end
+          let(:acceptance_status) { 'rejected' }
 
-          it "redirects to index" do
-            expect(response).to redirect_to action: "index"
-          end
-
-          it "doesn't change the parcel status" do
-            expect(edited_parcel.acceptance_status).to eq('rejected')
-          end
-
-          it "doesn't create an operation" do
-            expect(edited_parcel.operations.last.user).not_to eq(user)
-          end
+          include_examples 'invalid update'
         end
       end
     end
