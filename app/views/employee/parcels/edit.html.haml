@@ -24,17 +24,15 @@
 .col-md-6.text-center
   %h3 Odbiorca
   = render 'delivery_info_table', info: @parcel.recipient_info
-.col-xs-6
-  -unless @parcel.accepted?
-    = form_for [:employee, @parcel] do |f|
-      = f.hidden_field :acceptance_status, value: 'accepted'
-      = f.submit t('.accept'), class: 'btn btn-success pull-right'
-  -else
-    .btn.btn-success.pull-right.inactive= t('.accept')
-.col-xs-6
-  -unless @parcel.rejected?
-    = form_for [:employee, @parcel] do |f|
-      = f.hidden_field :acceptance_status, value: 'rejected'
-      = f.submit t('.reject'), class: 'btn btn-danger'
-  -else
-    .btn.btn-danger.inactive= t('.reject')
+= form_for [:employee, @parcel] do |f|
+  = f.hidden_field :acceptance_status
+  .col-xs-6
+    -unless @parcel.accepted?
+      = f.submit t('.accept'), class: 'btn btn-success pull-right', onclick: "document.getElementById('parcel_acceptance_status').value = 'accepted'"
+    -else
+      .btn.btn-success.pull-right.inactive= t('.accept')
+  .col-xs-6
+    -unless @parcel.rejected?
+      = f.submit t('.reject'), class: 'btn btn-danger', onclick: "document.getElementById('parcel_acceptance_status').value = 'rejected'"
+    -else
+      .btn.btn-danger.inactive= t('.reject')
