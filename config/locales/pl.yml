@@ -55,7 +55,18 @@ pl:
         other_info: Inne informacje
         residential: Adres osoby prywatnej
       operation:
+        kind: Typ operacji
+        created_at: Data utworzenia
         additional_info: Komentarz
+        kinds:
+          order_created: Utworzono zlecenie
+          order_accepted: Przyjęto zlecenie
+          order_rejected: Odrzucono zlecenie
+          parcel_picked_up: Nadano przesyłkę
+          parcel_in_sorting_facility: Przyjęto do sortowni
+          parcel_in_transit: W drodze do oddziału
+          parcel_in_delivery: Przekazano do doręczenia
+          parcel_delivered: Doręczono
   helpers:
     label:
       user:

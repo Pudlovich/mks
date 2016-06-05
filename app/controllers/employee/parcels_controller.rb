@@ -8,6 +8,7 @@ class Employee::ParcelsController < EmployeeController
 
   def edit
     @parcel = Parcel.find(params[:id])
+    @operations = @parcel.operations.newest_first
   end
 
   def update
