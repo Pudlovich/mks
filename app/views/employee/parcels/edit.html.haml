@@ -30,7 +30,7 @@
     = f.hidden_field :acceptance_status
     .form-group
       = f.fields_for :operation do |o|
-        = o.label :additional_info
+        = o.label :additional_info, t('.comment')
         = o.text_area :additional_info, class: 'form-control'
     .col-xs-6
       -unless @parcel.accepted?
