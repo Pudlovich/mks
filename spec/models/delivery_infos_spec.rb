@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-shared_examples 'a delivery address' do
+RSpec.shared_examples 'a delivery address' do
   it { is_expected.to validate_presence_of(:email) }
   it { is_expected.to validate_presence_of(:contact_name) }
   it { is_expected.to validate_presence_of(:zip_code) }
