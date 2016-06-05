@@ -7,6 +7,8 @@ class Operation < ActiveRecord::Base
   scope :newest_first, -> { order(created_at: :desc) }
   scope :acceptance, -> { where(kind: [1, 2]) }
 
+  delegate :email, to: :user, prefix: :author
+
   enum kind: {
     order_created: 0,
     order_accepted: 1,

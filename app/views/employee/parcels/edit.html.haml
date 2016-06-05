@@ -44,17 +44,19 @@
         .btn.btn-danger.inactive= t('.reject')
 -if @operations.count > 0
   .row
-    %h4 Wcześniejsze operacje
+    %h4= t('.previous_operations')
   %table.table.table-striped.centered-text-table
     %thead
       %tr
         %th= Operation.human_attribute_name('kind')
         %th= Operation.human_attribute_name('created_at')
         %th= Operation.human_attribute_name('additional_info')
+        %th= Operation.human_attribute_name('user')
     %tbody
       - @operations.each do |operation|
         %tr
           %td= translate_kind(operation.kind)
           %td= l operation.created_at
           %td= operation.additional_info
+          %td= operation.author_email if operation.user
 

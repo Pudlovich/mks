@@ -56,6 +56,7 @@ pl:
         residential: Adres osoby prywatnej
       operation:
         kind: Typ operacji
+        user: Twórca operacji
         created_at: Data utworzenia
         additional_info: Komentarz
         kinds:
@@ -139,6 +140,7 @@ pl:
         sender: 'Nadawca'
         recipient: 'Odbiorca'
         comment: 'Komentarz'
+        previous_operations: 'Wcześniejsze operacje:'
       update:
         acceptance_status_changed_succesfully: 'Zmieniono status przesyłki'
         acceptance_status_change_not_possible: 'Nie udało się zmienić statusu przesyłki'
