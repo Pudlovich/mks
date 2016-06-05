@@ -18,6 +18,7 @@ class Parcel < ActiveRecord::Base
 
   accepts_nested_attributes_for :sender_info
   accepts_nested_attributes_for :recipient_info
+  accepts_nested_attributes_for :operations
 
   attr_localized :price, :weight
 

@@ -54,6 +54,8 @@ pl:
         company_name: Nazwa firmy
         other_info: Inne informacje
         residential: Adres osoby prywatnej
+      operation:
+        additional_info: Komentarz
   helpers:
     label:
       user:

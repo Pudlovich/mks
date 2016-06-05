@@ -26,6 +26,10 @@
   = render 'delivery_info_table', info: @parcel.recipient_info
 = form_for [:employee, @parcel] do |f|
   = f.hidden_field :acceptance_status
+  .form-group
+    = f.fields_for :operations do |o|
+      = o.label :additional_info
+      = o.text_area :additional_info, class: 'form-control'
   .col-xs-6
     -unless @parcel.accepted?
       = f.submit t('.accept'), class: 'btn btn-success pull-right', onclick: "document.getElementById('parcel_acceptance_status').value = 'accepted'"
