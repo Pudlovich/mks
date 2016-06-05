@@ -142,6 +142,15 @@ span.unit{
     background-color: #e0ffe0;
 }
 
+.information-list > tbody > tr > td:nth-of-type(odd){
+  font-weight: bold;
+  text-align: right;
+}
+
+.information-list > tbody > tr > td:nth-of-type(even){
+  text-align: left;
+}
+
 .btn.inactive{
   opacity: 0.5;
   cursor: default;

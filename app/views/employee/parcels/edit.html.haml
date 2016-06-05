@@ -18,6 +18,12 @@
       %td= "#{@parcel.recipient_zip_code} #{@parcel.recipient_city}"
       %td= l @parcel.created_at
       %td= @parcel.name
+.col-md-6.text-center
+  %h3 Nadawca
+  = render 'delivery_info_table', info: @parcel.sender_info
+.col-md-6.text-center
+  %h3 Odbiorca
+  = render 'delivery_info_table', info: @parcel.recipient_info
 .col-xs-6
   -unless @parcel.accepted?
     = form_for [:employee, @parcel] do |f|

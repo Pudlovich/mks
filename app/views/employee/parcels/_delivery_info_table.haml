@@ -1,0 +1,29 @@
+%table.table.information-list
+  %tbody
+    %tr
+      %td= SenderInfo.human_attribute_name('email')
+      %td= info.email
+    %tr
+      %td= SenderInfo.human_attribute_name('phone_number')
+      %td= info.phone_number
+    %tr
+      %td= SenderInfo.human_attribute_name('company_name')
+      %td= info.company_name
+    %tr
+      %td= SenderInfo.human_attribute_name('contact_name')
+      %td= info.contact_name
+    %tr
+      %td= SenderInfo.human_attribute_name('address')
+      %td= info.address
+    %tr
+      %td= SenderInfo.human_attribute_name('city')
+      %td= info.city
+    %tr
+      %td= SenderInfo.human_attribute_name('zip_code')
+      %td= info.zip_code
+    %tr
+      %td= SenderInfo.human_attribute_name('residential')
+      %td= t info.residential?.to_s
+    %tr
+      %td= SenderInfo.human_attribute_name('other_info')
+      %td= info.other_info
