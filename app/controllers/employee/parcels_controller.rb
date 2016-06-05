@@ -14,7 +14,7 @@ class Employee::ParcelsController < EmployeeController
     parcel = Parcel.find(params[:id])
     acceptance_status = parcel_params[:acceptance_status]
     author = current_user
-    additional_info = parcel_params[:operations_attributes]['0'][:additional_info]
+    additional_info = parcel_params[:operation][:additional_info]
     service = ParcelAcceptanceService.new(parcel, acceptance_status, author, additional_info)
     if service.call
       flash[:notice] = t('.acceptance_status_changed_succesfully')
@@ -28,6 +28,6 @@ class Employee::ParcelsController < EmployeeController
 
   def parcel_params
     params.require(:parcel).permit(:acceptance_status,
-      operations_attributes: [:additional_info])
+      operation: [:additional_info])
   end
 end

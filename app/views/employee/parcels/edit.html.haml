@@ -29,7 +29,7 @@
   = form_for [:employee, @parcel] do |f|
     = f.hidden_field :acceptance_status
     .form-group
-      = f.fields_for :operations do |o|
+      = f.fields_for :operation do |o|
         = o.label :additional_info
         = o.text_area :additional_info, class: 'form-control'
     .col-xs-6

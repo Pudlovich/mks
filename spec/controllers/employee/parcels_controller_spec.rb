@@ -141,7 +141,7 @@ RSpec.describe Employee::ParcelsController do
 
   shared_examples 'valid update' do
     before(:each) do
-      put :update, id: edited_parcel.id, parcel: { acceptance_status: acceptance_status, operations_attributes: { '0' => { additional_info: additional_info } } }
+      put :update, id: edited_parcel.id, parcel: { acceptance_status: acceptance_status, operation: { additional_info: additional_info } }
       edited_parcel.reload
     end
 
@@ -180,7 +180,7 @@ RSpec.describe Employee::ParcelsController do
   shared_examples 'invalid update' do
     before(:each) do
       @old_acceptance = edited_parcel.acceptance_status
-      put :update, id: edited_parcel.id, parcel: { acceptance_status: acceptance_status, operations_attributes: { '0' => { additional_info: additional_info } } }
+      put :update, id: edited_parcel.id, parcel: { acceptance_status: acceptance_status, operation: { additional_info: additional_info } }
       edited_parcel.reload
     end
 
