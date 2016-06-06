@@ -1,7 +1,7 @@
 class Employee::OperationsController < EmployeeController
 
   def new
-    
+    @operation = Operation.new
   end
 
   def create
