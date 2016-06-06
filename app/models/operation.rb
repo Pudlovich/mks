@@ -4,6 +4,8 @@ class Operation < ActiveRecord::Base
 
   validates :kind, :parcel, presence: true
 
+  scope :newest_first, -> { order(created_at: :desc) }
+
   enum kind: {
     order_created: 0,
     order_accepted: 1,

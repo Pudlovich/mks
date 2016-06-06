@@ -60,22 +60,22 @@ RSpec.describe Parcel, type: :model do
   describe 'acceptance status -' do
     let(:parcel)  { FactoryGirl.create(:parcel) }
 
-    it 'awaiting status is assigned by default' do
-      expect(parcel.awaiting?).to be true
+    it 'pending status is assigned by default' do
+      expect(parcel.pending?).to be true
       expect(parcel.accepted?).to be false
       expect(parcel.rejected?).to be false
     end
 
     it 'accepted status is assigned through value 1' do
       parcel.update(acceptance_status: 1)
-      expect(parcel.awaiting?).to be false
+      expect(parcel.pending?).to be false
       expect(parcel.accepted?).to be true
       expect(parcel.rejected?).to be false
     end
 
     it 'rejected status is assigned through value 2' do
       parcel.update(acceptance_status: 2)
-      expect(parcel.awaiting?).to be false
+      expect(parcel.pending?).to be false
       expect(parcel.accepted?).to be false
       expect(parcel.rejected?).to be true
     end

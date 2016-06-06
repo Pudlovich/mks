@@ -6,7 +6,7 @@ class Parcel < ActiveRecord::Base
   has_many :operations
 
   enum acceptance_status: {
-    awaiting: 0,
+    pending: 0,
     accepted: 1,
     rejected: 2
   }
