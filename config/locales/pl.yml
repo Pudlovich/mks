@@ -57,6 +57,8 @@ pl:
       operation:
         kind: Typ operacji
         user: Twórca operacji
+        place: Miejsce
+        parcel: Przesyłka
         created_at: Data utworzenia
         additional_info: Komentarz
         kinds:
@@ -91,7 +93,8 @@ pl:
       admin: Administracja
       users: Użytkownicy
       employee: Pracownik
-      accepting_parcels: Przyjmowanie zleceń
+      parcels: Przesyłki
+      add_an_operation: Utwórz operację
     tracking:
       heading: 'Śledzenie przesyłki'
       parcel_number: 'Nr przesyłki'
@@ -144,5 +147,12 @@ pl:
       update:
         acceptance_status_changed_succesfully: 'Zmieniono status przesyłki'
         acceptance_status_change_not_possible: 'Nie udało się zmienić statusu przesyłki'
+    operations:
+      new:
+        title: 'Utwórz operację'
+        button: 'Utwórz'
+      create:
+        operation_created_succesfully: Pomyślnie utworzono operację
+        no_place_provided: Nie podano miejsca
   navigation:
     back: 'Powrót'

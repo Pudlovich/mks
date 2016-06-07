@@ -14,8 +14,8 @@
     %tr
       %td= number_to_kg(@parcel.weight)
       %td= number_to_currency(@parcel.price)
-      %td= parcel.from
-      %td= parcel.to
+      %td= @parcel.from
+      %td= @parcel.to
       %td= l @parcel.created_at
       %td= @parcel.name
 .row
@@ -48,15 +48,15 @@
   %table.table.table-striped.centered-text-table
     %thead
       %tr
-        %th= Operation.human_attribute_name('kind')
         %th= Operation.human_attribute_name('created_at')
+        %th= Operation.human_attribute_name('kind')
         %th= Operation.human_attribute_name('additional_info')
         %th= Operation.human_attribute_name('user')
     %tbody
       - @operations.each do |operation|
         %tr
-          %td= translate_kind(operation.kind)
           %td= l operation.created_at
+          %td= translate_kind(operation.kind)
           %td= operation.additional_info
           %td= operation.author_email if operation.user
 

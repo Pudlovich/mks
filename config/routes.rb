@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :employee do
     get '/', to: 'parcels#index', as: :root
     resources :parcels, only: [:index, :edit, :update]
+    resources :operations, only: [:new, :create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,23 @@
+.col-md-6.col-md-offset-3
+  - if @operation.errors.present?
+    .bg-danger
+      - @operation.errors.full_messages.each do |message|
+        %p= message
+  %h1
+    = t('.title')
+  = form_for [:employee, @operation] do |f|
+    .form-group
+      = label :parcel, :parcel_number
+      = text_field :parcel, :parcel_number, class: 'form-control'
+    .form-group
+      = f.label :kind
+      = f.select(:kind, kinds_for_select, {selected: 0}, {class: "form-control"})
+    .form-group
+      = f.label :place
+      = f.text_field :place, class: 'form-control'
+    .form-group
+      = f.label :additional_info
+      = f.text_area :additional_info, class: 'form-control'
+    .text-center
+      .form-group
+        = f.submit t('.button'), class: 'btn btn-primary'
