@@ -93,7 +93,7 @@ pl:
       admin: Administracja
       users: Użytkownicy
       employee: Pracownik
-      accepting_parcels: Przyjmowanie zleceń
+      parcels: Przesyłki
       add_an_operation: Utwórz operację
     tracking:
       heading: 'Śledzenie przesyłki'
