@@ -58,6 +58,7 @@ pl:
         kind: Typ operacji
         user: Twórca operacji
         place: Miejsce
+        parcel: Przesyłka
         created_at: Data utworzenia
         additional_info: Komentarz
         kinds:
