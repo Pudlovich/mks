@@ -1,4 +1,6 @@
 pl:
+  "true": "tak"
+  "false": "nie"
   errors:
     format: "%{attribute} %{message}"
     messages:

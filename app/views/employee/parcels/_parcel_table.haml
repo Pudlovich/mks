@@ -1,0 +1,20 @@
+%table.table.table-striped.centered-text-table
+  %thead
+    %tr
+      %th= Parcel.human_attribute_name('parcel_number')
+      %th= Parcel.human_attribute_name('weight')
+      %th= Parcel.human_attribute_name('price')
+      %th= Parcel.human_attribute_name('from')
+      %th= Parcel.human_attribute_name('to')
+      %th= Parcel.human_attribute_name('created_at')
+      %th= Parcel.human_attribute_name('name')
+  %tbody
+    - parcels.each do |parcel|
+      %tr
+        %td= link_to parcel.parcel_number, edit_employee_parcel_path(parcel)
+        %td= number_to_kg(parcel.weight)
+        %td= number_to_currency(parcel.price)
+        %td= parcel.from
+        %td= parcel.to
+        %td= l parcel.created_at
+        %td= parcel.name

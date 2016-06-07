@@ -80,7 +80,7 @@ footer {
 
 
 
-.parcels-table {
+.centered-text-table {
   th{
     text-align: center;
   }
@@ -132,4 +132,27 @@ span.unit{
 
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td{
   vertical-align: middle;
+}
+
+.rejected-parcels > .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #ffe9e9;
+}
+
+.accepted-parcels > .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #e0ffe0;
+}
+
+.information-list > tbody > tr > td:nth-of-type(odd){
+  font-weight: bold;
+  text-align: right;
+}
+
+.information-list > tbody > tr > td:nth-of-type(even){
+  text-align: left;
+}
+
+.btn.inactive{
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
 }

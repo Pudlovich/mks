@@ -11,10 +11,9 @@ class Parcel < ActiveRecord::Base
     rejected: 2
   }
 
-  delegate :city, to: :recipient_info, prefix: :recipient
-
   accepts_nested_attributes_for :sender_info
   accepts_nested_attributes_for :recipient_info
+  accepts_nested_attributes_for :operations
 
   attr_localized :price, :weight
 
@@ -27,6 +26,17 @@ class Parcel < ActiveRecord::Base
 
   before_validation :set_price, :generate_parcel_number, on: :create
   after_create :create_order_created_operation
+
+  delegate :city, to: :recipient_info, prefix: :recipient
+  delegate :city, to: :sender_info, prefix: :sender
+
+  def from
+    sender_info.basic_address
+  end
+
+  def to
+    recipient_info.basic_address
+  end
 
   private
 

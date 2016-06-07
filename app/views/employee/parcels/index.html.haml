@@ -1,18 +1,9 @@
-%h1
-  = t('.parcels')
-%table.table.table-striped.parcels-table
-  %thead
-    %tr
-      %th= Parcel.human_attribute_name('parcel_number')
-      %th= Parcel.human_attribute_name('weight')
-      %th= Parcel.human_attribute_name('price')
-      %th= Parcel.human_attribute_name('created_at')
-      %th= Parcel.human_attribute_name('name')
-  %tbody
-    - @parcels.each do |parcel|
-      %tr
-        %td= parcel.parcel_number
-        %td= number_to_kg(parcel.weight)
-        %td= number_to_currency(parcel.price)
-        %td= l parcel.created_at
-        %td= parcel.name
+%h1= t('.parcels')
+%h3= t('.pending')
+= render 'parcel_table', parcels: @pending_parcels
+%h3= t('.rejected')
+.rejected-parcels
+  = render 'parcel_table', parcels: @rejected_parcels
+%h3= t('.accepted')
+.accepted-parcels
+  = render 'parcel_table', parcels: @accepted_parcels

@@ -14,6 +14,7 @@ class Admin::UsersController < AdminController
       flash[:alert] = t('errors.messages.not_authorized')
     else
       edited_user.update!(user_params) 
+      flash[:notice] = t('.role_changed_succesfully')
     end
     redirect_to action: "index"
   end

@@ -32,6 +32,8 @@ pl:
         price: 'Cena'
         created_at: 'Data utworzenia'
         parcel_number: 'Numer przesyłki'
+        from: Skąd
+        to: Dokąd
       sender_info:
         email: Adres email
         contact_name: Nazwisko osoby kontaktowej
@@ -52,6 +54,20 @@ pl:
         company_name: Nazwa firmy
         other_info: Inne informacje
         residential: Adres osoby prywatnej
+      operation:
+        kind: Typ operacji
+        user: Twórca operacji
+        created_at: Data utworzenia
+        additional_info: Komentarz
+        kinds:
+          order_created: Utworzono zlecenie
+          order_accepted: Przyjęto zlecenie
+          order_rejected: Odrzucono zlecenie
+          parcel_picked_up: Nadano przesyłkę
+          parcel_in_sorting_facility: Przyjęto do sortowni
+          parcel_in_transit: W drodze do oddziału
+          parcel_in_delivery: Przekazano do doręczenia
+          parcel_delivered: Doręczono
   helpers:
     label:
       user:
@@ -107,7 +123,26 @@ pl:
       edit:
         parcels_number: 'Liczba przesyłek'
         button: 'Zapisz'
+      update:
+        role_changed_succesfully: 'Zmiana roli zakończyła się powodzeniem'
   employee:
     parcels:
       index:
         parcels: 'Przesyłki'
+        pending: 'Oczekujące'
+        rejected: 'Odrzucone'
+        accepted: 'Zaakceptowane'
+      edit:
+        parcel_no: 'Przesyłka nr %{parcel_number}'
+        recipient_city: Miasto odbiorcy
+        accept: 'Akceptuj'
+        reject: 'Odrzuć'
+        sender: 'Nadawca'
+        recipient: 'Odbiorca'
+        comment: 'Komentarz'
+        previous_operations: 'Wcześniejsze operacje:'
+      update:
+        acceptance_status_changed_succesfully: 'Zmieniono status przesyłki'
+        acceptance_status_change_not_possible: 'Nie udało się zmienić statusu przesyłki'
+  navigation:
+    back: 'Powrót'

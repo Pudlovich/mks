@@ -1,0 +1,62 @@
+=link_to t('navigation.back'), employee_parcels_path
+%h1
+  =t('.parcel_no', parcel_number: @parcel.parcel_number)
+%table.table.centered-text-table
+  %thead
+    %tr
+      %th= Parcel.human_attribute_name('weight')
+      %th= Parcel.human_attribute_name('price')
+      %th= Parcel.human_attribute_name('from')
+      %th= Parcel.human_attribute_name('to')
+      %th= Parcel.human_attribute_name('created_at')
+      %th= Parcel.human_attribute_name('name')
+  %tbody
+    %tr
+      %td= number_to_kg(@parcel.weight)
+      %td= number_to_currency(@parcel.price)
+      %td= parcel.from
+      %td= parcel.to
+      %td= l @parcel.created_at
+      %td= @parcel.name
+.row
+  .col-md-6.text-center
+    %h3= t('.sender')
+    = render 'delivery_info_table', info: @parcel.sender_info
+  .col-md-6.text-center
+    %h3= t('.recipient')
+    = render 'delivery_info_table', info: @parcel.recipient_info
+.row
+  = form_for [:employee, @parcel] do |f|
+    = f.hidden_field :acceptance_status
+    .form-group
+      = f.fields_for :operation do |o|
+        = o.label :additional_info, t('.comment')
+        = o.text_area :additional_info, class: 'form-control'
+    .col-xs-6
+      -unless @parcel.accepted?
+        = f.submit t('.accept'), class: 'btn btn-success pull-right', onclick: "document.getElementById('parcel_acceptance_status').value = 'accepted'"
+      -else
+        .btn.btn-success.pull-right.inactive= t('.accept')
+    .col-xs-6
+      -unless @parcel.rejected?
+        = f.submit t('.reject'), class: 'btn btn-danger', onclick: "document.getElementById('parcel_acceptance_status').value = 'rejected'"
+      -else
+        .btn.btn-danger.inactive= t('.reject')
+-if @operations.count > 0
+  .row
+    %h4= t('.previous_operations')
+  %table.table.table-striped.centered-text-table
+    %thead
+      %tr
+        %th= Operation.human_attribute_name('kind')
+        %th= Operation.human_attribute_name('created_at')
+        %th= Operation.human_attribute_name('additional_info')
+        %th= Operation.human_attribute_name('user')
+    %tbody
+      - @operations.each do |operation|
+        %tr
+          %td= translate_kind(operation.kind)
+          %td= l operation.created_at
+          %td= operation.additional_info
+          %td= operation.author_email if operation.user
+
