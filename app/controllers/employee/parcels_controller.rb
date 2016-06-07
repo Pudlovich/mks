@@ -14,7 +14,7 @@ class Employee::ParcelsController < EmployeeController
   def update
     parcel = Parcel.find(params[:id])
     acceptance_status = parcel_params[:acceptance_status]
-    author = current_user
+    author = current_employee
     additional_info = parcel_params[:operation][:additional_info]
     service = ParcelAcceptanceService.new(parcel, acceptance_status, author, additional_info)
     if service.call
