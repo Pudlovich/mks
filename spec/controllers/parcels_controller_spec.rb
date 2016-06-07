@@ -26,27 +26,28 @@ RSpec.describe ParcelsController do
       let(:user) { FactoryGirl.create(:user) }
       before(:each) do
         sign_in user
+        get :index
       end
 
       it "leaves @parcels array empty" do
-        get :index
         expect(assigns(:parcels)).to eq([])
       end
 
       it "renders the :index view" do
-        get :index
         expect(response).to render_template :index
       end
     end
 
     context "when a user is not logged in" do
-      it "doesn't create the parcels array" do
+      before(:each) do
         get :index
+      end
+
+      it "doesn't create the parcels array" do
         expect(assigns(:parcels)).to eq(nil)
       end
 
       it "renders the :index view" do
-        get :index
         expect(response).to render_template :index
       end
     end
@@ -69,14 +70,24 @@ RSpec.describe ParcelsController do
 
   describe "GET #show" do
     context "when a parcel exists" do
-      let(:parcel) { FactoryGirl.create(:parcel) }
-      it "assigns a parcel with the given parcel_number to @parcel" do
+      let(:parcel) { FactoryGirl.create(:parcel, :accepted) }
+      before(:each) do
         get :show, parcel_number: parcel.parcel_number
+      end
+
+      it "assigns a parcel with the given parcel_number to @parcel" do
         expect(assigns(:parcel)).to eq(parcel)
       end
 
+      it "assigns the parcel operations to @operations" do
+        expect(assigns(:operations)).to match_array(parcel.operations)
+      end
+
+      it "assigns the newest operations first" do
+        expect(assigns(:operations).first).to eq(parcel.operations.last)
+      end
+
       it "renders the :show view" do
-        get :show, parcel_number: parcel.parcel_number
         expect(response).to render_template :show
       end
     end
@@ -88,19 +99,20 @@ RSpec.describe ParcelsController do
   end
 
   describe "GET #new" do
-    it "assigns a new Parcel to @parcel" do
+    before(:each) do
       get :new
+    end
+
+    it "assigns a new Parcel to @parcel" do
       expect(assigns(:parcel)).to be_a_new(Parcel)
     end
 
     it "assigns blank SenderInfo and RecipientInfo to @parcel" do
-      get :new
       expect(assigns(:parcel).sender_info).to be_a_new(SenderInfo)
       expect(assigns(:parcel).recipient_info).to be_a_new(RecipientInfo)
     end
 
     it "renders the :new view" do
-      get :new
       expect(response).to render_template :new
     end
   end
