@@ -2,10 +2,12 @@ class Employee::OperationsController < EmployeeController
 
   def new
     @operation = Operation.new
+    @parcel = Parcel.new
   end
 
   def create
     @operation = Operation.new(operation_params)
+    @parcel = Parcel.new(parcel_params)  # serves as a container for form data
     if @operation.place.present? && @operation.save
       redirect_to new_employee_operation_path, notice: t('.operation_created_succesfully')
     else
