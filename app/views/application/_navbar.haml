@@ -26,6 +26,7 @@
                 %ul.dropdown-menu
                   %li
                     = link_to t('.accepting_parcels'), employee_parcels_path
+                    = link_to t('.add_an_operation'), new_employee_operation_path
             - if current_user.admin?
               %li.dropdown
                 %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

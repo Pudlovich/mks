@@ -94,6 +94,7 @@ pl:
       users: Użytkownicy
       employee: Pracownik
       accepting_parcels: Przyjmowanie zleceń
+      add_an_operation: Utwórz operację
     tracking:
       heading: 'Śledzenie przesyłki'
       parcel_number: 'Nr przesyłki'
