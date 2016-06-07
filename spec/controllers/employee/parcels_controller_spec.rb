@@ -162,8 +162,9 @@ RSpec.describe Employee::ParcelsController do
   end
 
   shared_examples 'invalid update' do
+    let(:old_acceptance) { edited_parcel.acceptance_status }
+    
     before(:each) do
-      @old_acceptance = edited_parcel.acceptance_status
       put :update, id: edited_parcel.id, parcel: { acceptance_status: acceptance_status, operation: { additional_info: additional_info } }
       edited_parcel.reload
     end
@@ -173,7 +174,7 @@ RSpec.describe Employee::ParcelsController do
     end
 
     it "doesn't change the parcel status" do
-      expect(edited_parcel.acceptance_status).to eq(@old_acceptance)
+      expect(edited_parcel.acceptance_status).to eq(old_acceptance)
     end
 
     it "doesn't create an operation" do
