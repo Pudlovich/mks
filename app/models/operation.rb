@@ -3,7 +3,7 @@ class Operation < ActiveRecord::Base
   belongs_to :parcel
 
   validates :kind, :parcel, presence: true
-  validate :operation_dealing_with_parcels_must_have_a_place
+  validate :operation_dealing_with_parcels_has_a_place
 
   scope :newest_first, -> { order(created_at: :desc) }
 
@@ -22,7 +22,7 @@ class Operation < ActiveRecord::Base
 
   private
 
-  def operation_dealing_with_parcels_must_have_a_place
+  def operation_dealing_with_parcels_has_a_place
     unless place.present? || ['order_created', 'order_accepted', 'order_rejected'].include?(kind)
       errors.add(:place, :blank)
     end
