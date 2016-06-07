@@ -6,7 +6,8 @@ class Employee::OperationsController < EmployeeController
   end
 
   def create
-    @operation = Operation.new(operation_params)
+    parcel = Parcel.find_by(parcel_params)
+    @operation = Operation.new(operation_params.merge(user: current_employee, parcel: parcel))
     @parcel = Parcel.new(parcel_params)  # serves as a container for form data
     if @operation.place.present? && @operation.save
       redirect_to new_employee_operation_path, notice: t('.operation_created_succesfully')
@@ -19,8 +20,7 @@ class Employee::OperationsController < EmployeeController
   private
 
   def operation_params
-    parcel = Parcel.find_by(parcel_params)
-    params.require(:operation).permit(:kind, :place, :additional_info).merge(user: current_employee, parcel: parcel)
+    params.require(:operation).permit(:kind, :place, :additional_info)
   end
 
   def parcel_params
