@@ -64,6 +64,8 @@ RSpec.describe Parcel, type: :model do
       expect(parcel.pending?).to be true
       expect(parcel.accepted?).to be false
       expect(parcel.rejected?).to be false
+      expect(parcel.in_transit?).to be false
+      expect(parcel.delivered?).to be false
     end
 
     it 'accepted status is assigned through value 1' do
@@ -71,6 +73,8 @@ RSpec.describe Parcel, type: :model do
       expect(parcel.pending?).to be false
       expect(parcel.accepted?).to be true
       expect(parcel.rejected?).to be false
+      expect(parcel.in_transit?).to be false
+      expect(parcel.delivered?).to be false
     end
 
     it 'rejected status is assigned through value 2' do
@@ -78,6 +82,26 @@ RSpec.describe Parcel, type: :model do
       expect(parcel.pending?).to be false
       expect(parcel.accepted?).to be false
       expect(parcel.rejected?).to be true
+      expect(parcel.in_transit?).to be false
+      expect(parcel.delivered?).to be false
+    end
+
+    it 'in_transit status is assigned through value 3' do
+      parcel.update(status: 3)
+      expect(parcel.pending?).to be false
+      expect(parcel.accepted?).to be false
+      expect(parcel.rejected?).to be false
+      expect(parcel.in_transit?).to be true
+      expect(parcel.delivered?).to be false
+    end
+
+    it 'rejected status is assigned through value 4' do
+      parcel.update(status: 4)
+      expect(parcel.pending?).to be false
+      expect(parcel.accepted?).to be false
+      expect(parcel.rejected?).to be false
+      expect(parcel.in_transit?).to be false
+      expect(parcel.delivered?).to be true
     end
   end
 end

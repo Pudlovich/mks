@@ -8,7 +8,9 @@ class Parcel < ActiveRecord::Base
   enum status: {
     pending: 0,
     accepted: 1,
-    rejected: 2
+    rejected: 2,
+    in_transit: 3,
+    delivered: 4
   }
 
   accepts_nested_attributes_for :sender_info
