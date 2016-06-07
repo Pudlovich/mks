@@ -217,7 +217,7 @@ RSpec.describe Employee::ParcelsController do
         expect(response).to redirect_to root_path
       end
 
-      it "doesn't change the user" do
+      it "doesn't change the parcel" do
         expect(edited_parcel.status).to eq('pending')
       end
     end
@@ -239,6 +239,24 @@ RSpec.describe Employee::ParcelsController do
 
           include_examples 'valid update'
         end
+
+        context "changing the status to pending" do
+          let(:status) { 'pending' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to in transit" do
+          let(:status) { 'in_transit' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to delivered" do
+          let(:status) { 'delivered' }
+
+          include_examples 'invalid update'
+        end
       end
 
       context "when parcel is accepted" do
@@ -255,6 +273,24 @@ RSpec.describe Employee::ParcelsController do
 
           include_examples 'valid update'
         end
+
+        context "changing the status to pending" do
+          let(:status) { 'pending' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to in transit" do
+          let(:status) { 'in_transit' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to delivered" do
+          let(:status) { 'delivered' }
+
+          include_examples 'invalid update'
+        end
       end
 
       context "when parcel is rejected" do
@@ -268,6 +304,24 @@ RSpec.describe Employee::ParcelsController do
 
         context "rejecting the parcel" do
           let(:status) { 'rejected' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to pending" do
+          let(:status) { 'pending' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to in transit" do
+          let(:status) { 'in_transit' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to delivered" do
+          let(:status) { 'delivered' }
 
           include_examples 'invalid update'
         end
@@ -291,6 +345,24 @@ RSpec.describe Employee::ParcelsController do
 
           include_examples 'valid update'
         end
+
+        context "changing the status to pending" do
+          let(:status) { 'pending' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to in transit" do
+          let(:status) { 'in_transit' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to delivered" do
+          let(:status) { 'delivered' }
+
+          include_examples 'invalid update'
+        end
       end
 
       context "when parcel is accepted" do
@@ -307,6 +379,24 @@ RSpec.describe Employee::ParcelsController do
 
           include_examples 'valid update'
         end
+
+        context "changing the status to pending" do
+          let(:status) { 'pending' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to in transit" do
+          let(:status) { 'in_transit' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to delivered" do
+          let(:status) { 'delivered' }
+
+          include_examples 'invalid update'
+        end
       end
 
       context "when parcel is rejected" do
@@ -320,6 +410,24 @@ RSpec.describe Employee::ParcelsController do
 
         context "rejecting the parcel" do
           let(:status) { 'rejected' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to pending" do
+          let(:status) { 'pending' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to in transit" do
+          let(:status) { 'in_transit' }
+
+          include_examples 'invalid update'
+        end
+
+        context "changing the status to delivered" do
+          let(:status) { 'delivered' }
 
           include_examples 'invalid update'
         end
