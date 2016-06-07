@@ -115,6 +115,7 @@ pl:
     show:
       parcel_no: 'Przesyłka nr %{parcel_number}'
       recipient_city: Miasto odbiorcy
+      history: 'Historia:'
     create:
       parcel_created_succesfully: Pomyślnie utworzono przesyłkę
   admin:
