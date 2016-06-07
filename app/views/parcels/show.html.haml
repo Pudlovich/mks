@@ -6,13 +6,15 @@
       %th= t('.recipient_city')
       %th= Parcel.human_attribute_name('weight')
       %th= Parcel.human_attribute_name('created_at')
-      %th= Parcel.human_attribute_name('name')
+      -if @parcel.name
+        %th= Parcel.human_attribute_name('name')
   %tbody
     %tr
       %td= @parcel.recipient_city
       %td= number_to_kg(@parcel.weight)
       %td= l @parcel.created_at
-      %td= @parcel.name
+      -if @parcel.name
+        %td= @parcel.name
 -if @operations.count > 0
   %h4= t('.history')
   %table.table.table-striped.centered-text-table
