@@ -1,7 +1,7 @@
 = render 'tracking'
-%h1
-  = t('.your_parcels')
--if @parcels
+-if @parcels && @parcels.any?
+  %h1
+    = t('.your_parcels')
   %table.table.table-striped.centered-text-table
     %thead
       %tr
@@ -10,7 +10,8 @@
         %th= Parcel.human_attribute_name('weight')
         %th= Parcel.human_attribute_name('price')
         %th= Parcel.human_attribute_name('created_at')
-        %th= Parcel.human_attribute_name('name')
+        -if @parcels.any? { |parcel| parcel.name.present? }
+          %th= Parcel.human_attribute_name('name')
     %tbody
       - @parcels.each do |parcel|
         %tr
@@ -20,6 +21,7 @@
           %td= number_to_kg(parcel.weight)
           %td= number_to_currency(parcel.price)
           %td= l parcel.created_at
-          %td= parcel.name
--else
-  = t('.not_logged_in.text_html', log_in: link_to(t('.not_logged_in.log_in'), new_user_session_path))
+          -if @parcels.any? { |parcel| parcel.name.present? }
+            %td= parcel.name
+-unless user_signed_in?
+  %p= t('.not_logged_in.text_html', log_in: link_to(t('.not_logged_in.log_in'), new_user_session_path))
