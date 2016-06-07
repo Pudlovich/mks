@@ -10,7 +10,13 @@ RSpec.shared_examples 'change of acceptance' do
     expect(parcel.acceptance_status).to eq(acceptance_status)
   end
 
-  it 'creates an operation of requested kind' do
+  it 'creates an operation' do
+    expect{
+      service.call
+    }.to change(parcel.operations,:count).by(1)
+  end
+
+  it 'created operation has requested kind' do
     service.call
     expect(parcel.operations.last.kind).to eq(operation_kind)
   end
