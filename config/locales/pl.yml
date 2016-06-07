@@ -70,6 +70,12 @@ pl:
           parcel_in_transit: W drodze do oddziału
           parcel_in_delivery: Przekazano do doręczenia
           parcel_delivered: Doręczono
+    errors:
+      models:
+        operation:
+          attributes:
+            kind:
+              invalid_for_this_parcel: jest niewłaściwy dla tej przesyłki
   helpers:
     label:
       user:

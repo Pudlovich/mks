@@ -5,6 +5,7 @@ class Operation < ActiveRecord::Base
   validates :kind, :parcel, presence: true
   validate :operation_dealing_with_parcels_has_a_place
   validate :creation_is_parcels_first_operation
+  validate :operation_is_permitted_for_parcel
 
   scope :newest_first, -> { order(created_at: :desc) }
 
@@ -33,5 +34,27 @@ class Operation < ActiveRecord::Base
     if kind == 'order_created' && parcel.operations.count != 0
       errors.add(:kind, :invalid)
     end
+  end
+
+  def operation_is_permitted_for_parcel
+    binding.pry
+    unless allowed_states[kind].include?(parcel.status)
+      errors.add(:kind, :invalid_for_this_parcel)
+    end
+  end
+
+  def allowed_states
+    # defines, what states should the parcel be in for the operation to be permitted
+    # as people make errors, it's possible to skip some operations. it's not possible to go back, though
+    {
+      'order_created' => ['pending'],
+      'order_accepted' => ['pending', 'rejected'],
+      'order_rejected' => ['pending', 'accepted'],
+      'parcel_picked_up' => ['pending', 'accepted'],
+      'parcel_in_sorting_facility' => ['pending', 'accepted', 'in_transit'],
+      'parcel_in_transit' => ['pending', 'accepted', 'in_transit'],
+      'parcel_in_delivery' => ['pending', 'accepted', 'in_transit'],
+      'parcel_delivered' => ['pending', 'accepted', 'in_transit']
+    }
   end
 end
