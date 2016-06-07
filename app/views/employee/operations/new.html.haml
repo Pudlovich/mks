@@ -4,7 +4,7 @@
       - @operation.errors.full_messages.each do |message|
         %p= message
   %h1
-    Utwórz operację
+    = t('.title')
   = form_for [:employee, @operation] do |f|
     .form-group
       = label :parcel, :parcel_number
@@ -20,4 +20,4 @@
       = f.text_area :additional_info, class: 'form-control'
     .text-center
       .form-group
-        = f.submit 'Utwórz', class: 'btn btn-primary'
+        = f.submit t('.button'), class: 'btn btn-primary'

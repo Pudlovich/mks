@@ -148,6 +148,8 @@ pl:
         acceptance_status_change_not_possible: 'Nie udało się zmienić statusu przesyłki'
     operations:
       new:
+        title: 'Utwórz operację'
+        button: 'Utwórz'
       create:
         operation_created_succesfully: Pomyślnie utworzono operację
         no_place_provided: Nie podano miejsca
