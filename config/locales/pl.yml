@@ -57,6 +57,7 @@ pl:
       operation:
         kind: Typ operacji
         user: Twórca operacji
+        place: Miejsce
         created_at: Data utworzenia
         additional_info: Komentarz
         kinds:
