@@ -28,6 +28,7 @@ class ParcelsController < ApplicationController
 
   def show
     @parcel = Parcel.find_by!(parcel_number: params[:parcel_number])
+    @operations = @parcel.operations.newest_first
   end
 
   private
