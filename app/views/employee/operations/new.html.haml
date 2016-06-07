@@ -7,7 +7,7 @@
     Utwórz operację
   = form_for [:employee, @operation] do |f|
     .form-group
-      = label :parcel, :parcel_number, 'Numer przesyłki'
+      = label :parcel, :parcel_number
       = text_field :parcel, :parcel_number, class: 'form-control'
     .form-group
       = f.label :kind
