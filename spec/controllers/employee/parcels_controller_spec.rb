@@ -84,7 +84,7 @@ RSpec.describe Employee::ParcelsController do
   end
 
   describe "GET #edit" do
-    let(:edited_parcel) { FactoryGirl.create(:parcel) }
+    let(:edited_parcel) { FactoryGirl.create(:parcel, :accepted) }
 
     before(:each) do
       sign_in user
@@ -105,6 +105,14 @@ RSpec.describe Employee::ParcelsController do
         expect(assigns(:parcel)).to eq(edited_parcel)
       end
 
+      it "assigns the parcel operations to @operations" do
+        expect(assigns(:operations)).to match_array(edited_parcel.operations)
+      end
+
+      it "assigns the newest operations first" do
+        expect(assigns(:operations).first).to eq(edited_parcel.operations.last)
+      end
+
       it "renders the :edit view" do
         expect(response).to render_template :edit
       end
@@ -115,6 +123,14 @@ RSpec.describe Employee::ParcelsController do
 
       it "assigns the requested parcel to @parcel" do
         expect(assigns(:parcel)).to eq(edited_parcel)
+      end
+
+      it "assigns the parcel operations to @operations" do
+        expect(assigns(:operations)).to match_array(edited_parcel.operations)
+      end
+
+      it "assigns the newest operations first" do
+        expect(assigns(:operations).first).to eq(edited_parcel.operations.last)
       end
 
       it "renders the :edit view" do
