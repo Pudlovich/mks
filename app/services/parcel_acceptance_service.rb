@@ -10,7 +10,6 @@ class ParcelAcceptanceService
   def call
     return false unless valid_request
     Parcel.transaction do
-      @parcel.update!(status: @status)
       Operation.create!(parcel: @parcel, kind: operation_kind, user: @author, additional_info: @additional_info)
       true
     end

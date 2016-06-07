@@ -22,6 +22,8 @@ class Operation < ActiveRecord::Base
     parcel_delivered: 7
   }
 
+  after_create :set_correct_parcel_status
+
   private
 
   def operation_dealing_with_parcels_has_a_place
@@ -37,15 +39,15 @@ class Operation < ActiveRecord::Base
   end
 
   def operation_is_permitted_for_parcel
-    binding.pry
-    unless allowed_states[kind].include?(parcel.status)
+    unless parcel && allowed_states[kind].include?(parcel.status)
       errors.add(:kind, :invalid_for_this_parcel)
     end
   end
 
   def allowed_states
     # defines, what states should the parcel be in for the operation to be permitted
-    # as people make errors, it's possible to skip some operations. it's not possible to go back, though
+    # as people (and computers) make errors, it's possible to skip some operations.
+    # it's not possible to go back, though
     {
       'order_created' => ['pending'],
       'order_accepted' => ['pending', 'rejected'],
@@ -55,6 +57,24 @@ class Operation < ActiveRecord::Base
       'parcel_in_transit' => ['pending', 'accepted', 'in_transit'],
       'parcel_in_delivery' => ['pending', 'accepted', 'in_transit'],
       'parcel_delivered' => ['pending', 'accepted', 'in_transit']
+    }
+  end
+
+  def set_correct_parcel_status
+    parcel.update(status: new_parcel_status[kind])
+  end
+
+  def new_parcel_status
+    # defines, which parcel status should be ensured after the operation
+    {
+      'order_created' => 'pending',
+      'order_accepted' => 'accepted',
+      'order_rejected' => 'rejected',
+      'parcel_picked_up' => 'in_transit',
+      'parcel_in_sorting_facility' => 'in_transit',
+      'parcel_in_transit' => 'in_transit',
+      'parcel_in_delivery' => 'in_transit',
+      'parcel_delivered' => 'delivered'
     }
   end
 end

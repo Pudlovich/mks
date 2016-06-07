@@ -12,7 +12,7 @@ FactoryGirl.define do
     end
     
     trait :order_rejected do
-      kind 'order_accepted'
+      kind 'order_rejected'
       user { FactoryGirl.create(:user, :employee) }
     end
 
