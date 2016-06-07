@@ -146,8 +146,8 @@ pl:
         comment: 'Komentarz'
         previous_operations: 'Wcześniejsze operacje:'
       update:
-        acceptance_status_changed_succesfully: 'Zmieniono status przesyłki'
-        acceptance_status_change_not_possible: 'Nie udało się zmienić statusu przesyłki'
+        status_changed_succesfully: 'Zmieniono status przesyłki'
+        status_change_not_possible: 'Nie udało się zmienić statusu przesyłki'
     operations:
       new:
         title: 'Utwórz operację'

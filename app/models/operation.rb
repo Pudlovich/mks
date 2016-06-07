@@ -5,7 +5,6 @@ class Operation < ActiveRecord::Base
   validates :kind, :parcel, presence: true
 
   scope :newest_first, -> { order(created_at: :desc) }
-  scope :acceptance, -> { where(kind: [1, 2]) }
 
   delegate :email, to: :user, prefix: :author
 

@@ -13,14 +13,14 @@ class Employee::ParcelsController < EmployeeController
 
   def update
     parcel = Parcel.find(params[:id])
-    acceptance_status = parcel_params[:acceptance_status]
+    status = parcel_params[:status]
     author = current_employee
     additional_info = parcel_params[:operation][:additional_info]
-    service = ParcelAcceptanceService.new(parcel, acceptance_status, author, additional_info)
+    service = ParcelAcceptanceService.new(parcel, status, author, additional_info)
     if service.call
-      flash[:notice] = t('.acceptance_status_changed_succesfully')
+      flash[:notice] = t('.status_changed_succesfully')
     else
-      flash[:alert] = t('.acceptance_status_change_not_possible')
+      flash[:alert] = t('.status_change_not_possible')
     end
     redirect_to action: "index"
   end
@@ -28,7 +28,7 @@ class Employee::ParcelsController < EmployeeController
   private
 
   def parcel_params
-    params.require(:parcel).permit(:acceptance_status,
+    params.require(:parcel).permit(:status,
       operation: [:additional_info])
   end
 end

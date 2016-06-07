@@ -141,7 +141,7 @@ RSpec.describe Employee::ParcelsController do
 
   shared_examples 'valid update' do
     before(:each) do
-      put :update, id: edited_parcel.id, parcel: { acceptance_status: acceptance_status, operation: { additional_info: additional_info } }
+      put :update, id: edited_parcel.id, parcel: { status: status, operation: { additional_info: additional_info } }
       edited_parcel.reload
     end
 
@@ -150,7 +150,7 @@ RSpec.describe Employee::ParcelsController do
     end
 
     it "updates the parcel" do
-      expect(edited_parcel.acceptance_status).to eq(acceptance_status)
+      expect(edited_parcel.status).to eq(status)
     end
 
     it "creates an operation" do
@@ -164,7 +164,7 @@ RSpec.describe Employee::ParcelsController do
       end
 
       it "updates the parcel" do
-        expect(edited_parcel.acceptance_status).to eq(acceptance_status)
+        expect(edited_parcel.status).to eq(status)
       end
 
       it "creates an operation" do
@@ -178,10 +178,10 @@ RSpec.describe Employee::ParcelsController do
   end
 
   shared_examples 'invalid update' do
-    let(:old_acceptance) { edited_parcel.acceptance_status }
+    let(:old_status) { edited_parcel.status }
     
     before(:each) do
-      put :update, id: edited_parcel.id, parcel: { acceptance_status: acceptance_status, operation: { additional_info: additional_info } }
+      put :update, id: edited_parcel.id, parcel: { status: status, operation: { additional_info: additional_info } }
       edited_parcel.reload
     end
 
@@ -190,7 +190,7 @@ RSpec.describe Employee::ParcelsController do
     end
 
     it "doesn't change the parcel status" do
-      expect(edited_parcel.acceptance_status).to eq(old_acceptance)
+      expect(edited_parcel.status).to eq(old_status)
     end
 
     it "doesn't create an operation" do
@@ -210,7 +210,7 @@ RSpec.describe Employee::ParcelsController do
       let(:edited_parcel) { FactoryGirl.create(:parcel) }
 
       before(:each) do
-        put :update, id: edited_parcel.id, parcel: {acceptance_status: 'accepted'}
+        put :update, id: edited_parcel.id, parcel: {status: 'accepted'}
       end
 
       it "redirects to applicatioon root" do
@@ -218,7 +218,7 @@ RSpec.describe Employee::ParcelsController do
       end
 
       it "doesn't change the user" do
-        expect(edited_parcel.acceptance_status).to eq('pending')
+        expect(edited_parcel.status).to eq('pending')
       end
     end
 
@@ -229,13 +229,13 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel) }
 
         context "accepting the parcel" do
-          let(:acceptance_status) { 'accepted' }
+          let(:status) { 'accepted' }
 
           include_examples 'valid update'         
         end
 
         context "rejecting the parcel" do
-          let(:acceptance_status) { 'rejected' }
+          let(:status) { 'rejected' }
 
           include_examples 'valid update'
         end
@@ -245,13 +245,13 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel, :accepted) }
 
         context "accepting the parcel" do
-          let(:acceptance_status) { 'accepted' }
+          let(:status) { 'accepted' }
 
           include_examples 'invalid update'
         end
 
         context "rejecting the parcel" do
-          let(:acceptance_status) { 'rejected' }
+          let(:status) { 'rejected' }
 
           include_examples 'valid update'
         end
@@ -261,13 +261,13 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel, :rejected) }
 
         context "accepting the parcel" do
-          let(:acceptance_status) { 'accepted' }
+          let(:status) { 'accepted' }
 
           include_examples 'valid update'
         end
 
         context "rejecting the parcel" do
-          let(:acceptance_status) { 'rejected' }
+          let(:status) { 'rejected' }
 
           include_examples 'invalid update'
         end
@@ -281,13 +281,13 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel) }
 
         context "accepting the parcel" do
-          let(:acceptance_status) { 'accepted' }
+          let(:status) { 'accepted' }
 
           include_examples 'valid update'         
         end
 
         context "rejecting the parcel" do
-          let(:acceptance_status) { 'rejected' }
+          let(:status) { 'rejected' }
 
           include_examples 'valid update'
         end
@@ -297,13 +297,13 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel, :accepted) }
 
         context "accepting the parcel" do
-          let(:acceptance_status) { 'accepted' }
+          let(:status) { 'accepted' }
 
           include_examples 'invalid update'
         end
 
         context "rejecting the parcel" do
-          let(:acceptance_status) { 'rejected' }
+          let(:status) { 'rejected' }
 
           include_examples 'valid update'
         end
@@ -313,13 +313,13 @@ RSpec.describe Employee::ParcelsController do
         let(:edited_parcel) { FactoryGirl.create(:parcel, :rejected) }
 
         context "accepting the parcel" do
-          let(:acceptance_status) { 'accepted' }
+          let(:status) { 'accepted' }
 
           include_examples 'valid update'
         end
 
         context "rejecting the parcel" do
-          let(:acceptance_status) { 'rejected' }
+          let(:status) { 'rejected' }
 
           include_examples 'invalid update'
         end

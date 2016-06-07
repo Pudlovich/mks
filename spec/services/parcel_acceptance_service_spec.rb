@@ -7,7 +7,7 @@ RSpec.shared_examples 'change of acceptance' do
 
   it 'changes the parcel status' do
     service.call
-    expect(parcel.acceptance_status).to eq(acceptance_status)
+    expect(parcel.status).to eq(status)
   end
 
   it 'creates an operation' do
@@ -33,9 +33,9 @@ RSpec.shared_examples 'nothing changes' do
   end
 
   it 'does not change the parcel status' do
-    old_status = parcel.acceptance_status
+    old_status = parcel.status
     service.call
-    expect(parcel.acceptance_status).to eq(old_status)
+    expect(parcel.status).to eq(old_status)
   end
 
   it 'does not create an operation' do
@@ -46,12 +46,12 @@ RSpec.shared_examples 'nothing changes' do
 end
 
 RSpec.describe ParcelAcceptanceService do
-  let(:service) { ParcelAcceptanceService.new(parcel, acceptance_status, author, additional_info) }
+  let(:service) { ParcelAcceptanceService.new(parcel, status, author, additional_info) }
   let(:additional_info) { nil }
 
   describe 'accepting pending parcel' do
     let(:parcel) { FactoryGirl.create(:parcel) }
-    let(:acceptance_status) { 'accepted' }
+    let(:status) { 'accepted' }
     let(:operation_kind) { 'order_accepted' }  
 
     context 'without an author' do
@@ -82,7 +82,7 @@ RSpec.describe ParcelAcceptanceService do
 
   describe 'rejecting pending parcel' do
     let(:parcel) { FactoryGirl.create(:parcel) }
-    let(:acceptance_status) { 'rejected' }
+    let(:status) { 'rejected' }
     let(:operation_kind) { 'order_rejected' }
 
     context 'without an author' do
@@ -113,7 +113,7 @@ RSpec.describe ParcelAcceptanceService do
 
   describe 'rejecting accepted parcel' do
     let(:parcel) { FactoryGirl.create(:parcel, :accepted) }
-    let(:acceptance_status) { 'rejected' }
+    let(:status) { 'rejected' }
     let(:operation_kind) { 'order_rejected' }
 
     context 'without an author' do
@@ -144,7 +144,7 @@ RSpec.describe ParcelAcceptanceService do
 
   describe 'accepting rejected parcel' do
     let(:parcel) { FactoryGirl.create(:parcel, :rejected) }
-    let(:acceptance_status) { 'accepted' }
+    let(:status) { 'accepted' }
     let(:operation_kind) { 'order_accepted' }
 
     context 'without an author' do
@@ -175,7 +175,7 @@ RSpec.describe ParcelAcceptanceService do
 
   describe 'accepting accepted parcel' do
     let(:parcel) { FactoryGirl.create(:parcel, :accepted) }
-    let(:acceptance_status) { 'accepted' }
+    let(:status) { 'accepted' }
     let(:author) { nil }
 
     include_examples 'nothing changes'
@@ -183,7 +183,7 @@ RSpec.describe ParcelAcceptanceService do
 
   describe 'rejecting rejected parcel' do
     let(:parcel) { FactoryGirl.create(:parcel, :rejected) }
-    let(:acceptance_status) { 'rejected' }
+    let(:status) { 'rejected' }
     let(:author) { nil }
 
     include_examples 'nothing changes'

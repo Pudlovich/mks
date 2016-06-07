@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530202136) do
+ActiveRecord::Schema.define(version: 20160607172938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160530202136) do
     t.string   "parcel_number",     limit: 20,                                     null: false
     t.integer  "sender_info_id",                                                   null: false
     t.integer  "recipient_info_id",                                                null: false
-    t.integer  "acceptance_status",                                    default: 0, null: false
+    t.integer  "status",                                               default: 0, null: false
   end
 
   add_index "parcels", ["parcel_number"], name: "index_parcels_on_parcel_number", unique: true, using: :btree

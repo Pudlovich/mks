@@ -27,19 +27,19 @@
     = render 'delivery_info_table', info: @parcel.recipient_info
 .row
   = form_for [:employee, @parcel] do |f|
-    = f.hidden_field :acceptance_status
+    = f.hidden_field :status
     .form-group
       = f.fields_for :operation do |o|
         = o.label :additional_info, t('.comment')
         = o.text_area :additional_info, class: 'form-control'
     .col-xs-6
       -unless @parcel.accepted?
-        = f.submit t('.accept'), class: 'btn btn-success pull-right', onclick: "document.getElementById('parcel_acceptance_status').value = 'accepted'"
+        = f.submit t('.accept'), class: 'btn btn-success pull-right', onclick: "document.getElementById('parcel_status').value = 'accepted'"
       -else
         .btn.btn-success.pull-right.inactive= t('.accept')
     .col-xs-6
       -unless @parcel.rejected?
-        = f.submit t('.reject'), class: 'btn btn-danger', onclick: "document.getElementById('parcel_acceptance_status').value = 'rejected'"
+        = f.submit t('.reject'), class: 'btn btn-danger', onclick: "document.getElementById('parcel_status').value = 'rejected'"
       -else
         .btn.btn-danger.inactive= t('.reject')
 -if @operations.count > 0

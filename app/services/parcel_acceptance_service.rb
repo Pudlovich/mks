@@ -1,8 +1,8 @@
 class ParcelAcceptanceService
 
-  def initialize(parcel, acceptance_status, author=nil, additional_info=nil)
+  def initialize(parcel, status, author=nil, additional_info=nil)
     @parcel = parcel
-    @acceptance_status = acceptance_status
+    @status = status
     @author = author
     @additional_info = additional_info
   end
@@ -10,7 +10,7 @@ class ParcelAcceptanceService
   def call
     return false unless valid_request
     Parcel.transaction do
-      @parcel.update!(acceptance_status: @acceptance_status)
+      @parcel.update!(status: @status)
       Operation.create!(parcel: @parcel, kind: operation_kind, user: @author, additional_info: @additional_info)
       true
     end
@@ -19,11 +19,11 @@ class ParcelAcceptanceService
   private
 
   def valid_request
-    (['accepted', 'rejected'].include? @acceptance_status) && (@parcel.acceptance_status != @acceptance_status)
+    (['accepted', 'rejected'].include? @status) && (@parcel.status != @status)
   end
 
   def operation_kind
-    return 'order_accepted' if @acceptance_status == 'accepted'
-    return 'order_rejected' if @acceptance_status == 'rejected'
+    return 'order_accepted' if @status == 'accepted'
+    return 'order_rejected' if @status == 'rejected'
   end
 end

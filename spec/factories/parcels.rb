@@ -21,14 +21,14 @@ FactoryGirl.define do
     end
 
     trait :accepted do
-      acceptance_status 'accepted'
+      status 'accepted'
       after(:create) do |parcel|
         FactoryGirl.create(:operation, :order_accepted, parcel: parcel)
       end
     end
 
     trait :rejected do
-      acceptance_status 'rejected'
+      status 'rejected'
       after(:create) do |parcel|
         FactoryGirl.create(:operation, :order_rejected, parcel: parcel)
       end
