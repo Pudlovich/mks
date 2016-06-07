@@ -4,6 +4,7 @@ class Operation < ActiveRecord::Base
 
   validates :kind, :parcel, presence: true
   validate :operation_dealing_with_parcels_has_a_place
+  validate :creation_is_parcels_first_operation
 
   scope :newest_first, -> { order(created_at: :desc) }
 
@@ -25,6 +26,12 @@ class Operation < ActiveRecord::Base
   def operation_dealing_with_parcels_has_a_place
     unless place.present? || ['order_created', 'order_accepted', 'order_rejected'].include?(kind)
       errors.add(:place, :blank)
+    end
+  end
+
+  def creation_is_parcels_first_operation
+    if kind == 'order_created' && parcel.operations.count != 0
+      errors.add(:kind, :invalid)
     end
   end
 end

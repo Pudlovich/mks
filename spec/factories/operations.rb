@@ -2,6 +2,10 @@ FactoryGirl.define do
   factory :operation do
     parcel
 
+    trait :order_created do
+      kind 'order_created'
+    end
+
     trait :order_accepted do
       kind 'order_accepted'
       user { FactoryGirl.create(:user, :employee) }

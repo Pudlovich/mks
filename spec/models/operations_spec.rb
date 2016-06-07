@@ -11,7 +11,7 @@ RSpec.describe Operation, type: :model do
 
   it { should define_enum_for(:kind) }
 
-  describe 'place validations' do
+  describe 'place validation' do
     let(:parcel) { FactoryGirl.create(:parcel) }
     before(:each) do
       parcel
@@ -93,5 +93,12 @@ RSpec.describe Operation, type: :model do
         FactoryGirl.create(:operation, :parcel_delivered, :with_place, parcel: parcel)
       }.to change(Operation,:count).by(1)
     end
+  end
+
+  it 'prevents from creating multiple order_created operations for the same parcel' do
+    parcel = FactoryGirl.create(:parcel)
+    expect{
+      FactoryGirl.create(:operation, :order_created, parcel: parcel)
+    }.to raise_error(ActiveRecord::RecordInvalid)
   end
 end
