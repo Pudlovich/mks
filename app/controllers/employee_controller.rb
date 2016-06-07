@@ -6,4 +6,8 @@ class EmployeeController < ApplicationController
       redirect_to root_path , alert: t('errors.messages.not_authorized')
     end
   end
+
+  def current_employee
+    current_user
+  end
 end
