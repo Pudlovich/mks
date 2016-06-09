@@ -1,6 +1,9 @@
 class Employee::ParcelsController < EmployeeController
 
   def index
+    if parcel = Parcel.find_by(parcel_number: params[:parcel_number])
+      redirect_to edit_employee_parcel_path(parcel)
+    end
     @pending_parcels = Parcel.pending.newest_first
     @accepted_parcels = Parcel.accepted.newest_first
     @rejected_parcels = Parcel.rejected.newest_first

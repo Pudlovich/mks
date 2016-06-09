@@ -1,23 +1,29 @@
 =link_to t('navigation.back'), employee_parcels_path
-%h1
-  =t('.parcel_no', parcel_number: @parcel.parcel_number)
-%table.table.centered-text-table
-  %thead
-    %tr
-      %th= Parcel.human_attribute_name('weight')
-      %th= Parcel.human_attribute_name('price')
-      %th= Parcel.human_attribute_name('from')
-      %th= Parcel.human_attribute_name('to')
-      %th= Parcel.human_attribute_name('created_at')
-      %th= Parcel.human_attribute_name('name')
-  %tbody
-    %tr
-      %td= number_to_kg(@parcel.weight)
-      %td= number_to_currency(@parcel.price)
-      %td= @parcel.from
-      %td= @parcel.to
-      %td= l @parcel.created_at
-      %td= @parcel.name
+.row
+  %h1.pull-left
+    =t('.parcel_no', parcel_number: @parcel.parcel_number)
+  .pull-right
+    =link_to 'Dodaj operację', new_employee_operation_path(parcel_number: @parcel.parcel_number), class: 'btn btn-primary pull-right add-operation-button'
+.row
+  %table.table.centered-text-table
+    %thead
+      %tr
+        %th= Parcel.human_attribute_name('weight')
+        %th= Parcel.human_attribute_name('price')
+        %th= Parcel.human_attribute_name('from')
+        %th= Parcel.human_attribute_name('to')
+        %th= Parcel.human_attribute_name('created_at')
+        -if @parcel.name
+          %th= Parcel.human_attribute_name('name')
+    %tbody
+      %tr
+        %td= number_to_kg(@parcel.weight)
+        %td= number_to_currency(@parcel.price)
+        %td= @parcel.from
+        %td= @parcel.to
+        %td= l @parcel.created_at
+        -if @parcel.name
+          %td= @parcel.name
 .row
   .col-md-6.text-center
     %h3= t('.sender')

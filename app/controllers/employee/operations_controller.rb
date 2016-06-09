@@ -2,7 +2,7 @@ class Employee::OperationsController < EmployeeController
 
   def new
     @operation = Operation.new
-    @parcel = Parcel.new
+    @parcel = Parcel.new(parcel_number: params[:parcel_number])
   end
 
   def create

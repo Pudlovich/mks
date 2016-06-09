@@ -1,0 +1,7 @@
+.form-inline.find-parcel
+  = form_tag employee_parcels_path, method: :get do
+    .form-group
+      = label_tag :parcel_number, t('.parcel_number')
+      = text_field_tag :parcel_number, nil, class: 'form-control'
+    .form-group
+      = submit_tag t('.button'), class: 'btn btn-primary'

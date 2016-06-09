@@ -170,6 +170,10 @@ pl:
       update:
         status_changed_succesfully: 'Zmieniono status przesyłki'
         status_change_not_possible: 'Nie udało się zmienić statusu przesyłki'
+      find_parcel_form:
+        heading: 'Znajdź przesyłkę'
+        parcel_number: 'Numer przesyłki'
+        button: 'Szukaj!'
     operations:
       new:
         title: 'Utwórz operację'

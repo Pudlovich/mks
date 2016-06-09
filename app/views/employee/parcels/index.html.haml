@@ -1,16 +1,25 @@
-%h1= t('.parcels')
-%h3= t('.pending')
-.pending-parcels
+.row
+  .pull-left
+    %h1= t('.parcels')
+  .tracking-module.pull-right
+    = render 'find_parcel_form'
+.row
+  %h3= t('.pending')
+  .pending-parcels
   = render 'parcel_table', parcels: @pending_parcels
-%h3= t('.rejected')
-.rejected-parcels
-  = render 'parcel_table', parcels: @rejected_parcels
-%h3= t('.accepted')
-.accepted-parcels
-  = render 'parcel_table', parcels: @accepted_parcels
-%h3= t('.in_transit')
-.parcels-in-transit
-  = render 'parcel_table', parcels: @parcels_in_transit
-%h3= t('.delivered')
-.delivered-parcels
-  = render 'parcel_table', parcels: @delivered_parcels
+.row
+  %h3= t('.rejected')
+  .rejected-parcels
+    = render 'parcel_table', parcels: @rejected_parcels
+.row
+  %h3= t('.accepted')
+  .accepted-parcels
+    = render 'parcel_table', parcels: @accepted_parcels
+.row
+  %h3= t('.in_transit')
+  .parcels-in-transit
+    = render 'parcel_table', parcels: @parcels_in_transit
+.row
+  %h3= t('.delivered')
+  .delivered-parcels
+    = render 'parcel_table', parcels: @delivered_parcels
