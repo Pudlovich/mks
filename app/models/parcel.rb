@@ -48,7 +48,8 @@ class Parcel < ActiveRecord::Base
 
   def set_price
     # dummy pricing function, to be substituted by actual business logic
-    self.price = 10
+    self.price = 5
+    self.price += weight.floor if weight
   end
 
   def generate_parcel_number
