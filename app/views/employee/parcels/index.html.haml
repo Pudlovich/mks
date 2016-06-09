@@ -1,9 +1,16 @@
 %h1= t('.parcels')
 %h3= t('.pending')
-= render 'parcel_table', parcels: @pending_parcels
+.pending-parcels
+  = render 'parcel_table', parcels: @pending_parcels
 %h3= t('.rejected')
 .rejected-parcels
   = render 'parcel_table', parcels: @rejected_parcels
 %h3= t('.accepted')
 .accepted-parcels
   = render 'parcel_table', parcels: @accepted_parcels
+%h3= t('.in_transit')
+.parcels-in-transit
+  = render 'parcel_table', parcels: @parcels_in_transit
+%h3= t('.delivered')
+.delivered-parcels
+  = render 'parcel_table', parcels: @delivered_parcels

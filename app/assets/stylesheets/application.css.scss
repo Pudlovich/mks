@@ -146,6 +146,10 @@ span.unit{
     background-color: #e0ffe0;
 }
 
+.delivered-parcels > .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #e0ffe0;
+}
+
 .information-list > tbody > tr > td:nth-of-type(odd){
   font-weight: bold;
   text-align: right;

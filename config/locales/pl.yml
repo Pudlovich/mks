@@ -156,6 +156,8 @@ pl:
         pending: 'Oczekujące'
         rejected: 'Odrzucone'
         accepted: 'Zaakceptowane'
+        in_transit: 'W drodze'
+        delivered: 'Doręczone'
       edit:
         parcel_no: 'Przesyłka nr %{parcel_number}'
         recipient_city: Miasto odbiorcy

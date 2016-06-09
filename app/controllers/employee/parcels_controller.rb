@@ -4,6 +4,8 @@ class Employee::ParcelsController < EmployeeController
     @pending_parcels = Parcel.pending.newest_first
     @accepted_parcels = Parcel.accepted.newest_first
     @rejected_parcels = Parcel.rejected.newest_first
+    @parcels_in_transit = Parcel.in_transit.newest_first
+    @delivered_parcels = Parcel.delivered.newest_first
   end
 
   def edit
