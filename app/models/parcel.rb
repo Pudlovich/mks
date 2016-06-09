@@ -20,8 +20,8 @@ class Parcel < ActiveRecord::Base
   attr_localized :price, :weight
 
   validates :width, :height, :depth, :weight, :price, :parcel_number, :sender_info, :recipient_info, :status, presence: true
-  validates :weight, :price, numericality: { greater_than: 0 }
-  validates :height, :depth, :width, numericality: { only_integer: true, greater_than: 0 }
+  validates :weight, :price, numericality: { greater_than: 0.1, less_than: 1000 }
+  validates :height, :depth, :width, numericality: { only_integer: true, greater_than: 0, less_than: 1000 }
   validates :parcel_number, uniqueness: true
 
   scope :newest_first, -> { order(created_at: :desc) }
