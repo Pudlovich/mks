@@ -49,14 +49,14 @@
     %thead
       %tr
         %th= Operation.human_attribute_name('created_at')
-        %th= Operation.human_attribute_name('kind')
+        %th= Operation.model_name.human
         %th= Operation.human_attribute_name('additional_info')
         %th= Operation.human_attribute_name('user')
     %tbody
       - @operations.each do |operation|
         %tr
           %td= l operation.created_at
-          %td= translate_kind(operation.kind)
+          %td= operation_summary(operation)
           %td= operation.additional_info
           %td= operation.author_email if operation.user
 

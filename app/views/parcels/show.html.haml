@@ -3,16 +3,18 @@
 %table.table.table-striped.centered-text-table
   %thead
     %tr
+      %th= t('.last_operation')
+      %th= Parcel.human_attribute_name('status')
       %th= t('.recipient_city')
       %th= Parcel.human_attribute_name('weight')
-      %th= Parcel.human_attribute_name('created_at')
       -if @parcel.name
         %th= Parcel.human_attribute_name('name')
   %tbody
     %tr
+      %td= l @parcel.last_operation_time
+      %td= parcel_status_human(@parcel)
       %td= @parcel.recipient_city
       %td= number_to_kg(@parcel.weight)
-      %td= l @parcel.created_at
       -if @parcel.name
         %td= @parcel.name
 -if @operations.count > 0
@@ -21,11 +23,11 @@
     %thead
       %tr
         %th= Operation.human_attribute_name('created_at')
-        %th= Operation.human_attribute_name('kind')
+        %th= Operation.model_name.human
         %th= Operation.human_attribute_name('additional_info')
     %tbody
       - @operations.each do |operation|
         %tr
           %td= l operation.created_at
-          %td= translate_kind(operation.kind)
+          %td= operation_summary(operation)
           %td= operation.additional_info

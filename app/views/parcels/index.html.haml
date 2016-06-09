@@ -7,7 +7,7 @@
       %tr
         %th= Parcel.human_attribute_name('parcel_number')
         %th= t('.recipient_city')
-        %th= Parcel.human_attribute_name('weight')
+        %th= Parcel.human_attribute_name('status')
         %th= Parcel.human_attribute_name('price')
         %th= Parcel.human_attribute_name('created_at')
         -if @parcels.any? { |parcel| parcel.name.present? }
@@ -18,7 +18,7 @@
           %td
             = link_to parcel.parcel_number, parcel_path(parcel.parcel_number)
           %td= parcel.recipient_city
-          %td= number_to_kg(parcel.weight)
+          %td= parcel_status_human(parcel)
           %td= number_to_currency(parcel.price)
           %td= l parcel.created_at
           -if @parcels.any? { |parcel| parcel.name.present? }

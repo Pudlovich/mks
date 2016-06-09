@@ -40,6 +40,10 @@ class Parcel < ActiveRecord::Base
     recipient_info.basic_address
   end
 
+  def last_operation_time
+    operations.last.created_at
+  end
+
   private
 
   def set_price

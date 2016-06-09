@@ -11,6 +11,11 @@ pl:
         one: "Przesyłka"
         few: "%{count} przesyłki"
         many: "%{count} przesyłek"
+      operation:
+        zero: "0 operacji"
+        one: "Operacja"
+        few: "%{count} operacje"
+        many: "%{count} operacji"
       sender_info: "Dane nadawcy"
       recipient_info: "Dane odbiorcy"
     attributes:
@@ -130,6 +135,7 @@ pl:
       recipient_city: Miasto odbiorcy
       history: 'Historia:'
       when: Kiedy
+      last_operation: 'Ostatnia operacja'
     create:
       parcel_created_succesfully: Pomyślnie utworzono przesyłkę
   admin:
