@@ -32,8 +32,15 @@ pl:
         price: 'Cena'
         created_at: 'Data utworzenia'
         parcel_number: 'Numer przesyłki'
+        status: 'Status'
         from: Skąd
         to: Dokąd
+        statuses:
+          pending: Oczekuje na akceptację
+          accepted: Zaakceptowano zlecenie
+          rejected: Odrzucono zlecenie
+          in_transit: W drodze
+          delivered: Doręczono
       sender_info:
         email: Adres email
         contact_name: Nazwisko osoby kontaktowej
@@ -122,6 +129,7 @@ pl:
       parcel_no: 'Przesyłka nr %{parcel_number}'
       recipient_city: Miasto odbiorcy
       history: 'Historia:'
+      when: Kiedy
     create:
       parcel_created_succesfully: Pomyślnie utworzono przesyłkę
   admin:

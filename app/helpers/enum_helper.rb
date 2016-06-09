@@ -19,4 +19,8 @@ module EnumHelper
       [translate_kind(kind), kind]
     end
   end
+
+  def translate_status(status)
+    I18n.t("activerecord.attributes.parcel.statuses.#{status}")
+  end
 end
