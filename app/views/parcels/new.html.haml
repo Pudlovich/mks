@@ -3,7 +3,7 @@
     - @parcel.errors.full_messages.each do |message|
       %p= message
 
-%h2.form-title
+%h1.form-title
   = t('.title')
 = form_for @parcel, url: parcels_path, method: :post do |f|
   .col-md-4
