@@ -22,6 +22,9 @@ pl:
       user:
         email: 'Adres email'
         password: 'Hasło'
+        password_confirmation: 'Potwierdzenie hasła'
+        confirmation_token: Kod potwierdzenia
+        current_password: Obecne hasło
         role: 'Rola'
         created_at: 'Data utworzenia'
         roles:
@@ -84,10 +87,49 @@ pl:
           parcel_delivered: Doręczono
     errors:
       models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: jest niewłaściwe
+            confirmation_token:
+              invalid: jest nieprawidłowy
+        parcel:
+          attributes:
+            name:
+            width:
+            height:
+            depth:
+            weight:
+            price:
+            parcel_number:
+            status:
         operation:
           attributes:
             kind:
               invalid_for_this_parcel: jest niewłaściwy dla tej przesyłki
+            user:
+            place:
+            additional_info:
+  errors:
+    attributes:
+      email:
+        blank: nie może być pusty
+        invalid: jest nieprawidłowy
+        taken: został już zajęty
+        not_found: nie został znaleziony
+      contact_name:
+        blank:
+      zip_code:
+        blank:
+      address:
+        blank:
+      city:
+        blank:
+      phone_number:
+        blank:
+      company_name:
+        blank:
+      other_info:
   helpers:
     label:
       user:

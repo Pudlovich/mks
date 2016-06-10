@@ -35,10 +35,10 @@ pl:
         one: jest za długie (maksymalnie jeden znak)
         other: jest za długie (maksymalnie %{count} znaków)
       too_short:
-        few: jest za krótkie (przynajmniej %{count} znaki)
-        many: jest za krótkie (przynajmniej %{count} znaków)
-        one: jest za krótkie (przynajmniej jeden znak)
-        other: jest za krótkie (przynajmniej %{count} znaków)
+        few: jest za krótkie (co najmniej %{count} znaki)
+        many: jest za krótkie (co najmniej %{count} znaków)
+        one: jest za krótkie (co najmniej jeden znak)
+        other: jest za krótkie (co najmniej %{count} znaków)
       wrong_length:
         few: ma nieprawidłową długość (powinna wynosić %{count} znaki)
         many: ma nieprawidłową długość (powinna wynosić %{count} znaków)
