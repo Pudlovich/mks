@@ -25,6 +25,7 @@ pl:
         password_confirmation: 'Potwierdzenie hasła'
         confirmation_token: Kod potwierdzenia
         current_password: Obecne hasło
+        reset_password_token: Kod odzyskania hasła
         role: 'Rola'
         created_at: 'Data utworzenia'
         roles:
@@ -93,22 +94,62 @@ pl:
               confirmation: jest niewłaściwe
             confirmation_token:
               invalid: jest nieprawidłowy
+            reset_password_token:
+              invalid: jest nieprawidłowy
         parcel:
           attributes:
             name:
+              blank: nie może być pusta
+              invalid: jest nieprawidłowa
             width:
+              blank: nie może być pusta
+              invalid: jest nieprawidłowa
+              greater_than: musi być większa od %{count}
+              less_than: musi być mniejsza od %{count}
+              not_a_number: musi być liczbą
+              not_an_integer: musi być liczbą całkowitą
             height:
+              blank: nie może być pusta
+              invalid: jest nieprawidłowa
+              greater_than: musi być większa od %{count}
+              less_than: musi być mniejsza od %{count}
+              not_a_number: musi być liczbą
+              not_an_integer: musi być liczbą całkowitą
             depth:
+              blank: nie może być pusta
+              invalid: jest nieprawidłowa
+              greater_than: musi być większa od %{count}
+              less_than: musi być mniejsza od %{count}
+              not_a_number: musi być liczbą
+              not_an_integer: musi być liczbą całkowitą
             weight:
+              blank: nie może być pusta
+              invalid: jest nieprawidłowa
+              greater_than: musi być większa od %{count}
+              less_than: musi być mniejsza od %{count}
+              not_a_number: musi być liczbą
+              not_an_integer: musi być liczbą całkowitą
             price:
+              blank: nie może być pusta
+              invalid: jest nieprawidłowa
+              greater_than: musi być większa od %{count}
+              less_than: musi być mniejsza od %{count}
+              not_a_number: musi być liczbą
+              not_an_integer: musi być liczbą całkowitą
             parcel_number:
+              blank: nie może być pusty
+              invalid: jest nieprawidłowy
             status:
+              blank: nie może być pusty
+              invalid: jest nieprawidłowy
         operation:
           attributes:
             kind:
               invalid_for_this_parcel: jest niewłaściwy dla tej przesyłki
             user:
             place:
+              blank: nie może być puste
+              invalid: jest nieprawidłowe
             additional_info:
   errors:
     attributes:
@@ -118,18 +159,20 @@ pl:
         taken: został już zajęty
         not_found: nie został znaleziony
       contact_name:
-        blank:
+        blank: nie może być puste
+        invalid: jest nieprawidłowe
       zip_code:
-        blank:
+        blank: nie może być pusty
+        invalid: jest nieprawidłowy
       address:
-        blank:
+        blank: nie może być pusty
+        invalid: jest nieprawidłowy
       city:
-        blank:
+        blank: nie może być puste
+        invalid: jest nieprawidłowe
       phone_number:
-        blank:
-      company_name:
-        blank:
-      other_info:
+        blank: nie może być pusty
+        invalid: jest nieprawidłowy
   helpers:
     label:
       user:
