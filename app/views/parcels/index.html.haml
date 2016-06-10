@@ -23,5 +23,8 @@
           %td= l parcel.created_at
           -if @parcels.any? { |parcel| parcel.name.present? }
             %td= parcel.name
+  .bottom-pagination-wrapper
+    .pagination
+      = will_paginate @users
 -unless user_signed_in?
   %p= t('.not_logged_in.text_html', log_in: link_to(t('.not_logged_in.log_in'), new_user_session_path))

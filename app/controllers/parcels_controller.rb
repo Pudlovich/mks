@@ -6,7 +6,7 @@ class ParcelsController < ApplicationController
       redirect_to parcel_path(params[:parcel_number])
     end
     if user_signed_in?
-      @parcels = current_user.parcels.newest_first
+      @parcels = current_user.parcels.newest_first.paginate(page: params[:page], per_page: 10)
     end
   end
 
