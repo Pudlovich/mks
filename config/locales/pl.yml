@@ -282,5 +282,7 @@ pl:
     back: Powrót
     parcels: Przesyłki
     my_parcels: Moje przesyłki
-    next: Następne
-    previous: Poprzednie
+  will_paginate:
+    previous_label: "&#8592; Poprzednie"
+    next_label: "Następne &#8594;"
+    page_gap: "&hellip;"

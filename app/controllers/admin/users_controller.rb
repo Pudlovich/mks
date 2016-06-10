@@ -1,7 +1,7 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users = User.newest_first
+    @users = User.newest_first.paginate(page: params[:page], per_page: 8)
   end
 
   def edit
