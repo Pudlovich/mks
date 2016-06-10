@@ -91,10 +91,13 @@ pl:
         user:
           attributes:
             password_confirmation:
+              blank: nie może być puste
               confirmation: jest niewłaściwe
             confirmation_token:
+              blank: nie może być pusty
               invalid: jest nieprawidłowy
             reset_password_token:
+              blank: nie może być pusty
               invalid: jest nieprawidłowy
         parcel:
           attributes:
@@ -145,12 +148,19 @@ pl:
         operation:
           attributes:
             kind:
+              blank: nie może być pusty
+              invalid: jest nieprawidłowy
               invalid_for_this_parcel: jest niewłaściwy dla tej przesyłki
             user:
+              blank: nie może być pusty
+              invalid: jest nieprawidłowy
+              not_found: nie został znaleziony
             place:
               blank: nie może być puste
               invalid: jest nieprawidłowe
-            additional_info:
+            parcel:
+              blank: o podanym numerze nie istnieje
+              invalid: o podanym numerze nie istnieje
   errors:
     attributes:
       email:
