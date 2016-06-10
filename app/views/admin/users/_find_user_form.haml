@@ -1,0 +1,7 @@
+.form-inline.find-user
+  = form_tag admin_users_path, method: :get do
+    .form-group
+      = label_tag :email, t('.email')
+      = text_field_tag :email, nil, class: 'form-control'
+    .form-group
+      = submit_tag t('.button'), class: 'btn btn-primary'

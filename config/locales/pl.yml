@@ -246,6 +246,10 @@ pl:
         button: 'Zapisz'
       update:
         role_changed_succesfully: 'Zmiana roli zakończyła się powodzeniem'
+      find_user_form:
+        heading: 'Znajdź użytkownika'
+        email: 'Email'
+        button: 'Szukaj!'
   employee:
     parcels:
       index:

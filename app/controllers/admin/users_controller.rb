@@ -1,6 +1,9 @@
 class Admin::UsersController < AdminController
 
   def index
+    if user = User.find_by(email: params[:email])
+      redirect_to edit_admin_user_path(user)
+    end
     @users = User.newest_first.paginate(page: params[:page], per_page: 9)
   end
 
