@@ -218,6 +218,8 @@ pl:
     new:
       title: Nadaj przesyłkę
       parcel_name_tooltip: 'Informacja dla użytkowników śledzących przesyłkę'
+      in_case_of_problems_we_will_call_this_number: 'Numer kontaktowy do nadawcy na wypadek problemów ze zleceniem'
+      other_info_examples: 'Np. "budynek A, drugie piętro"'
       button: Nadaj przesyłkę
     index:
       your_parcels: Twoje przesyłki

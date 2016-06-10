@@ -189,3 +189,10 @@ span.unit{
   formnovalidate: formnovalidate;
   novalidate: novalidate;
 }
+
+.required label:after {
+    color: #e32;
+    content: '*';
+    padding-left: 2px;
+    display:inline;
+}

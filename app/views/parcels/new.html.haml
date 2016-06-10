@@ -9,11 +9,11 @@
   .col-md-4
     .h3.text-center
       = Parcel.model_name.human
-    .form-group
+    .form-group.required
       = f.label :weight
       %span.unit (kg)
       = f.text_field :weight, class: 'form-control'
-    .form-group
+    .form-group.required
       .col-xs-4.no-padding
         = f.label :width
       .col-xs-4.text-center
@@ -37,29 +37,31 @@
     .h3.text-center
       = RecipientInfo.model_name.human
     = f.fields_for :recipient_info do |s|
-      .form-group
+      .form-group.required
         = s.label :email
         = s.email_field :email, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :contact_name
         = s.text_field :contact_name, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :zip_code
         = s.text_field :zip_code, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :address
         = s.text_field :address, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :city
         = s.text_field :city, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :phone_number
+        %i.fa.fa-info-circle.has-tooltip{ 'data-toggle' => 'tooltip', 'data-placement' => 'right', title: t('.in_case_of_problems_we_will_call_this_number') }
         = s.text_field :phone_number, class: 'form-control'
       .form-group
         = s.label :company_name
         = s.text_field :company_name, class: 'form-control'
       .form-group
         = s.label :other_info
+        %i.fa.fa-info-circle.has-tooltip{ 'data-toggle' => 'tooltip', 'data-placement' => 'right', title: t('.other_info_examples') }
         = s.text_field :other_info, class: 'form-control'
       .form-group
         = s.check_box :residential
@@ -68,22 +70,22 @@
     .h3.text-center
       = SenderInfo.model_name.human
     = f.fields_for :sender_info do |s|
-      .form-group
+      .form-group.required
         = s.label :email
         = s.email_field :email, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :contact_name
         = s.text_field :contact_name, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :zip_code
         = s.text_field :zip_code, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :address
         = s.text_field :address, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :city
         = s.text_field :city, class: 'form-control'
-      .form-group
+      .form-group.required
         = s.label :phone_number
         = s.text_field :phone_number, class: 'form-control'
       .form-group
@@ -91,6 +93,7 @@
         = s.text_field :company_name, class: 'form-control'
       .form-group
         = s.label :other_info
+        %i.fa.fa-info-circle.has-tooltip{ 'data-toggle' => 'tooltip', 'data-placement' => 'right', title: t('.other_info_examples') }
         = s.text_field :other_info, class: 'form-control'
       .form-group
         = s.check_box :residential
