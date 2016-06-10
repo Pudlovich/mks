@@ -2,11 +2,14 @@ class ParcelsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
 
   def index
-    if params[:parcel_number].present?
-      redirect_to parcel_path(params[:parcel_number])
+    if params[:parcel_numbers]
+      numbers = params[:parcel_numbers].split(/[\D]+/)
+      @parcels = Parcel.where(parcel_number: numbers).newest_first
+      redirect_to parcel_path(@parcels[0].parcel_number) if @parcels.count == 1
     end
-    if user_signed_in?
+    if user_signed_in? && (@parcels.blank? || @parcels.empty?)
       @parcels = current_user.parcels.newest_first.paginate(page: params[:page], per_page: 10)
+      @pagination = true
     end
   end
 

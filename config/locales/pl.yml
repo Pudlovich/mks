@@ -211,7 +211,8 @@ pl:
       add_an_operation: Utwórz operację
     tracking:
       heading: 'Śledzenie przesyłki'
-      parcel_number: 'Nr przesyłki'
+      parcel_numbers: 'Numery przesyłek'
+      tooltip: 'Można wprowadzić wiele numerów rozdzielonych przecinkami'
       button: 'Śledź!'
   homepage:
     index:
