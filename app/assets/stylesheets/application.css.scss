@@ -104,6 +104,13 @@ footer {
   text-align: center;
 }
 
+.errors{
+  padding: 20px;
+}
+
+.field_with_errors{
+  @extend .has-error
+}
 
 .form-title{
   text-align: center;
