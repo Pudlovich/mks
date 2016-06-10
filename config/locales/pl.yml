@@ -192,8 +192,9 @@ pl:
   application:
     footer:
       contact_us: Kontakt
-      senders: Nadawcy
-      recipients: Odbiorcy
+      send_a_parcel: Nadaj przesyłkę
+      track_parcels: Śledzenie przesyłek
+      home_page: Strona główna
     navbar:
       senders: Nadawcy
       recipients: Odbiorcy

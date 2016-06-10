@@ -3,10 +3,10 @@
   .row
     .col-md-10.col-md-offset-1
       .col-sm-3.text-center
-        = t('.contact_us')
+        = link_to t('.contact_us'), root_path
       .col-sm-3.text-center
-        = t('.senders')
+        = link_to t('.send_a_parcel'), new_parcel_path
       .col-sm-3.text-center
-        = t('.recipients')
+        = link_to t('.track_parcels'), parcels_path
       .col-sm-3.text-center
-        MKS Express
+        = link_to t('.home_page'), root_path
