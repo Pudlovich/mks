@@ -3,7 +3,7 @@ FactoryGirl.define do
     width { Faker::Number.between(1, 100) }
     height { Faker::Number.between(1, 100) }
     depth { Faker::Number.between(1, 100) }
-    weight { Faker::Number.decimal(1,2) }
+    weight { 0.1 + Faker::Number.decimal(1,2).to_f }
 
     recipient_info { FactoryGirl.create(:recipient_info) }
     sender_info { FactoryGirl.create(:sender_info) }
