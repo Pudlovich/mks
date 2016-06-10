@@ -2,7 +2,7 @@ class ParcelsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_not_found
 
   def index
-    if params[:parcel_number]
+    if params[:parcel_number].present?
       redirect_to parcel_path(params[:parcel_number])
     end
     if user_signed_in?
