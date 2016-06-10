@@ -1,4 +1,5 @@
 .row
+  .anchor#pending
   .pull-left
     %h1= t('.parcels')
   .tracking-module.pull-right
@@ -9,32 +10,36 @@
   = render 'parcel_table', parcels: @pending_parcels
   .parcel-pagination-wrapper
     .pagination
-      = will_paginate @pending_parcels, param_name: :pending
+      = will_paginate @pending_parcels, param_name: :pending, params: { anchor: 'pending' }
+.anchor#rejected
 .row
   %h3= t('.rejected')
   .rejected-parcels
     = render 'parcel_table', parcels: @rejected_parcels
   .parcel-pagination-wrapper
     .pagination
-      = will_paginate @rejected_parcels, param_name: :rejected
+      = will_paginate @rejected_parcels, param_name: :rejected, params: { anchor: 'rejected' }
+.anchor#accepted
 .row
   %h3= t('.accepted')
   .accepted-parcels
     = render 'parcel_table', parcels: @accepted_parcels
   .parcel-pagination-wrapper
     .pagination
-      = will_paginate @accepted_parcels, param_name: :accepted
+      = will_paginate @accepted_parcels, param_name: :accepted, params: { anchor: 'accepted' }
+.anchor#in_transit
 .row
   %h3= t('.in_transit')
   .parcels-in-transit
     = render 'parcel_table', parcels: @parcels_in_transit
   .parcel-pagination-wrapper
     .pagination
-      = will_paginate @parcels_in_transit, param_name: :in_transit
+      = will_paginate @parcels_in_transit, param_name: :in_transit, params: { anchor: 'in_transit' }
+.anchor#delivered
 .row
   %h3= t('.delivered')
   .delivered-parcels
     = render 'parcel_table', parcels: @delivered_parcels
   .parcel-pagination-wrapper
     .pagination
-      = will_paginate @delivered_parcels, param_name: :delivered
+      = will_paginate @delivered_parcels, param_name: :delivered, params: { anchor: 'delivered' }
