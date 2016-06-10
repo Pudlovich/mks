@@ -279,4 +279,6 @@ pl:
         operation_created_succesfully: Pomyślnie utworzono operację
         no_place_provided: Nie podano miejsca
   navigation:
-    back: 'Powrót'
+    back: Powrót
+    parcels: Przesyłki
+    my_parcels: Moje przesyłki

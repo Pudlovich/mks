@@ -1,8 +1,8 @@
+=link_to t('navigation.my_parcels'), parcels_path
 - if @parcel.errors.present?
   .errors.bg-danger
     - @parcel.errors.full_messages.each do |message|
       %p= message
-
 %h1.form-title
   = t('.title')
 = form_for @parcel, url: parcels_path, method: :post do |f|
