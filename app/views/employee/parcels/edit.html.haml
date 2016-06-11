@@ -18,7 +18,7 @@
     %tbody
       %tr
         %td= number_to_kg(@parcel.weight)
-        %td= number_to_currency(@parcel.price)
+        %td= number_to_currency(@parcel.price, locale: :pl)
         %td= @parcel.from
         %td= @parcel.to
         %td= l @parcel.created_at

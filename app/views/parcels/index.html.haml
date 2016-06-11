@@ -19,7 +19,7 @@
             = link_to parcel.parcel_number, parcel_path(parcel.parcel_number)
           %td= parcel.recipient_city
           %td= parcel_status_human(parcel)
-          %td= number_to_currency(parcel.price)
+          %td= number_to_currency(parcel.price, locale: :pl)
           %td= l parcel.created_at
           -if @parcels.any? { |parcel| parcel.name.present? }
             %td= parcel.name
