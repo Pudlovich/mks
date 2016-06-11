@@ -1,29 +1,36 @@
 %table.table.information-list
   %tbody
     %tr
-      %td= SenderInfo.human_attribute_name('email')
-      %td= info.email
+      %td.col-xs-6= SenderInfo.human_attribute_name('email')
+      %td.col-xs-6= info.email
     %tr
-      %td= SenderInfo.human_attribute_name('phone_number')
-      %td= info.phone_number
+      %td.col-xs-6= SenderInfo.human_attribute_name('phone_number')
+      %td.col-xs-6= info.phone_number
     %tr
-      %td= SenderInfo.human_attribute_name('company_name')
-      %td= info.company_name
+      %td.col-xs-6= SenderInfo.human_attribute_name('company_name')
+      %td.col-xs-6= info.company_name
     %tr
-      %td= SenderInfo.human_attribute_name('contact_name')
-      %td= info.contact_name
+      %td.col-xs-6= SenderInfo.human_attribute_name('contact_name')
+      %td.col-xs-6= info.contact_name
     %tr
-      %td= SenderInfo.human_attribute_name('address')
-      %td= info.address
+      %td.col-xs-6= SenderInfo.human_attribute_name('address')
+      %td.col-xs-6= info.address
     %tr
-      %td= SenderInfo.human_attribute_name('city')
-      %td= info.city
+      %td.col-xs-6= SenderInfo.human_attribute_name('city')
+      %td.col-xs-6= info.city
     %tr
-      %td= SenderInfo.human_attribute_name('zip_code')
-      %td= info.zip_code
+      %td.col-xs-6= SenderInfo.human_attribute_name('zip_code')
+      %td.col-xs-6= info.zip_code
     %tr
-      %td= SenderInfo.human_attribute_name('residential')
-      %td= t info.residential?.to_s
+      %td.col-xs-6= SenderInfo.human_attribute_name('residential')
+      %td.col-xs-6= t info.residential?.to_s
     %tr
-      %td= SenderInfo.human_attribute_name('other_info')
-      %td= info.other_info
+      %td.col-xs-6= SenderInfo.human_attribute_name('other_info')
+      %td.col-xs-6= info.other_info
+    -if sender.present?
+      %tr
+        %td.col-xs-6= t('.orders')
+        %td.col-xs-6= sender.parcels.count
+      %tr
+        %td.col-xs-6= t('.delivered_parcels')
+        %td.col-xs-6= sender.parcels.delivered.count

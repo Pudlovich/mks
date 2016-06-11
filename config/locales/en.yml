@@ -144,6 +144,9 @@ en:
         heading: Find a parcel
         parcel_number: Parcel number
         button: Find!
+      delivery_info_table:
+        orders: Orders
+        delivered_parcels: Delivered parcels
     operations:
       new:
         title: Create an operation

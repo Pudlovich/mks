@@ -27,10 +27,10 @@
 .row
   .col-md-6.text-center
     %h3= t('.sender')
-    = render 'delivery_info_table', info: @parcel.sender_info
+    = render partial: 'delivery_info_table', locals: { info: @parcel.sender_info, sender: @parcel.sender}
   .col-md-6.text-center
     %h3= t('.recipient')
-    = render 'delivery_info_table', info: @parcel.recipient_info
+    = render partial: 'delivery_info_table', locals: { info: @parcel.sender_info, sender: nil}
 .row
   = form_for [:employee, @parcel] do |f|
     = f.hidden_field :status
