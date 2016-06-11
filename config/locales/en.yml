@@ -1,22 +1,154 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
+  "true": "yes"
+  "false": "no"
+  activerecord:
+    attributes:
+      user:
+        email: Email address
+      parcel:
+        statuses:
+          pending: Pending
+          accepted: Accepted
+          rejected: Rejected
+          in_transit: In transit
+          delivered: Delivered
+      sender_info:
+        email: Email address
+        residential: Residential address
+      recipient_info:
+        email: Email address
+        residential: Residential address
+      operation:
+        kind: Operation kind
+        user: Operation author
+        kinds:
+          order_created: Order created
+          order_accepted: Order accepted
+          order_rejected: Order rejected
+          parcel_picked_up: Parcel picked up
+          parcel_in_sorting_facility: Parcel in sorting facility
+          parcel_in_transit: Parcel in transit
+          parcel_in_delivery: Parcel in delivery
+          parcel_delivered: Delivered
+    errors:
+      models:
+        operation:
+          attributes:
+            kind:
+              invalid_for_this_parcel: is invalid for this parcel
+            parcel:
+              blank: with given number doesn't exist
+              invalid: with given number doesn't exist
+  errors:
+    messages:
+      parcel_not_found: Parcel not found
+      not_authorized: You're not authorized to perform this action
+  helpers:
+    label:
+      user:
+        password_confirmation: Password confirmation
+        current_password: Current password
+        remember_me: Remember me
+  application:
+    footer:
+      contact_us: Contact us
+      send_a_parcel: Send a parcel
+      track_parcels: Tracking
+      home_page: Home page
+    navbar:
+      senders: Senders
+      recipients: Recipients
+      info: Information
+      sign_in: Sign in
+      sign_out: Sign out
+      sign_up: Sign up
+      edit_account: Edit account
+      my_parcels: My parcels
+      admin: Administration
+      users: Users
+      employee: Employee
+      parcels: Parcels
+      add_an_operation: Create operation
+    tracking:
+      heading: Tracking
+      parcel_numbers: Parcel numbers
+      enter_parcel_numbers_separated_by_colon: Enter parcel numbers separated by colon
+      button: Track!
+  homepage:
+    index:
+  parcels:
+    new:
+      title: Send a parcel
+      parcel_name_tooltip: Displayed to users tracking the parcel
+      in_case_of_problems_we_will_call_this_number: Contact number in case of problems with the order
+      other_info_examples: 'e.g. "building A, second floor"'
+      button: Send
+    index:
+      your_parcels: Your parcels
+      not_logged_in:
+        text_html: '%{log_in} to see your parcels'
+        log_in: Sign in
+      recipient_city: Recipient city
+    show:
+      parcel_no: 'Parcel %{parcel_number}'
+      recipient_city: Recipient city
+      history: 'History:'
+      when: When
+      last_operation: Last operation
+    create:
+      parcel_created_succesfully: Parcel created succesfully
+  admin:
+    users:
+      index:
+        users: Users
+        parcels_number: Parcels number
+        edit: Edit
+      edit:
+        parcels_number: Parcels number
+        button: Save
+      update:
+        role_changed_succesfully: Role changed succesfully
+      find_user_form:
+        heading: Find a user
+        email: Email
+        button: Find!
+  employee:
+    parcels:
+      index:
+        parcels: Parcels
+        pending: Pending
+        rejected: Rejected
+        accepted: Accepted
+        in_transit: In transit
+        delivered: Delivered
+      edit:
+        parcel_no: 'Parcel %{parcel_number}'
+        recipient_city: Recipient city
+        accept: Accept
+        reject: Reject
+        sender: Sender
+        recipient: Recipient
+        comment: Comment
+        previous_operations: 'Previous operations:'
+      update:
+        status_changed_succesfully: Status changed succesfully
+        status_change_not_possible: Status change is not possible
+      find_parcel_form:
+        heading: Find a parcel
+        parcel_number: Parcel number
+        button: Find!
+    operations:
+      new:
+        title: Create an operation
+        button: Create
+      create:
+        operation_created_succesfully: Operation created succesfully
+        no_place_provided: No place provided
+  navigation:
+    back: Back
+    parcels: Parcels
+    my_parcels: My parcels
+  will_paginate:
+    previous_label: "&#8592; Previous"
+    next_label: "Next &#8594;"
+    page_gap: "&hellip;"
