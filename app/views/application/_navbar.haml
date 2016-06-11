@@ -51,3 +51,9 @@
               = link_to t('.sign_in'), new_user_session_path
             %li
               = link_to t('.sign_up'), new_user_registration_path
+          %li.locale-selector.first
+            %span
+              = link_to 'PL', url_for( :locale => 'pl' ), class: "#{I18n.locale == :pl}"
+          %li.locale-selector
+            %span
+              = link_to 'EN', url_for( :locale => 'en' ), class: "#{I18n.locale == :en}"

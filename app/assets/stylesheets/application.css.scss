@@ -70,6 +70,22 @@ html{
     background-color: #FF7D0A;
   }
 
+  ul.nav.navbar-nav > li.locale-selector > span{
+    height: 50%;
+    vertical-align: -84%;
+    border-left: 1px solid #BBB;
+    a {
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+    a.false{
+      color: #BBB;
+    }
+  }
+  ul.nav.navbar-nav > li.locale-selector.first > span{
+    border: 0;
+  }
+
   .icon-bar{
     background-color: white;
   }
