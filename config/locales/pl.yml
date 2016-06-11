@@ -212,7 +212,7 @@ pl:
     tracking:
       heading: 'Śledzenie przesyłki'
       parcel_numbers: 'Numery przesyłek'
-      tooltip: 'Można wprowadzić wiele numerów rozdzielonych przecinkami'
+      enter_parcel_numbers_separated_by_colon: 'Można wprowadzić wiele numerów rozdzielonych przecinkami'
       button: 'Śledź!'
   homepage:
     index:

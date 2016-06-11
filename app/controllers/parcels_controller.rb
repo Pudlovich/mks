@@ -6,8 +6,9 @@ class ParcelsController < ApplicationController
       numbers = params[:parcel_numbers].split(/[\D]+/)
       @parcels = Parcel.where(parcel_number: numbers).newest_first
       redirect_to parcel_path(@parcels[0].parcel_number) if @parcels.count == 1
+      rescue_not_found if @parcels.empty?
     end
-    if user_signed_in? && (@parcels.blank? || @parcels.empty?)
+    if user_signed_in? && @parcels.blank?
       @parcels = current_user.parcels.newest_first.paginate(page: params[:page], per_page: 10)
       @pagination = true
     end
