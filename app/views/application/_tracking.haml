@@ -5,5 +5,6 @@
       = label_tag :parcel_numbers, t('.parcel_numbers')
       %i.fa.fa-info-circle.has-tooltip{ 'data-toggle' => 'tooltip', 'data-placement' => 'right', title: t('.enter_parcel_numbers_separated_by_colon') }
       = text_field_tag :parcel_numbers, nil, class: 'form-control'
+      = hidden_field_tag :locale, I18n.locale
     .form-group
       = submit_tag t('.button'), class: 'btn btn-primary'

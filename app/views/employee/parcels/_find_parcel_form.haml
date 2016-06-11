@@ -3,5 +3,6 @@
     .form-group
       = label_tag :parcel_number, t('.parcel_number')
       = text_field_tag :parcel_number, nil, class: 'form-control'
+      = hidden_field_tag :locale, I18n.locale
     .form-group
       = submit_tag t('.button'), class: 'btn btn-primary'
