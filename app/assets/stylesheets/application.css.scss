@@ -162,15 +162,28 @@ span.unit{
 }
 
 .rejected-parcels > .table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: #ffe9e9;
+  background-color: #ffe9e9;
 }
 
 .accepted-parcels > .table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: #e0ffe0;
+  background-color: #d0ffe0;
 }
 
 .delivered-parcels > .table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: #e0ffe0;
+  background-color: #d0ffe0;
+}
+
+tr.rejected{
+  background-color: #ffe9e9;
+}
+tr.accepted{
+  background-color: #edffee;
+}
+tr.in_transit{
+  background-color: #fffcc0;
+}
+tr.delivered{
+  background-color: #ccffcc;
 }
 
 .information-list > tbody > tr > td:nth-of-type(odd){

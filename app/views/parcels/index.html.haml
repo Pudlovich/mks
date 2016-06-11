@@ -2,7 +2,7 @@
 -if @parcels && @parcels.any?
   %h1
     = t('.your_parcels')
-  %table.table.table-striped.centered-text-table
+  %table.table.centered-text-table
     %thead
       %tr
         %th= Parcel.human_attribute_name('parcel_number')
@@ -14,7 +14,7 @@
           %th= Parcel.human_attribute_name('name')
     %tbody
       - @parcels.each do |parcel|
-        %tr
+        %tr{class: "#{parcel.status}"}
           %td
             = link_to parcel.parcel_number, parcel_path(parcel.parcel_number)
           %td= parcel.recipient_city
