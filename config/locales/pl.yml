@@ -246,10 +246,12 @@ pl:
     users:
       index:
         users: 'Użytkownicy'
-        parcels_number: 'Liczba przesyłek'
+        orders: Zlecenia
+        delivered_parcels: Doręczone przesyłki
         edit: 'Edytuj'
       edit:
-        parcels_number: 'Liczba przesyłek'
+        orders: Zlecenia
+        delivered_parcels: Doręczone przesyłki
         button: 'Zapisz'
       update:
         role_changed_succesfully: 'Zmiana roli zakończyła się powodzeniem'

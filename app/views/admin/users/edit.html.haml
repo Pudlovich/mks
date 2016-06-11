@@ -6,7 +6,8 @@
     %tr
       %th= User.human_attribute_name('email')
       %th= User.human_attribute_name('created_at')
-      %th= t('.parcels_number')
+      %th= t('.orders')
+      %th= t('.delivered_parcels')
       %th= User.human_attribute_name('role')
       %th
   %tbody
@@ -14,6 +15,7 @@
       %td= @user.email
       %td= l @user.created_at
       %td= @user.parcels.count
+      %td= @user.parcels.delivered.count
       = form_for [:admin, @user] do |f|
         %td= f.select(:role, roles_for_select, {selected: @user.role}, {class: "form-control"})
         %td= f.submit t('.button'), class: 'btn btn-primary'

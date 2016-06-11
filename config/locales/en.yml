@@ -105,10 +105,12 @@ en:
     users:
       index:
         users: Users
-        parcels_number: Parcels number
+        orders: Orders
+        delivered_parcels: Delivered parcels
         edit: Edit
       edit:
-        parcels_number: Parcels number
+        orders: Orders
+        delivered_parcels: Delivered parcels
         button: Save
       update:
         role_changed_succesfully: Role changed succesfully

@@ -10,7 +10,8 @@
         %th= User.human_attribute_name('email')
         %th= User.human_attribute_name('created_at')
         %th= User.human_attribute_name('role')
-        %th= t('.parcels_number')
+        %th= t('.orders')
+        %th= t('.delivered_parcels')
         %th
     %tbody
       - @users.each do |user|
@@ -19,6 +20,7 @@
           %td= l user.created_at
           %td= translate_role(user.role)
           %td= user.parcels.count
+          %td= user.parcels.delivered.count
           %td= link_to t('.edit'), edit_admin_user_path(user), class: 'btn btn-primary'
   .bottom-pagination-wrapper
     .pagination
