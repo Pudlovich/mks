@@ -169,6 +169,14 @@ span.unit{
   right: 8px;
 }
 
+.price{
+  height: 20px;
+  text-align: center;
+  #calculated-price{
+    color: #300;
+  }
+}
+
 .form-control.no-bg{
   background: rgba(0, 0, 0, 0);
 }

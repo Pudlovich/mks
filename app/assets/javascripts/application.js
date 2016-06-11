@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sass
+//= require calculate_price
 //= require_tree .
 
 $(document).ready(function() {

@@ -52,8 +52,9 @@ class Parcel < ActiveRecord::Base
 
   def calculate_price(weight, height, depth, width)
     price = 10
-    dimensional_weight = (height.to_i * width.to_i * width.to_i) / 6000
-    price += [dimensional_weight, weight.to_i].max
+    weight = weight
+    dimensional_weight = ((height.to_i * width.to_i * width.to_i) / 6000.0)
+    price += [dimensional_weight, weight.to_f].max.round(1)
   end
 
   def generate_parcel_number
