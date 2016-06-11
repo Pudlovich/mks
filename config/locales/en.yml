@@ -127,6 +127,7 @@ en:
         delivered: Delivered
       edit:
         parcel_no: 'Parcel %{parcel_number}'
+        add_an_operation: Add an operation
         recipient_city: Recipient city
         accept: Accept
         reject: Reject

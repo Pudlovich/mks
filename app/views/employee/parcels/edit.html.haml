@@ -3,7 +3,7 @@
   %h1.pull-left
     =t('.parcel_no', parcel_number: @parcel.parcel_number)
   .pull-right
-    =link_to 'Dodaj operację', new_employee_operation_path(parcel_number: @parcel.parcel_number), class: 'btn btn-primary pull-right add-operation-button'
+    =link_to t('.add_an_operation'), new_employee_operation_path(parcel_number: @parcel.parcel_number), class: 'btn btn-primary pull-right add-operation-button'
 .row
   %table.table.centered-text-table
     %thead
