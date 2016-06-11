@@ -1,4 +1,6 @@
 pl:
+  "true": "tak"
+  "false": "nie"
   activerecord:
     models:
       user:
@@ -162,6 +164,9 @@ pl:
               blank: o podanym numerze nie istnieje
               invalid: o podanym numerze nie istnieje
   errors:
+    messages:
+      parcel_not_found: Nie znaleziono takiej przesyłki
+      not_authorized: Nie masz wystarczających uprawnień do wykonania tej akcji
     attributes:
       email:
         blank: nie może być pusty

@@ -1,12 +1,8 @@
 pl:
-  "true": "tak"
-  "false": "nie"
   errors:
     format: "%{attribute} %{message}"
     messages:
       record_not_found: Nie znaleziono danego elementu
-      parcel_not_found: Nie znaleziono takiej przesyłki
-      not_authorized: Nie masz wystarczających uprawnień do wykonania tej akcji
       accepted: musi zostać zaakceptowane
       blank: nie może być puste
       confirmation: nie zgadza się z polem %{attribute}
