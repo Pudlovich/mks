@@ -55,15 +55,15 @@ RSpec.describe ParcelsController do
     context "when a correct parcel number is provided in the params" do
       let(:parcel) { FactoryGirl.create(:parcel) }
       it "redirects to :show action of that parcel" do
-        get :index, parcel_number: parcel.parcel_number
+        get :index, parcel_numbers: parcel.parcel_number
         expect(response).to redirect_to parcel_path(parcel_number: parcel.parcel_number)
       end
     end
 
     context "when an incorrect parcel number is provided in the params" do
-      it "redirects to :show action with the number in the params" do
-        get :index, parcel_number: '0000000000'
-        expect(response).to redirect_to parcel_path(parcel_number: '0000000000')
+      it "redirects to :index view through rescue_not_found method" do
+        get :index, parcel_numbers: '0000000000'
+        expect(response).to redirect_to action: :index
       end
     end
   end
@@ -94,7 +94,7 @@ RSpec.describe ParcelsController do
 
     it "redirects to :index when a parcel doesn't exist" do
       get :show, parcel_number: 2
-      expect(response).to redirect_to :action => :index
+      expect(response).to redirect_to action: :index
     end
   end
 
