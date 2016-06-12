@@ -1,0 +1,6 @@
+%p= "Potwierdzamy utworzenie zamówienia o numerze #{@parcel.parcel_number}"
+%p Stan zlecenia można śledzić pod adresem:
+%p= link_to parcel_url(parcel_number: @parcel.parcel_number), parcel_url(parcel_number: @parcel.parcel_number)
+%p Ponadto informacja o przyjęciu zlecenia zostanie wysłana na niniejszy adres e-mail.
+%p= "W wypadku problemów związanych z zamówieniem, nasi konsultanci skontaktują się z podanym nr telefonu: #{@parcel.sender_info.phone_number} lub niniejszym adresem email."
+%p Infolinia: 33-440-44-44
