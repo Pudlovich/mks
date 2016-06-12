@@ -1,28 +1,10 @@
-== README
+In order for the email messages to send you have to set up an email account and insert it's credentials into config/environments.
+In order to set it up with GMail:
+* set environmental variables:
+* GMAIL_DOMAIN - domain (e.g. 'gmail.com')
+* GMAIL_USERNAME - email address
+* GMAIL_PASSWORD - password
+* configure gmail account to 'allow less secure apps'
+In case of problems use rails console to manually set user's confirmed_at attribute.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+To enable creation of admin and employee users - manually assign role: 'admin' to one of the users.
