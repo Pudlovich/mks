@@ -16,6 +16,8 @@ gem 'haml-rails'
 gem 'rails-i18n'
 gem 'will_paginate'
 
+gem 'sidekiq'
+
 # calculating parcel numbers
 gem 'luhn'
 
