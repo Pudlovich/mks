@@ -23,6 +23,12 @@ class Employee::ParcelsController < EmployeeController
     additional_info = parcel_params[:operation][:additional_info]
     service = ParcelAcceptanceService.new(parcel, status, author, additional_info)
     if service.call
+      if status == 'accepted'
+        OrderMailer.order_accepted_recipient_mail(parcel).deliver_later
+        OrderMailer.order_accepted_sender_mail(parcel).deliver_later
+      else
+        OrderMailer.order_rejected_mail(parcel).deliver_later
+      end
       flash[:notice] = t('.status_changed_succesfully')
     else
       flash[:alert] = t('.status_change_not_possible')

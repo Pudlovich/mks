@@ -4,6 +4,11 @@ class OrderMailer < ApplicationMailer
     mail(to: @parcel.sender_info.email, subject: 'MKS Express - potwierdzenie zamówienia')
   end
 
+  def order_rejected_mail(parcel)
+    @parcel = parcel
+    mail(to: @parcel.sender_info.email, subject: 'MKS Express - odrzucono zlecenie')
+  end
+
   def order_accepted_sender_mail(parcel)
     @parcel = parcel
     mail(to: @parcel.sender_info.email, subject: 'MKS Express - przyjęto zlecenie')

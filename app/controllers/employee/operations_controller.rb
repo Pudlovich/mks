@@ -10,6 +10,10 @@ class Employee::OperationsController < EmployeeController
     @operation = Operation.new(operation_params.merge(user: current_employee, parcel: parcel))
     @parcel = Parcel.new(parcel_params)  # serves as a container for form data
     if @operation.save
+      OrderMailer.parcel_sent_mail(parcel).deliver_later if @operation.parcel_picked_up?
+      OrderMailer.parcel_in_delivery_mail(parcel).deliver_later if @operation.parcel_in_delivery?
+      OrderMailer.parcel_delivered_sender_mail(parcel).deliver_later if @operation.parcel_delivered?
+      OrderMailer.parcel_delivered_recipient_mail(parcel).deliver_later if @operation.parcel_delivered?
       redirect_to new_employee_operation_path, notice: t('.operation_created_succesfully')
     else
       render 'new'

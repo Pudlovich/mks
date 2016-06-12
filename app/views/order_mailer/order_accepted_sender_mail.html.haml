@@ -1,0 +1,5 @@
+%p= "Potwierdzamy przyjęcie zamówienia o numerze #{@parcel.parcel_number}"
+%p Zlecenie można śledzić pod adresem:
+%p= link_to parcel_url(parcel_number: @parcel.parcel_number), parcel_url(parcel_number: @parcel.parcel_number)
+%p Odbiór paczki przez kuriera odbędzie się w ciągu najbliższego dnia roboczego.
+%p Infolinia: 33-440-44-44

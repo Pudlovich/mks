@@ -1,0 +1,5 @@
+%p= "Przesyłka od #{@parcel.sender_info.name} o numerze #{@parcel.parcel_number} oczekuje na wysłanie."
+%p Można ją śledzić pod adresem:
+%p= link_to parcel_url(parcel_number: @parcel.parcel_number), parcel_url(parcel_number: @parcel.parcel_number)
+%p Informacja o nadaniu przesyłki zostanie wysłana na niniejszy adres e-mail.
+%p Infolinia: 33-440-44-44

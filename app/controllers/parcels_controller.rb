@@ -24,7 +24,7 @@ class ParcelsController < ApplicationController
     @parcel = Parcel.new(parcel_params)
     @parcel.sender = current_user if user_signed_in?
     if @parcel.save
-      OrderMailer.order_created_mail(@parcel).deliver_now
+      OrderMailer.order_created_mail(@parcel).deliver_later
       redirect_to parcel_path(@parcel.parcel_number), notice: t('.parcel_created_succesfully')
     else
       render 'new'
