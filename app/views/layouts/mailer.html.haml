@@ -2,4 +2,6 @@
   %body
     %p Witaj!
     = yield
-    %p= "Pozdrawiamy, #{link_to 'MKS Express', root_url}"
+    %p
+      Pozdrawiamy,
+      =link_to 'MKS Express', root_url
