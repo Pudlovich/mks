@@ -1,7 +1,7 @@
 class RecipientInfo < ActiveRecord::Base
   has_many :parcels
   
-  validates :email, :contact_name, :zip_code, :address, :city, :phone_number, presence: true
+  validates :email, :contact_name, :zip_code, :address, :city, presence: true
   validates_format_of :email, with: Devise::email_regexp
 
   def name
